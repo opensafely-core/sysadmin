@@ -10,7 +10,8 @@ $(ENV)/done: requirements.txt
 requirements.txt: requirements.in
 	test -e $(ENV)/bin/pip-compile && $(ENV)/bin/pip-compile $^ 
 
-export ORG_TOKEN=$(shell cat org-token)
+ORG_TOKEN ?= $(shell cat org-token)
+export ORG_TOKEN
 manage: $(ENV)/done
 	$(ENV)/bin/python manage-github.py config.yaml $(ARGS)
 

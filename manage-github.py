@@ -188,10 +188,10 @@ def manage_studies(org, repo_policy, branch_policy, config):
         yield from protect_branch(repo, **branch_policy)
 
         if repo.full_name in config["not_studies"]:
-            yield from editors.add_repo(repo, 'admin')
+            yield from editors.add_repo(repo, 'maintain')
         else:
             # researchers have access to all studies
-            yield from researchers.add_repo(repo, 'admin')
+            yield from researchers.add_repo(repo, 'maintain')
          
 
 def main(argv=sys.argv[1:]):
