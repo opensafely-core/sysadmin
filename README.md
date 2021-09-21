@@ -28,3 +28,28 @@ force-pushes from anywhere.
 
 Additionally, protected repos require code review, and signing. This
 prevents pushes to master/main without a review.
+
+# Run
+
+Ensure you have a GH PAT with org admin permissions in `./org-token`
+
+`make manage` will run the command in dryrun mode, printing changes it would have made
+
+`make manage ARGS=--exec` will actually apply the changes.
+
+
+# Cron Job
+
+The management script is designed to run periodically. However, it uses a very
+privileged secret, so it currently runs from Simon's home machine.
+
+Run set up a cronjob yourself, you can use `cronjob.sh`. First, edit the `tokenfile` variable to
+point a file with a GH PAT that has admin org permissions.
+
+Then, set it to run every 15 mins or so via `crontab -e` or similar
+
+`*/15 * * * * /path/to/cronjob.sh >> /path/to/logfile.log 2>&1`
+
+
+
+
