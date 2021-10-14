@@ -7,7 +7,8 @@ If you inadvertently commit things that should be redacted to the output-publish
 * lock down permissions
 * make public repos -> private
 * temporarily remove external collabs
-* check for forks (should be prevented, but best to verify)
+* check for forks
+  * they should be disabled in the opensafely organisation, but best to verify
   * forks will mean that commits may not become dangling, and therefore would not be removed by the cleaning processes in this guide.
 
 ## prepare a repository check-out for cleaning
