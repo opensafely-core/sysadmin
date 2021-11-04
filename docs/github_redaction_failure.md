@@ -1,4 +1,4 @@
-# How to recover from an opensafely redaction failure
+# How to recover from an OpenSAFELY redaction failure
 ## output-publisher repos
 
 If you inadvertently commit things that should be redacted to the output-publisher repo, but do not run `osrelease` (and have not done anything out of the ordinary) then you can safely amend your files, commit the results and carry on working. This guide is mostly aimed at study repos.
