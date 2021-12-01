@@ -273,7 +273,8 @@ If your bad commit is deeper embedded in the git history, you can use [Github's 
 * Garbage collect the repository
   * according to this [github community form post from a staff member](https://github.community/t/does-github-ever-purge-commits-or-files-that-were-visible-at-some-time/1944/3), the policy circa 2020 is "we try not to clean up even orphaned items unless requested by a repo owner or admin, but if a git object becomes orphaned, we can’t guarantee that it will be retained forever."
   * Contact Github Support asking them to "garbage collect the repository".
-  * I suspect it's not possible to easily discover dangling commits, but it may be possible to do a parallel brute-force search to locate them.
+  * I suspect it's not possible to easily discover dangling commits from the repository, but it may be possible to do a parallel brute-force search to locate them.
+  * Also, old commit references can survive in logs - for example in the Github Actions log, if the repository has an action that runs on push events. These workflow run logs can be manually deleted through the web interface if necessary, however if the commit has been garbage collected then the commit reference should only lead to a 404.
 * verify the bad commit(s) is(are) not visible
   * e.g. https://github.com/ORG/my-repo/commit/6902dc3 should 404
 
