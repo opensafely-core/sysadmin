@@ -1,12 +1,13 @@
 # How to recover from an OpenSAFELY redaction failure
-## output-publisher repos
-
-If you inadvertently commit things that should be redacted to the output-publisher repo, but do not run `osrelease` (and have not done anything out of the ordinary) then you can safely amend your files, commit the results and carry on working. This guide is mostly aimed at study repos.
 
 ## make it safe
+
 * lock down permissions
 * make public repos -> private
 * temporarily remove external collabs
+* edit branch protection to only allow you to push to master temporarily (we
+  don't have an easy way to disabling write access as our current GH cron job
+  will just re-enable it within the hour).
 * check for forks
   * they should be disabled in the opensafely organisation, but best to verify
   * forks will mean that commits may not become dangling, and therefore would not be removed by the cleaning processes in this guide.
@@ -137,6 +138,8 @@ Once you have one repo on your local machine that contains all the branches that
 
 ## delete & recreate the repo
 
+Note: so far, we have never had to do this, so not 100% sure of all the details
+
 * backup repo
 * (verify backup)
 * delete repo
@@ -174,25 +177,17 @@ Notes:
   * `git fetch <COMMIT_ID>` may be required if the commit is *only* referenced by a pull request, as a local git repo won't fetch it by default if only referenced by a pull request 
   * Hopefully we won't need to do this very often, we could automate this a bit if necessary
 
+
+
 ### PRs that were merged
 
 Once a pull request is merged, it is not possible for users to re-open the pull request & update the reference. Therefore, if a pull request contains bad commits, you must contact Github Support and ask them to delete the pull request.
 
-Here is a sample email that you could use, although bear in mind you'll probably have to fight your way past a few front-line triage replies!
+You will need to file a request with Github support to do this.
 
-#### Sample email
+First, figure out which PR branches have the bad commits in. It could be a lot if the bad commit was a while ago.
 
-Hi there,
-
-I'm working with a team that handles medical records using code hosted on github.
-
-Some sensitive medical data has been accidentally committed to a github repository that I am an owner of. Please could you delete the following pull requests:
-
-https://github.com/opensafely/my-research/pull/1337
-
-Many thanks in advance,
-$MY_NAME
-OpenSAFELY
+Record the PR numbers for later use.
 
 
 ### PRs that were not merged
@@ -258,6 +253,18 @@ If your bad commit is deeper embedded in the git history, you can use [Github's 
 * force push all branches to GH
 * re-enable branch protection
   * if necessary, re-enable any automated scripts ensuring branch protection
+
+
+## File support ticker to remove the needed PRs
+
+We have to push the the cleaned repo before GH will do this, but once you've done that you can go here:
+
+https://support.github.com/request/remove-data
+
+And select "Remove pull requests". Select the repo, and input the PR numbers you figured out earlier.
+
+This system will create a ticket which is usually actioned within 24hrs without issue.
+
 
 ## if you deleted the repo
 
