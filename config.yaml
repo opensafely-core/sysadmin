@@ -2,6 +2,7 @@ organsation: OpenSAFELY
 # accounts that should not be granted general access
 bots:
         - opensafely-readonly
+        - opensafely-interactive-bot
 not_studies:
         - opensafely/roadmap
         - opensafely/test-repository
