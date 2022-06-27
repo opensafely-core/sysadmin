@@ -1,5 +1,17 @@
 # How to recover from an OpenSAFELY redaction failure
 
+# Files released to job-server
+
+Files released to job-server can be deleted (via the workspace releases page on job-server) by a 
+user with the output-checker role.  The reason for the redaction should be recorded in the 
+[tracking document](https://docs.google.com/document/d/1RmbyKCjbfSmyHlQTaZMhtU8mGqpDllSWXqN2at3B1KM/edit).
+
+
+# Files committed to GitHub
+
+This includes files that may have been released to job-server and then pushed to a GitHub repo 
+as well as files released using the old `osrelease` process.
+
 ## make it safe
 
 * lock down permissions
