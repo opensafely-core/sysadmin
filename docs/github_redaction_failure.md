@@ -3,7 +3,7 @@
 # Files released to job-server
 
 Files released to job-server can be deleted (via the workspace releases page on job-server) by a 
-user with the output-checker role.  The reason for the redaction should be recorded in the 
+user with the OutputChecker role.  The reason for the redaction should be recorded in the 
 [tracking document](https://docs.google.com/document/d/1RmbyKCjbfSmyHlQTaZMhtU8mGqpDllSWXqN2at3B1KM/edit).
 
 
