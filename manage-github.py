@@ -31,7 +31,7 @@ CODE_BRANCH_POLICY = {
 
 
 def convert_protection(protection):
-    """Convert protection read format to the write format.
+    """Convert protection read format to the right format.
 
     Converts results of branch.get_protection() into a dict that can passed to
     branch.edit_protection(). That this is necessary is a sad thing.
@@ -188,10 +188,10 @@ def manage_studies(org, repo_policy, branch_policy, config):
         yield from protect_branch(repo, **branch_policy)
 
         if repo.full_name in config["not_studies"]:
-            yield from editors.add_repo(repo, 'maintain')
+            yield from editors.add_repo(repo, 'push')
         else:
             # researchers have access to all studies
-            yield from researchers.add_repo(repo, 'maintain')
+            yield from researchers.add_repo(repo, 'push')
          
 
 def main(argv=sys.argv[1:]):
