@@ -68,6 +68,21 @@ class GithubTeam():
                 self.team.name,
             )
 
+    
+    def need_to_set_permissions(self, permission, raw):
+        # this relies on the dict being in permission order, which it seems to be
+        for name, value in raw.items():
+            if value:
+                # this will be the first value set
+                if name == permission:
+                    # if it matches the expected permission, we're good
+                    return False
+                else:
+                    # otherwise, either a higher or lower was set, and we need to change
+                    return True
+        # no permissions
+        return True
+        
     def add_repo(self, repo, permission):
         if repo.full_name not in self.repos:
             yield Change(
@@ -78,12 +93,10 @@ class GithubTeam():
             )
 
         current = self.team.get_repo_permission(repo)
-        # this is a little awkward, as 'maintain' permission is newish, so the
-        # library doesn't provide nice access
-        if current is None or not current.raw_data[permission]:
+        if current is None or self.need_to_set_permissions(permission, current.raw_data):
             yield Change(
                 lambda: self.team.set_repo_permission(repo, permission),
-                'granted {} on {} to {}',
+                'set {} permission on {} to {}',
                 permission,
                 repo.name,
                 self.team.slug,
