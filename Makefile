@@ -13,5 +13,5 @@ requirements.txt: requirements.in
 ORG_TOKEN ?= $(shell cat org-token)
 export ORG_TOKEN
 manage: $(ENV)/done
-	$(ENV)/bin/python manage-github.py config.yaml $(ARGS)
+	$(ENV)/bin/python manage-github.py $(ARGS)
 

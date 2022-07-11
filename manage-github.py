@@ -3,11 +3,17 @@ import itertools
 import os
 import select
 import sys
-import yaml
 
 from github import Github, GithubException
 
 import client
+
+
+# these counts are excluded from the generic researchers team
+BOTS = [
+    "opensafely-readonly",
+    "opensafely-interactive-bot",
+]
 
 
 # This applies to all repos. Values are from
@@ -166,7 +172,7 @@ def manage_code(org, repo_policy=None, branch_policy=None):
             yield from protect_branch(repo, **branch_policy)
 
 
-def manage_studies(org, repo_policy, branch_policy, config):
+def manage_studies(org, repo_policy, branch_policy):
     """Ensure all opensafely repos have the correct config.
 
     This also involves adding non_study repos to the editors team, and all
@@ -179,7 +185,7 @@ def manage_studies(org, repo_policy, branch_policy, config):
     # everyone is in researchers group
     for member in opensafely.members.values():
         # avoid elevating bot accounts
-        if member.login not in config['bots']:
+        if member.login not in BOTS:
             yield from researchers.add_member(member)
 
     for repo in opensafely.repos.values():
@@ -187,7 +193,8 @@ def manage_studies(org, repo_policy, branch_policy, config):
         yield from configure_repo(repo, **repo_policy)
         yield from protect_branch(repo, **branch_policy)
 
-        if repo.full_name in config["not_studies"]:
+        # another api request :(
+        if "non-research" in repo.get_topics():
             yield from editors.add_repo(repo, 'push')
         else:
             # researchers have access to all studies
@@ -198,7 +205,6 @@ def main(argv=sys.argv[1:]):
     parser = argparse.ArgumentParser(
         description='Apply policy to OpenSAFELY github org'
     )
-    parser.add_argument('config', help='The team config')
     parser.add_argument('--exec', action='store_true',
                         dest='execute',
                         help='Automatically execute commands')
@@ -219,7 +225,6 @@ def main(argv=sys.argv[1:]):
 
     studies = client.get_org('opensafely')
     core = client.get_org('opensafely-core')
-    config = yaml.safe_load(open(args.config))
 
     if mode == 'dry-run':
         print('*** DRY RUN - no changes will be made ***')
@@ -228,7 +233,7 @@ def main(argv=sys.argv[1:]):
 
     # analyse changes needed
     changes = itertools.chain(
-        manage_studies(studies, REPO_POLICY, STUDY_BRANCH_POLICY, config),
+        manage_studies(studies, REPO_POLICY, STUDY_BRANCH_POLICY),
         manage_code(core, REPO_POLICY, CODE_BRANCH_POLICY),
     )
 
