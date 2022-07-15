@@ -195,7 +195,7 @@ def manage_studies(org, repo_policy, branch_policy):
 
         # another api request :(
         if "non-research" in repo.get_topics():
-            yield from editors.add_repo(repo, 'push')
+            yield from editors.add_repo(repo, 'maintain')
         else:
             # researchers have access to all studies
             yield from researchers.add_repo(repo, 'push')
