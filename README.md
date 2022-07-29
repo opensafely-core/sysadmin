@@ -46,10 +46,8 @@ privileged secret, so it currently runs from Simon's home machine.
 Run set up a cronjob yourself, you can use `cronjob.sh`. First, edit the `tokenfile` variable to
 point a file with a GH PAT that has admin org permissions.
 
-Then, set it to run every 15 mins or so via `crontab -e` or similar
+Then, set it to run every hour at n minutes past the hour via `crontab -e` or similar.
+e.g. to run at 17m past each hour:
 
-`*/15 * * * * /path/to/cronjob.sh >> /path/to/logfile.log 2>&1`
-
-
-
+`17 * * * * /path/to/cronjob.sh >> /path/to/logfile.log 2>&1`
 

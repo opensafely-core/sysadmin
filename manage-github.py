@@ -137,8 +137,19 @@ def protect_branch(repo, branch=None, **kwargs):
 
 def configure_repo(repo, **kwargs):
     """Configure a repo according to config."""
+
+    for user in repo.get_collaborators("direct"):
+        # a direct user with the admin permission is the repo creator, or someone added by the repo creator
+        if user.permissions.admin:
+            yield client.Change(
+                lambda: repo.remove_from_collaborators(user),
+                f"removing direct admin collaborator {user.login} from {repo.name}",
+            )
+
+    # if it's archived we can't change policy
     if repo.archived:
         return
+
     to_change = {}
     for name, value  in kwargs.items():
         if getattr(repo, name) != value:
