@@ -1,10 +1,11 @@
 import argparse
+from datetime import datetime
 import itertools
 import os
 import select
 import sys
 
-from github import Github, GithubException
+from github import Github, GithubException, RateLimitExceededException
 
 import client
 
@@ -142,10 +143,22 @@ def configure_repo(repo, **kwargs):
         for user in repo.get_collaborators("direct"):
             # a direct user with the admin permission is the repo creator, or someone added by the repo creator
             if user.permissions.admin:
-                yield client.Change(
-                    lambda: repo.remove_from_collaborators(user),
-                    f"removing direct admin collaborator {user.login} from {repo.name}",
-                )
+                msg = f"removing direct admin collaborator {user.login} from {repo.name}"
+                if repo.archived:
+                    yield client.Change(
+                        lambda: print(
+                            f"Cannot safely remove admin user {user.login} from {repo.name} is the repo is archived.\n"
+                            f"Please manually remove them: {repo.html_url}"
+                        ),
+                        msg,
+                    )
+                else:
+                    yield client.Change(
+                        lambda: repo.remove_from_collaborators(user),
+                        msg,
+                    )
+
+
     except GithubException as exc:
         if exc.status == 403:
             print("Token does not have permissions to query repo collabortors (need write access)")
@@ -240,42 +253,55 @@ def main(argv=sys.argv[1:]):
     elif args.execute:
         mode = 'execute'
 
-    studies = client.get_org('opensafely')
-    core = client.get_org('opensafely-core')
-
     if mode == 'dry-run':
         print('*** DRY RUN - no changes will be made ***')
+    try:
+        studies = client.get_org('opensafely')
+        core = client.get_org('opensafely-core')
 
-    pending_changes = []
+        pending_changes = []
 
-    # analyse changes needed
-    changes = itertools.chain(
-        manage_studies(studies, REPO_POLICY, STUDY_BRANCH_POLICY),
-        manage_code(core, REPO_POLICY, CODE_BRANCH_POLICY),
-    )
+        # analyse changes needed
+        changes = itertools.chain(
+            manage_studies(studies, REPO_POLICY, STUDY_BRANCH_POLICY),
+            manage_code(core, REPO_POLICY, CODE_BRANCH_POLICY),
+        )
 
-    for change in changes:
-        print(change)
-        if mode == 'execute':
-            change()
-        else:
-            pending_changes.append(change)
+        for change in changes:
+            print(change)
+            if mode == 'execute':
+                change()
+            else:
+                pending_changes.append(change)
 
-    if mode == 'dry-run':
-        print('*** DRY RUN - no changes were made ***')
-    elif mode == 'default': 
-        if pending_changes:
-            answer = input_with_timeout(
-                "Do you want to apply the above changes (y/n)?", 
-                30.0,
-            )
-            if answer == 'y':
-                for change in pending_changes:
-                    print(change)
-                    change()
-        else:
-            print('No changes needed')
+        if mode == 'dry-run':
+            print('*** DRY RUN - no changes were made ***')
+        elif mode == 'default': 
+            if pending_changes:
+                answer = input_with_timeout(
+                    "Do you want to apply the above changes (y/n)?", 
+                    30.0,
+                )
+                if answer == 'y':
+                    for change in pending_changes:
+                        print(change)
+                        change()
+            else:
+                print('No changes needed')
     
+    except RateLimitExceededException as exc:
+        print("Github ratelimit hit")
+        try:
+            reset = datetime.fromtimestamp(int(exc.headers["x-ratelimit-reset"]))
+            print(f"Will reset at {reset.isoformat()}")
+        except:
+            pass
+
+        for k, v in exc.headers.items():
+            if k.lower().startswith("x-ratelimit"):
+                print(f"{k}: {v}")
+
+
 
 if __name__ == '__main__':
     main()
