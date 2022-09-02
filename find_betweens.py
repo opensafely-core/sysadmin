@@ -11,12 +11,14 @@ funcs = [r'patients.with_these_clinical_events\('
 
 patfuncs = '(?:'+'|'.join(funcs)+')'
 pattern_offset=patfuncs+r'(?:[^\)]|\n)*between=\["(\w*)",\s*"\1 +[+-] +(\d+) +(\w+)"'
+pattern_double_offset=patfuncs+r'(?:[^\)]|\n)*between=\["(\w*) * ([+-])* * (\d*) * (\w*)*",\s*"\1 +[+-] +(\d+) +(\w+)"'
 pattern_sameday=patfuncs+r'(?:[^\)]|\n)*between=\["(\w*)",\s*"\1"'
 
 pyfiles = glob.glob('research/**/**/*definition*.py')
 
 results_sameday={}
 results_offset={}
+results_double_offset={}
 
 for file in pyfiles:
     with open(file,'r') as f:
@@ -27,11 +29,16 @@ for file in pyfiles:
         match_sameday = re.findall(pattern_sameday,fc,re.MULTILINE)
         if match_sameday:
             results_sameday[file] = match_sameday
+        match_double_offset = re.findall(pattern_double_offset,fc,re.MULTILINE)
+        if match_double_offset:
+            results_double_offset[file] = match_double_offset
 
 with open('report_offset.json','w') as rep:
     json.dump(results_offset,rep,indent=4)
 with open('results_sameday.json','w') as rep:
     json.dump(results_sameday,rep,indent=4)
+with open('results_double_offset.json','w') as rep:
+    json.dump(results_double_offset,rep,index=4)
 
 df = pd.DataFrame(columns=['study','file','date','offset_n','offset_period'])
 for k,v in results_offset.items():
