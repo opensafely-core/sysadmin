@@ -1,0 +1,12 @@
+organsation: OpenSAFELY 
+# accounts that should not be granted general access
+# note: opensafely-github-bot is privileged, so not listed here
+bots:
+        - opensafely-readonly
+        - opensafely-interactive-bot
+not_studies:
+        - opensafely/roadmap
+        - opensafely/output-review
+        - opensafely/test-repository
+        - opensafely/documentation
+        - opensafely/server-instructions
