@@ -1,4 +1,4 @@
 org-token
 env
 __pycache__
-research
+.env
