@@ -38,7 +38,7 @@ with open('report_offset.json','w') as rep:
 with open('results_sameday.json','w') as rep:
     json.dump(results_sameday,rep,indent=4)
 with open('results_double_offset.json','w') as rep:
-    json.dump(results_double_offset,rep,index=4)
+    json.dump(results_double_offset,rep,indent=4)
 
 df = pd.DataFrame(columns=['study','file','date','offset_n','offset_period'])
 for k,v in results_offset.items():
