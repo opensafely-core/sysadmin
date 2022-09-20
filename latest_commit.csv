@@ -1,227 +1,810 @@
-repository,latest_commit_date
-opensafely/absolute-risks-covid-research,2022-05-06 12:27:56 +0100
-opensafely/ace-arb-research,2021-01-05 14:17:26 +0000
-opensafely/action-test-research,2021-01-20 11:48:05 +0000
-opensafely/ADTinj,2022-08-09 00:34:41 +0100
-opensafely/aftershocks-notebook,2021-02-03 08:51:48 +0000
-opensafely/amr-uom-brit,2022-08-15 12:50:35 +0100
-opensafely/antibody-and-antiviral-deployment,2022-07-01 13:38:27 +0100
-opensafely/anticoagulants-research,2022-05-06 12:31:22 +0100
-opensafely/anticoagulant-switching-research,2022-06-10 12:04:08 +0100
-opensafely/antidepressant-prescribing-lda,2022-05-06 12:31:35 +0100
-opensafely/antidepressants,2022-06-24 13:46:33 +0000
-opensafely/antimicrobial-stewardship,2022-08-16 11:31:50 +0100
-opensafely/antipsychotics-prescribing-during-COVID-19,2022-05-06 12:31:56 +0100
-opensafely/asthma_indicators_qof,2022-07-01 17:58:49 +0100
-opensafely/asthma_sro,2022-08-09 19:25:19 +0100
-opensafely/avoidable_hospitalisations_trends,2022-06-09 12:55:35 +0100
-opensafely/benbc-test,2022-05-06 12:32:16 +0100
-opensafely/bias,2022-06-08 11:20:36 +0000
-opensafely/blood-pressure-sro,2022-06-13 16:22:44 +0100
-opensafely/BMI-and-Metabolic-Markers,2022-07-28 13:36:26 +0000
-opensafely/bmi-short-data-report,2022-05-20 14:10:03 +0100
-opensafely/booster-effectiveness,2022-07-08 17:15:27 +0200
-opensafely/carehome-noncarehome-death-research,2022-05-06 12:34:56 +0100
-opensafely/CareHomePrescribing,2022-05-06 12:35:05 +0100
-opensafely/carehomes-mortality-research,2022-06-09 22:39:24 +0100
-opensafely/carehomes-research,2022-06-09 22:35:21 +0100
-opensafely/carehomes-short-data-report,2022-05-19 08:56:20 +0100
-opensafely/children-risk-factors,2022-05-06 13:34:33 +0100
-opensafely/CIS-pop-validation,2022-07-01 08:17:39 +0000
-opensafely/ckd-coverage-ve,2022-07-22 13:48:18 +0100
-opensafely/ckd-post-covid-outcomes,2022-06-17 11:43:32 +0100
-opensafely/codelist-development,2020-06-15 13:08:22 +0100
-opensafely/cohort-extractor-demo,2022-05-06 13:34:58 +0100
-opensafely/comparative-booster,2022-07-22 16:28:11 +0200
-opensafely/comparative-ve-research,2022-05-06 12:36:00 +0100
-opensafely/COVID-19-vaccine-breakthrough,2022-06-27 13:28:52 +0100
-opensafely/covid19-vaccine-coverage-tpp-emis,2022-05-06 12:36:17 +0100
-opensafely/covid-aki-outcomes,2022-08-08 15:32:58 +0000
-opensafely/covid-collateral-research,2022-08-10 15:04:05 +0100
-opensafely/covid_determinants,2022-05-18 12:16:46 +0100
-opensafely/covid-diabetes-outcomes,2022-06-29 16:17:25 +0100
-opensafely/covid-event-times-research,2022-05-06 12:36:49 +0100
-opensafely/covid_mortality_over_time,2022-07-28 16:56:10 +0100
-opensafely/covid-positive-infection-research,2022-05-06 12:37:05 +0100
-opensafely/covid-therapeutics-notebook,2022-06-09 15:14:20 +0100
-opensafely/covid-unvaccinated-aimpaper,2022-05-06 12:37:21 +0100
-opensafely/covid-vaccine-declined-variation,2022-05-06 12:37:29 +0100
-opensafely/covid-vaccine-early-safety-research,2022-05-06 12:37:36 +0100
-opensafely/covid-vaccine-effectiveness-research,2022-05-06 12:37:44 +0100
-opensafely/covid-vaccine-neuro-research,2022-06-10 15:42:01 +0100
-opensafely/covid-vaccine-not-received,2022-05-06 12:38:00 +0100
-opensafely/covid-vaccine-preliminary-uptake-study,2022-08-10 13:22:58 +0100
-opensafely/covid-vaccine-research-template,2022-05-06 12:38:17 +0100
-opensafely/covid-vaccine-safety-research,2022-05-06 12:38:25 +0100
-opensafely/covid-ve-change-over-time,2022-07-20 15:13:23 +0100
-opensafely/covid-vs-noncovid-deaths-research,2022-05-06 12:38:41 +0100
-opensafely/database-notebooks,2022-06-08 16:37:22 +0200
-opensafely/databricks-test,2022-05-06 12:39:06 +0100
-opensafely/data-exploration-notebooks,2022-08-17 10:21:59 +0100
-opensafely/dataset-directory,2022-05-26 17:42:46 +0100
-opensafely/date-window-test,2022-08-01 23:27:50 +0100
-opensafely/deaths-at-home-covid19,2022-08-16 11:58:28 +0100
-opensafely/debug-uploads,2021-10-04 14:06:58 +0100
-opensafely/DISECT_UK_India_COVID,2022-08-15 15:26:33 +0100
-opensafely/doacs-covid19,2022-08-17 10:50:59 +0100
-opensafely/documentation,2022-08-16 17:50:13 +0100
-opensafely/drug-monitoring-sro,2022-05-06 12:40:19 +0100
-opensafely/early-inflammatory-arthritis,2022-07-14 15:51:01 +0100
-opensafely/emis-qa,2022-05-06 12:40:35 +0100
-opensafely/emis-smoke-tests,2022-05-06 12:40:51 +0100
-opensafely/ethnicity-2021-update,2022-05-06 12:41:00 +0100
-opensafely/Ethnicity-2nd-wave,2022-05-06 12:41:08 +0100
-opensafely/Ethnicity-3rd-wave,2022-05-06 12:41:16 +0100
-opensafely/ethnicity-covid-3rd-wave,2022-05-06 12:41:24 +0100
-opensafely/ethnicity-covid-research,2022-05-06 12:41:33 +0100
-opensafely/ethnicity-short-data-report,2022-05-25 13:23:14 +0100
-opensafely/Factors-associated-with-COVID-19-vaccination,2022-05-06 12:41:48 +0100
-opensafely/feather-to-dta,2022-06-01 17:01:07 +0100
-opensafely/FLUCATS,2022-08-16 12:02:25 +0100
-opensafely/flu-vacc-research,2021-02-01 05:14:49 -0800
-opensafely/GermDefence,2022-06-09 15:19:16 +0100
-opensafely/gh-testing-research,2022-05-06 12:42:04 +0100
-opensafely/gib01,2022-05-06 12:42:13 +0100
-opensafely/HbA1c-levels,2022-06-08 10:22:12 +0100
-opensafely/hdruk-os-covid-paeds,2022-08-17 00:19:21 +0100
-opensafely/hello,2022-05-06 12:42:36 +0100
-opensafely/hepatitis_in_children,2022-05-13 09:37:43 +0100
-opensafely/HEST_OS_study,2022-05-06 12:42:53 +0100
-opensafely/hh-classification-research,2022-06-16 11:18:43 +0100
-opensafely/highcostdrugs-research,2022-05-06 12:43:10 +0100
-opensafely/hiv-research,2021-06-17 14:54:34 +0100
-opensafely/hospital-disruption-research,2022-05-24 09:56:27 +0100
-opensafely/households-research,2022-05-06 14:42:05 +0100
-opensafely/households-short-data-report,2022-05-06 14:42:43 +0100
-opensafely/hydroxychloroquine-research,2021-01-05 14:43:29 +0000
-opensafely/hypertension-sro,2022-08-02 12:21:11 +0300
-opensafely/ics-research,2021-02-01 05:13:57 -0800
-opensafely/imd-breakdown,2022-05-06 14:44:03 +0100
-opensafely/immunosuppressant-meds-research,2022-06-10 16:10:22 +0100
-opensafely/interactive,2022-08-10 08:49:22 +0000
-opensafely/jobs-archive,2020-12-21 11:50:32 +0000
-opensafely/job-server-repo-tests,2022-05-06 14:46:04 +0100
-opensafely/lockdown-and-vulnerable-groups,2022-06-20 10:05:28 +0100
-opensafely/lone_households,2022-07-28 11:53:00 +0100
-opensafely/long-covid,2022-06-28 16:57:50 +0200
-opensafely/long-covid-diagnosis-interval,2022-05-06 14:52:22 +0100
-opensafely/long-covid-historical-health,2022-06-28 21:03:35 +0100
-opensafely/long-covid-risk-factors-and-prediction,2022-08-13 18:50:57 +0100
-opensafely/long-covid-sick-notes,2022-07-11 23:53:46 +0100
-opensafely/long-covid-symptoms,2022-08-09 14:14:54 +0100
-opensafely/LT-repeat-antimicrobial-prescribing,2022-08-11 01:16:50 +0100
-opensafely/mab-av-non-users,2022-07-29 17:29:23 +0100
-opensafely/mainroute_cancer,2022-08-09 19:16:49 +0100
-opensafely/mechanical-valve-anticoag,2022-07-28 11:53:54 +0100
-opensafely/medication-reviews,2022-08-16 09:58:09 +0100
-opensafely/med-safety-PoC,2022-05-06 14:58:33 +0100
-opensafely/MH_pandemic,2022-08-15 16:34:34 +0100
-opensafely/misconduct-research,2021-01-05 14:43:52 +0000
-opensafely/mtx-monitoring-frequency,2021-07-27 15:50:22 +0100
-opensafely/mv-dummy-data,2021-01-12 20:38:44 +0000
-opensafely/nhs-covid-vaccination-coverage,2022-07-08 12:31:59 +0200
-opensafely/nhsx-demo,2022-05-06 15:00:40 +0100
-opensafely/NICE-audit-BP,2022-05-05 17:03:54 +0100
-opensafely/NICE-audit-lipids,2022-05-23 17:30:18 +0100
-opensafely/non-specific-immunity-research,2022-06-09 22:43:23 +0100
-opensafely/notebook-action,2022-03-11 15:22:41 +0000
-opensafely/nsaids-covid-research,2021-01-22 11:10:17 +0000
-opensafely/nsaids-research-archive,2020-06-30 11:10:48 +0100
-opensafely/opioids-covid-research,2022-07-28 12:06:55 +0100
-opensafely/oral-anticoagulant-covid-outcome,2022-02-07 15:22:01 +0000
-opensafely/os-demo-research,2021-08-10 15:49:27 +0100
-opensafely/OS_OC_v001-research,2021-10-19 16:35:33 +0100
-opensafely/os-sch-children-2021,2022-05-29 20:46:17 +0100
-opensafely/OS_VidGroupClinic_v001-research,2021-04-26 13:44:58 +0100
-opensafely/outcomes-notebook,2020-09-30 16:53:24 +0100
-opensafely/output-checking,2021-08-02 14:35:29 +0100
-opensafely/output-explorer-test-repo,2021-06-02 11:52:37 +0100
-opensafely/PaCa_Enzyme_Rx,2022-08-04 18:27:18 +0100
-opensafely/Pancreatic_cancer,2022-04-14 12:57:42 +0100
-opensafely/pathology-comparators-short-report,2022-06-29 11:52:19 +0100
-opensafely/Paxlovid-and-sotrovimab,2022-07-21 10:12:19 +0100
-opensafely/pincer-measures,2022-06-20 14:45:27 +0100
-opensafely/pincer-measures-change-detection,2022-01-20 13:36:57 +0000
-opensafely/population-outcomes-burden-research,2021-02-21 22:51:34 +0000
-opensafely/post-admission-admissions-research,2022-02-01 10:10:45 +0000
-opensafely/post-covid-autoimmune,2022-06-17 10:55:49 +0100
-opensafely/post-covid-bristol,2022-04-21 09:49:10 +0100
-opensafely/post-covid-diabetes,2022-08-04 16:23:56 +0100
-opensafely/post-covid-gastrointestinal,2022-08-09 15:41:22 +0100
-opensafely/post-covid-kidney-outcomes,2022-08-16 16:49:41 +0100
-opensafely/post-covid-mentalhealth,2022-08-11 16:22:04 +0100
-opensafely/post-covid-neurodegenerative,2022-05-13 13:12:38 +0100
-opensafely/Post_covid_nice_compliance,2022-04-04 18:06:24 +0100
-opensafely/post-covid-outcomes-research,2022-04-21 15:36:14 +0100
-opensafely/post-covid-pre-vaccinated-cardiovascular,2022-08-16 11:28:29 +0100
-opensafely/post-covid-respiratory,2022-07-05 15:54:23 +0000
-opensafely/post-covid-unvaccinated,2022-07-15 09:39:42 +0100
-opensafely/post-covid-vaccinated,2022-08-16 12:14:55 +0100
-opensafely/PostOpCovid,2022-08-11 20:14:53 +0100
-opensafely/post-vax-ae-attendance,2021-10-05 11:44:09 +0100
-opensafely/post-vax-outcomes-report,2021-04-27 18:00:03 +0100
-opensafely/pregnancy-vaccine-safety,2021-09-30 08:53:23 +0100
-opensafely/primary-care-covid-codes-research,2022-06-26 20:56:02 +0100
-opensafely/primis-codelist-prevalence,2021-04-16 12:51:39 +0100
-opensafely/primis-covid-vacc-uptake-spec,2021-02-08 09:40:36 +0000
-opensafely/principle-inhaler-uptake,2022-06-17 10:52:18 +0100
-opensafely/PSA2021,2022-01-07 12:56:12 +0000
-opensafely/Published-Protocols,2022-07-18 12:05:40 +0100
-opensafely/qof-utilities,2022-06-28 12:17:37 +0100
-opensafely/RA_outcomes,2022-08-16 16:15:45 +0100
-opensafely/rapid-reports,2021-02-01 03:14:49 -0800
-opensafely/raw-data-plausibility-checks,2022-03-29 17:15:39 +0100
-opensafely/rct-test,2021-09-21 14:56:12 +0100
-opensafely/reinfection,2021-02-26 14:54:47 +0000
-opensafely/release-process-test,2021-06-28 15:17:01 +0000
-opensafely/renal-short-data-report,2022-08-05 15:54:41 +0100
-opensafely/representativeness,2022-07-21 18:41:00 +0100
-opensafely/research-template,2022-05-05 17:05:44 +0100
-opensafely/research_temp_tm,2021-05-18 09:27:08 +0100
-opensafely/restoration-observatory-data-driven,2022-06-01 19:18:18 +0100
-opensafely/restoration-observatory-emis-research,2021-01-29 08:15:14 -0800
-opensafely/restoration-observatory-notebook,2020-10-22 08:22:39 +0100
-opensafely/reverse-engineer-r-docker,2022-07-29 14:15:27 +0100
-opensafely/risk-factors-research,2021-08-11 15:01:17 +0100
-opensafely/risk-prediction-research,2021-07-14 10:47:00 +0100
-opensafely/roadmap,2022-07-04 14:40:27 +0100
-opensafely/SA_carehomerx,2022-02-07 15:22:11 +0000
-opensafely/sarscov2-testing-data-report,2020-07-27 15:54:54 +0100
-opensafely/school-age-children-and-covid,2020-11-05 13:08:46 +0000
-opensafely/school-age-children-and-covid2,2021-08-11 11:25:58 +0100
-opensafely/second-line-diabetes-covid-research,2021-09-28 21:13:54 +0100
-opensafely/server-instructions,2022-05-10 16:45:37 +0100
-opensafely/SGTF-617-research,2022-01-14 11:36:38 +0000
-opensafely/SGTF-CFR-research,2021-11-16 12:23:46 +0000
-opensafely/SGTF-Omi-research,2022-02-17 15:39:22 +0000
-opensafely/Shared-Care-Monitoring,2022-08-17 10:23:00 +0100
-opensafely/sotrovimab-and-molnupiravir,2022-08-15 17:55:25 +0100
-opensafely/sro-gastro,2022-08-04 18:54:05 +0200
-opensafely/SRO-Measures,2022-08-11 17:37:04 +0100
-opensafely/sro-measures-demo,2022-03-23 10:01:19 +0000
-opensafely/SRO-pulse-oximetry,2022-02-07 15:22:18 +0000
-opensafely/SRO-PULSE-OXIMETRY-UPD,2022-02-07 15:22:22 +0000
-opensafely/SRO-smr,2022-05-27 12:38:18 +0100
-opensafely/sro-template,2022-04-11 15:34:39 +0100
-opensafely/suicide-deaths-pcc,2022-06-24 16:44:09 +0100
-opensafely/surg-covid-safely,2022-08-10 22:37:56 +0100
-opensafely/surgery-research,2021-09-13 15:48:56 +0100
-opensafely/T1DM_covid_research,2021-04-29 12:13:36 +0100
-opensafely/test-age-distribution,2022-07-01 08:43:27 +0100
-opensafely/test-point-and-click,2022-05-12 12:02:58 +0100
-opensafely/test-repository,2021-05-11 11:21:09 +0100
-opensafely/tncc_ve,2022-05-14 12:59:10 +0100
-opensafely/tpp-sql-notebook,2021-02-11 15:57:47 +0000
-opensafely/Uptake-of-NHS-home-interventions-during-COVID-19,2022-08-08 08:53:39 +0100
-opensafely/vaccinations-dashboard,2020-06-19 15:45:42 +0100
-opensafely/vaccine-characteristics-research,2021-05-10 10:26:39 +0100
-opensafely/vaccine-effectiveness-hospital-admissions-validation,2022-04-04 11:52:36 +0100
-opensafely/vaccine-effectiveness-in-kids,2022-08-03 15:05:28 +0100
-opensafely/vaccine-eligibility,2021-02-23 14:46:19 +0000
-opensafely/vaccine-neuro-cohort,2022-06-21 15:21:16 +0100
-opensafely/vaccine-rd-research,2021-05-18 14:03:40 +0100
-opensafely/vaccine_status,2022-03-03 15:38:29 +0000
-opensafely/vacc-trial-monitoring-research,2021-01-05 14:45:20 +0000
-opensafely/variable-library,2021-03-16 19:29:59 +0000
-opensafely/waning-ve-2dose-1year,2022-07-20 15:12:21 +0100
-opensafely/waning-ve-2dose-cancer,2022-08-15 13:22:49 +0100
+"repository","latest_commit_timestamp","branch"
+"opensafely/absolute-risks-covid-research","Fri May 6 12:27:56 2022 +0100","master"
+"opensafely/ace-arb-research","Tue Jan 5 13:44:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/ace-arb-research","Tue Sep 29 14:47:02 2020 +0100","hello-world-first-run"
+"opensafely/ace-arb-research","Tue Jan 5 14:17:26 2021 +0000","master"
+"opensafely/action-test-research","Wed Jan 20 11:48:05 2021 +0000","master"
+"opensafely/ADTinj","Tue Sep 13 16:00:22 2022 +0100","main"
+"opensafely/aftershocks-notebook","Wed Feb 3 08:51:48 2021 +0000","master"
+"opensafely/aftershocks-notebook","Tue Oct 12 16:33:03 2021 +0100","updates-with-dec-data"
+"opensafely/amr-uom-brit","Thu Apr 28 08:25:55 2022 +0100","CC_AB_V3"
+"opensafely/amr-uom-brit","Thu Feb 17 12:38:27 2022 +0000","CC_AB_covid_V2"
+"opensafely/amr-uom-brit","Fri Sep 16 13:34:25 2022 +0100","CC_outcome_2"
+"opensafely/amr-uom-brit","Mon Sep 12 18:15:38 2022 +0100","CC_outcome_3"
+"opensafely/amr-uom-brit","Mon Sep 5 16:49:25 2022 +0100","ab_covid_1"
+"opensafely/amr-uom-brit","Tue Sep 6 11:42:08 2022 +0100","ab_covid_2"
+"opensafely/amr-uom-brit","Tue Feb 15 22:08:55 2022 +0000","abtype_plot"
+"opensafely/amr-uom-brit","Wed Dec 15 17:06:20 2021 +0000","add-lockdown-time-in-plot"
+"opensafely/amr-uom-brit","Thu Feb 10 15:48:56 2022 +0000","antibiotics_with_indications"
+"opensafely/amr-uom-brit","Thu Sep 15 16:26:19 2022 +0100","broad_ITS"
+"opensafely/amr-uom-brit","Tue Jan 18 09:47:45 2022 +0000","case-control_study.definition"
+"opensafely/amr-uom-brit","Tue Feb 8 15:36:56 2022 +0000","case_control_AB_covid"
+"opensafely/amr-uom-brit","Wed Feb 9 14:21:29 2022 +0000","covrx_date"
+"opensafely/amr-uom-brit","Wed Mar 30 17:45:25 2022 +0100","harmonic-month"
+"opensafely/amr-uom-brit","Mon Sep 12 20:09:50 2022 +0100","hosp_pred"
+"opensafely/amr-uom-brit","Tue Apr 12 09:21:12 2022 +0100","hospitalisation"
+"opensafely/amr-uom-brit","Wed Nov 10 10:58:20 2021 +0000","hospitalisation_analysis_review"
+"opensafely/amr-uom-brit","Mon Aug 8 15:03:51 2022 +0100","hospitalisation_rate"
+"opensafely/amr-uom-brit","Wed Jun 8 12:55:07 2022 +0100","hospitalisation_simple"
+"opensafely/amr-uom-brit","Fri Jan 14 16:03:32 2022 +0000","infection-consultation-plot"
+"opensafely/amr-uom-brit","Wed Sep 29 11:21:02 2021 +0000","jonm-variables-demo"
+"opensafely/amr-uom-brit","Thu Sep 8 11:10:20 2022 +0100","main"
+"opensafely/amr-uom-brit","Fri Mar 4 23:18:40 2022 +0000","monthly-count_rmd"
+"opensafely/amr-uom-brit","Wed Apr 13 13:14:50 2022 +0100","repeat_ab"
+"opensafely/amr-uom-brit","Tue Sep 13 16:49:40 2022 +0100","service_evaluation"
+"opensafely/amr-uom-brit","Tue Sep 6 13:41:14 2022 +0100","service_evaluation_2"
+"opensafely/amr-uom-brit","Mon Mar 28 18:10:17 2022 +0100","study-def-updates"
+"opensafely/amr-uom-brit","Fri Jan 14 18:43:48 2022 +0000","study_eval_repeated_abs"
+"opensafely/amr-uom-brit","Fri Feb 11 17:26:00 2022 +0000","test_6m"
+"opensafely/amr-uom-brit","Wed Mar 2 18:31:05 2022 +0000","using_basic_record_rds_files_for_baseline_table"
+"opensafely/antibody-and-antiviral-deployment","Fri Sep 16 08:34:45 2022 +0100","main"
+"opensafely/antibody-and-antiviral-deployment","Tue Sep 13 11:29:33 2022 +0100","report"
+"opensafely/antibody-and-antiviral-deployment","Wed Jun 29 14:45:39 2022 +0100","sgtf"
+"opensafely/anticoagulants-research","Thu Dec 17 17:48:05 2020 +0000","arg"
+"opensafely/anticoagulants-research","Wed Sep 15 16:11:18 2021 +0100","dementia-covariate"
+"opensafely/anticoagulants-research","Mon Jan 4 14:57:23 2021 +0000","fix-codelist-line-endings"
+"opensafely/anticoagulants-research","Thu Dec 17 17:48:05 2020 +0000","fix-csv-problem"
+"opensafely/anticoagulants-research","Thu Jul 9 14:48:47 2020 +0100","fix-suppression-codelists"
+"opensafely/anticoagulants-research","Fri May 6 12:31:22 2022 +0100","master"
+"opensafely/anticoagulants-research","Thu Dec 24 18:13:11 2020 +0000","minor-change-main-analysis"
+"opensafely/anticoagulants-research","Thu Jul 29 10:06:04 2021 +0100","release-candidates"
+"opensafely/anticoagulant-switching-research","Fri Jun 10 12:04:08 2022 +0100","master"
+"opensafely/anticoagulant-switching-research","Wed Sep 22 14:09:54 2021 +0100","release-candidates"
+"opensafely/antidepressant-prescribing-lda","Fri May 6 12:31:35 2022 +0100","main"
+"opensafely/antidepressant-prescribing-lda","Tue Sep 13 09:46:41 2022 -0700","reformatting"
+"opensafely/antidepressant-prescribing-lda","Fri Aug 19 03:32:23 2022 -0700","test"
+"opensafely/antidepressants","Fri Jun 24 13:46:33 2022 +0000","main"
+"opensafely/antidepressants","Mon Sep 6 15:00:49 2021 +0100","troubleshooting"
+"opensafely/antimicrobial-stewardship","Mon Aug 22 16:35:09 2022 +0100","master"
+"opensafely/antimicrobial-stewardship","Mon Sep 27 12:34:38 2021 +0100","release-candidates"
+"opensafely/antimicrobial-stewardship","Fri Jul 2 10:58:54 2021 +0100","study_def"
+"opensafely/antipsychotics-prescribing-during-COVID-19","Fri May 6 12:31:56 2022 +0100","master"
+"opensafely/asthma_indicators_qof","Mon May 30 17:18:57 2022 +0100","ast007_development"
+"opensafely/asthma_indicators_qof","Mon Sep 5 14:42:34 2022 +0100","main"
+"opensafely/asthma_indicators_qof","Tue Jun 7 15:57:57 2022 +0100","number_validation"
+"opensafely/asthma_sro","Fri Sep 2 11:48:07 2022 +0100","master"
+"opensafely/asthma_sro","Fri Sep 2 11:35:07 2022 +0100","panelled_plots"
+"opensafely/asthma_sro","Tue Jul 26 09:57:54 2022 +0100","testing_treatment"
+"opensafely/avoidable_hospitalisations_trends","Thu Jun 9 12:55:35 2022 +0100","main"
+"opensafely/benbc-test","Fri May 6 12:32:16 2022 +0100","master"
+"opensafely/bias","Wed Jun 8 11:20:36 2022 +0000","main"
+"opensafely/blood-pressure-sro","Thu Mar 31 13:44:42 2022 +0100","Notebook_updates"
+"opensafely/blood-pressure-sro","Wed Feb 2 16:05:14 2022 +0000","add-percentage-plots"
+"opensafely/blood-pressure-sro","Wed Apr 6 09:22:14 2022 +0200","ethnicity-16"
+"opensafely/blood-pressure-sro","Mon Jun 13 16:22:44 2022 +0100","main"
+"opensafely/blood-pressure-sro","Mon Jun 6 16:26:44 2022 +0100","qof-bp002-in-r"
+"opensafely/BMI-and-Metabolic-Markers","Tue Apr 5 15:47:16 2022 +0100","BMI_ANALYSIS_STORE"
+"opensafely/BMI-and-Metabolic-Markers","Fri Apr 15 14:47:42 2022 +0100","BMI_new_scripts"
+"opensafely/BMI-and-Metabolic-Markers","Mon Jun 20 13:47:44 2022 +0100","Miriam-S-git-patch-1"
+"opensafely/BMI-and-Metabolic-Markers","Fri Mar 4 15:03:30 2022 +0000","csv-format"
+"opensafely/BMI-and-Metabolic-Markers","Mon Feb 7 13:48:23 2022 +0000","fix-gitpod"
+"opensafely/BMI-and-Metabolic-Markers","Thu Jun 9 19:28:29 2022 +0100","inverse_prob_weight"
+"opensafely/BMI-and-Metabolic-Markers","Thu Sep 15 15:40:55 2022 +0000","main"
+"opensafely/BMI-and-Metabolic-Markers","Wed Mar 23 17:49:28 2022 +0000","main-store-yaml"
+"opensafely/bmi-short-data-report","Tue Apr 5 13:57:00 2022 +0100","automation-attempt"
+"opensafely/bmi-short-data-report","Fri May 20 14:10:03 2022 +0100","main"
+"opensafely/bmi-short-data-report","Thu Apr 7 14:00:04 2022 +0100","notebook-update"
+"opensafely/bmi-short-data-report","Tue Sep 6 12:11:04 2022 +0100","separate-study-definitions"
+"opensafely/bmi-short-data-report","Fri May 27 11:05:45 2022 +0100","test-dataset-report"
+"opensafely/booster-effectiveness","Mon Jun 6 09:24:41 2022 +0200","effect_children"
+"opensafely/booster-effectiveness","Tue Aug 23 11:22:53 2022 +0100","main"
+"opensafely/booster-effectiveness","Mon Feb 21 11:59:28 2022 +0000","matching"
+"opensafely/carehome-noncarehome-death-research","Mon Apr 26 14:27:11 2021 +0100","code_review"
+"opensafely/carehome-noncarehome-death-research","Tue May 4 16:35:52 2021 +0100","code_review_esn"
+"opensafely/carehome-noncarehome-death-research","Fri May 6 12:34:56 2022 +0100","master"
+"opensafely/CareHomePrescribing","Fri May 6 12:35:05 2022 +0100","main"
+"opensafely/CareHomePrescribing","Wed Oct 20 13:11:07 2021 +0100","release-candidates"
+"opensafely/carehomes-mortality-research","Tue Nov 24 18:18:13 2020 +0000","dave-fixes"
+"opensafely/carehomes-mortality-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/carehomes-mortality-research","Thu Jun 9 22:39:24 2022 +0100","master"
+"opensafely/carehomes-mortality-research","Thu Nov 26 10:57:26 2020 +0000","test_run"
+"opensafely/carehomes-research","Thu Sep 24 15:32:48 2020 +0100","esnightingale"
+"opensafely/carehomes-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/carehomes-research","Thu Jul 16 13:45:05 2020 +0100","fix-suppression-codelists"
+"opensafely/carehomes-research","Thu Jun 9 22:35:21 2022 +0100","master"
+"opensafely/carehomes-research","Wed Apr 7 11:45:13 2021 +0100","msoa-nbs"
+"opensafely/carehomes-research","Fri Jun 25 15:27:04 2021 +0100","release-candidates"
+"opensafely/carehomes-research","Tue Jul 20 11:24:35 2021 +0100","reorder"
+"opensafely/carehomes-research","Mon Aug 3 14:23:32 2020 +0100","run-notebook"
+"opensafely/carehomes-research","Fri Nov 6 12:10:41 2020 +0000","seb-fixes"
+"opensafely/carehomes-research","Thu Mar 25 12:25:47 2021 +0000","test"
+"opensafely/carehomes-short-data-report","Wed Jan 20 15:13:29 2021 +0000","first-commit"
+"opensafely/carehomes-short-data-report","Thu May 19 08:56:20 2022 +0100","master"
+"opensafely/children-risk-factors","Thu Oct 1 15:17:48 2020 +0100","first-run"
+"opensafely/children-risk-factors","Fri May 6 13:34:33 2022 +0100","master"
+"opensafely/CIS-pop-validation","Mon Jul 11 12:08:37 2022 +0200","dev"
+"opensafely/CIS-pop-validation","Fri Jul 1 08:17:39 2022 +0000","main"
+"opensafely/ckd-coverage-ve","Wed Sep 14 20:48:57 2022 +0100","main"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:37 2022 +0100","example-actions"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:36 2022 +0100","gitpod-env-comment-fix"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:35 2022 +0100","gitpod-finessing"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:38 2022 +0100","gz-default"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:35 2022 +0100","gzip"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:36 2022 +0100","ignore-dsstore"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:34 2022 +0100","ignore-only-top-level-output-dir"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:43:32 2022 +0100","main"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:37 2022 +0100","remlapmot/ignore-r"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:37 2022 +0100","remlapmot/set-text-auto"
+"opensafely/ckd-post-covid-outcomes","Fri Jun 17 11:33:35 2022 +0100","steve/improve-readme"
+"opensafely/codelist-development","Mon Jun 15 13:08:22 2020 +0100","master"
+"opensafely/cohort-extractor-demo","Fri May 6 13:34:58 2022 +0100","master"
+"opensafely/comparative-booster","Fri Jul 22 16:28:11 2022 +0200","main"
+"opensafely/comparative-ve-research","Wed Mar 30 15:05:28 2022 +0100","exclude_prior_infection"
+"opensafely/comparative-ve-research","Fri May 6 12:36:00 2022 +0100","main"
+"opensafely/comparative-ve-research","Wed Oct 20 14:25:26 2021 +0100","manuscript"
+"opensafely/comparative-ve-research","Wed Mar 30 15:02:41 2022 +0100","revisions"
+"opensafely/COVID-19-vaccine-breakthrough","Wed Jun 8 15:07:37 2022 +0100","booster-breakthrough"
+"opensafely/COVID-19-vaccine-breakthrough","Mon Jun 27 13:28:52 2022 +0100","master"
+"opensafely/COVID-19-vaccine-breakthrough","Tue Nov 16 09:33:27 2021 +0000","trial-pop"
+"opensafely/COVID-19-vaccine-breakthrough","Wed Jun 22 11:50:13 2022 +0100","updates-feb"
+"opensafely/covid19-vaccine-coverage-tpp-emis","Tue Mar 9 14:50:48 2021 +0000","emis"
+"opensafely/covid19-vaccine-coverage-tpp-emis","Fri May 6 12:36:17 2022 +0100","master"
+"opensafely/covid19-vaccine-coverage-tpp-emis","Thu Apr 29 10:56:08 2021 +0100","release-candidates"
+"opensafely/covid-aki-outcomes","Fri Aug 19 14:11:06 2022 +0000","main"
+"opensafely/covid-collateral-research","Wed Jun 29 10:28:00 2022 +0100","checks"
+"opensafely/covid-collateral-research","Thu Sep 15 13:33:43 2022 +0100","main"
+"opensafely/covid-collateral-research","Mon Apr 4 17:35:23 2022 +0100","released-outputs"
+"opensafely/covid_determinants","Wed May 18 12:16:46 2022 +0100","main"
+"opensafely/covid-diabetes-outcomes","Fri Oct 29 15:07:19 2021 +0100","AW-updates"
+"opensafely/covid-diabetes-outcomes","Wed Jun 29 16:17:25 2022 +0100","main"
+"opensafely/covid-event-times-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/covid-event-times-research","Fri May 6 12:36:49 2022 +0100","master"
+"opensafely/covid-event-times-research","Sat Jan 16 17:33:32 2021 +0000","upd"
+"opensafely/covid-mortality-immuno","Fri Sep 16 10:06:41 2022 +0100","create_study_def"
+"opensafely/covid-mortality-immuno","Fri Sep 9 14:19:54 2022 +0100","main"
+"opensafely/covid_mortality_over_time","Thu Jul 14 12:35:11 2022 +0100","explore-old-imd-data-extract"
+"opensafely/covid_mortality_over_time","Thu Aug 25 16:27:03 2022 +0200","main"
+"opensafely/covid-positive-infection-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/covid-positive-infection-research","Fri May 6 12:37:05 2022 +0100","master"
+"opensafely/covid-therapeutics-notebook","Thu Jun 9 15:14:20 2022 +0100","main"
+"opensafely/covid-unvaccinated-aimpaper","Fri May 6 12:37:21 2022 +0100","main"
+"opensafely/covid-vaccine-declined-variation","Fri May 6 12:37:29 2022 +0100","master"
+"opensafely/covid-vaccine-declined-variation","Wed Apr 21 08:12:25 2021 +0100","setup"
+"opensafely/covid-vaccine-early-safety-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/covid-vaccine-early-safety-research","Fri May 6 12:37:36 2022 +0100","master"
+"opensafely/covid-vaccine-effectiveness-research","Mon Jun 21 17:27:19 2021 +0100","5jan"
+"opensafely/covid-vaccine-effectiveness-research","Tue Mar 30 14:58:59 2021 +0100","code_review"
+"opensafely/covid-vaccine-effectiveness-research","Fri May 6 12:37:44 2022 +0100","main"
+"opensafely/covid-vaccine-effectiveness-research","Tue Jan 4 20:28:37 2022 +0000","positivity"
+"opensafely/covid-vaccine-effectiveness-research","Mon Oct 4 10:49:18 2021 +0100","release-candidates"
+"opensafely/covid-vaccine-neuro-research","Fri Jun 10 15:42:01 2022 +0100","main"
+"opensafely/covid-vaccine-neuro-research","Fri May 13 13:34:13 2022 +0100","release-candidates"
+"opensafely/covid-vaccine-neuro-research","Mon Dec 13 16:35:29 2021 +0000","second_dose_fix"
+"opensafely/covid-vaccine-not-received","Fri May 6 12:38:00 2022 +0100","main"
+"opensafely/covid-vaccine-preliminary-uptake-study","Tue Jul 26 12:30:08 2022 +0100","adding-info-regarding-UKHSA-age-calculations"
+"opensafely/covid-vaccine-preliminary-uptake-study","Tue Feb 15 14:30:27 2022 +0000","adding-missing-charts-to-first-dose-report"
+"opensafely/covid-vaccine-preliminary-uptake-study","Fri Feb 19 14:23:11 2021 +0000","emis"
+"opensafely/covid-vaccine-preliminary-uptake-study","Fri May 27 18:05:44 2022 +0100","investigating-dummy-output-methods"
+"opensafely/covid-vaccine-preliminary-uptake-study","Thu Sep 8 14:22:33 2022 +0100","master"
+"opensafely/covid-vaccine-preliminary-uptake-study","Wed Mar 30 15:36:49 2022 +0100","new-outputs-28-05-2022"
+"opensafely/covid-vaccine-preliminary-uptake-study","Wed Feb 3 12:01:58 2021 +0000","practice-analysis"
+"opensafely/covid-vaccine-preliminary-uptake-study","Wed Mar 16 14:08:19 2022 +0000","refactor-population-characteristics-as-python-script"
+"opensafely/covid-vaccine-preliminary-uptake-study","Mon Nov 15 17:06:37 2021 +0000","use_feather"
+"opensafely/covid-vaccine-research-template","Thu Sep 23 14:10:23 2021 +0100","input-compression"
+"opensafely/covid-vaccine-research-template","Fri May 6 12:38:17 2022 +0100","main"
+"opensafely/covid-vaccine-research-template","Thu Jan 21 16:38:23 2021 +0000","nb-files"
+"opensafely/covid-vaccine-safety-research","Tue Aug 10 16:52:05 2021 +0100","SCCS_code1"
+"opensafely/covid-vaccine-safety-research","Fri May 6 12:38:25 2022 +0100","master"
+"opensafely/covid-ve-change-over-time","Mon Sep 5 17:33:09 2022 +0100","define-covs-at-svp"
+"opensafely/covid-ve-change-over-time","Fri Jun 10 14:20:45 2022 +0100","include-prev-infection"
+"opensafely/covid-ve-change-over-time","Fri Jun 10 14:19:14 2022 +0100","increase-k"
+"opensafely/covid-ve-change-over-time","Fri May 6 12:38:33 2022 +0100","main"
+"opensafely/covid-ve-change-over-time","Thu Apr 14 17:32:38 2022 +0100","previous-infection"
+"opensafely/covid-ve-change-over-time","Tue Nov 16 11:25:20 2021 +0000","release-candidates"
+"opensafely/covid-ve-change-over-time","Wed Dec 22 07:54:41 2021 +0000","start-dates-in-study-def"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Oct 16 18:05:10 2020 +0100","absolutes"
+"opensafely/covid-vs-noncovid-deaths-research","Sat Nov 14 11:54:10 2020 +0000","add-2019-to-project"
+"opensafely/covid-vs-noncovid-deaths-research","Sun Nov 15 19:50:07 2020 +0000","add-cod-analysis"
+"opensafely/covid-vs-noncovid-deaths-research","Sun Nov 29 11:42:52 2020 +0000","agelinearres"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Nov 20 00:52:25 2020 +0000","appx-analyses"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Nov 20 11:09:47 2020 +0000","appxresults"
+"opensafely/covid-vs-noncovid-deaths-research","Wed Nov 18 22:51:36 2020 +0000","cause-of-death-v2"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Dec 18 15:29:25 2020 +0000","changes-for-draft-2"
+"opensafely/covid-vs-noncovid-deaths-research","Tue Dec 22 10:06:12 2020 +0000","correct12cat"
+"opensafely/covid-vs-noncovid-deaths-research","Mon Dec 21 23:53:29 2020 +0000","correctagegp"
+"opensafely/covid-vs-noncovid-deaths-research","Tue Dec 22 01:07:14 2020 +0000","deathsonlywithSA"
+"opensafely/covid-vs-noncovid-deaths-research","Thu Sep 10 10:59:20 2020 +0100","display-2019-2020-results"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Dec 18 16:55:36 2020 +0000","draft2results"
+"opensafely/covid-vs-noncovid-deaths-research","Wed Nov 18 12:03:26 2020 +0000","editage"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Jan 8 12:53:06 2021 +0000","ethbyage"
+"opensafely/covid-vs-noncovid-deaths-research","Wed Jan 6 18:22:50 2021 +0000","ethbyregionresults"
+"opensafely/covid-vs-noncovid-deaths-research","Mon Dec 21 11:42:25 2020 +0000","ethwave2results"
+"opensafely/covid-vs-noncovid-deaths-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/covid-vs-noncovid-deaths-research","Wed Nov 25 21:13:00 2020 +0000","logisticeth"
+"opensafely/covid-vs-noncovid-deaths-research","Fri May 6 12:38:41 2022 +0100","master"
+"opensafely/covid-vs-noncovid-deaths-research","Fri Oct 16 00:22:59 2020 +0100","mlogitabsoluterisks"
+"opensafely/covid-vs-noncovid-deaths-research","Thu Nov 19 10:57:19 2020 +0000","results1911"
+"opensafely/covid-vs-noncovid-deaths-research","Thu Nov 19 11:29:43 2020 +0000","resultstake2"
+"opensafely/covid-vs-noncovid-deaths-research","Tue Dec 22 01:01:25 2020 +0000","southasian"
+"opensafely/covid-vs-noncovid-deaths-research","Thu Jan 14 14:11:38 2021 +0000","updatedforest"
+"opensafely/covid-vs-noncovid-deaths-research","Mon Dec 21 20:04:38 2020 +0000","updatedsensan"
+"opensafely/covid-vs-noncovid-deaths-research","Thu Nov 19 12:46:22 2020 +0000","updatefor"
+"opensafely/database-notebooks","Thu Apr 7 10:28:56 2022 +0100","db-builds-update-7Apr"
+"opensafely/database-notebooks","Wed Jun 8 16:37:22 2022 +0200","main"
+"opensafely/database-notebooks","Wed Jun 8 16:37:22 2022 +0200","master"
+"opensafely/database-notebooks","Tue Jun 8 16:28:37 2021 +0100","redo0608"
+"opensafely/databricks-test","Fri May 6 12:39:06 2022 +0100","main"
+"opensafely/databricks-test","Thu Jan 20 18:10:42 2022 +0000","steve/use-databuilder"
+"opensafely/data-exploration-notebooks","Wed Aug 17 17:10:36 2022 +0100","main"
+"opensafely/dataset-directory","Thu May 26 17:42:46 2022 +0100","main"
+"opensafely/date-window-test","Thu Aug 4 12:45:17 2022 +0100","jon_sql_investigation"
+"opensafely/date-window-test","Fri Sep 2 11:55:27 2022 +0100","main"
+"opensafely/deaths-at-home-covid19","Tue Aug 16 11:58:28 2022 +0100","main"
+"opensafely/deaths-at-home-covid19","Wed May 25 16:39:49 2022 +0100","quality"
+"opensafely/debug-uploads","Mon Oct 4 14:06:58 2021 +0100","main"
+"opensafely/DISECT_UK_India_COVID","Mon Aug 15 14:59:28 2022 +0100","15-August"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:34 2022 +0100","example-actions"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:33 2022 +0100","gitpod-env-comment-fix"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:31 2022 +0100","gitpod-finessing"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:34 2022 +0100","gz-default"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:32 2022 +0100","gzip"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:32 2022 +0100","ignore-dsstore"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:31 2022 +0100","ignore-only-top-level-output-dir"
+"opensafely/DISECT_UK_India_COVID","Thu Sep 1 17:22:57 2022 +0100","main"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:33 2022 +0100","remlapmot/ignore-r"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:33 2022 +0100","remlapmot/set-text-auto"
+"opensafely/DISECT_UK_India_COVID","Thu Apr 21 11:09:32 2022 +0100","steve/improve-readme"
+"opensafely/dmd_codelist_investigation","Thu Sep 8 15:20:42 2022 +0100","main"
+"opensafely/doacs-covid19","Wed Aug 17 11:41:49 2022 +0100","main"
+"opensafely/documentation","Thu Sep 30 17:27:46 2021 +0100","amirmehrkar-patch-1"
+"opensafely/documentation","Fri Sep 16 11:01:37 2022 +0000","autoupdate-databuilder-docs"
+"opensafely/documentation","Wed May 4 13:02:36 2022 +0100","colorama"
+"opensafely/documentation","Fri Apr 1 10:58:08 2022 +0100","compress-all-the-things"
+"opensafely/documentation","Thu Jun 30 15:44:43 2022 +0100","madwort/timing-monitoring-5"
+"opensafely/documentation","Fri Sep 16 11:57:38 2022 +0100","main"
+"opensafely/documentation","Thu Sep 15 19:29:36 2022 +0100","steve/add-tutorial-data-definitions-temporarily"
+"opensafely/documentation","Tue Oct 12 17:21:13 2021 +0100","steve/describe-new-application-process"
+"opensafely/documentation","Fri Feb 18 17:33:22 2022 +0000","steve/detail-ehrql"
+"opensafely/documentation","Thu Feb 24 15:41:48 2022 +0000","steve/ehrql-examples-placeholder"
+"opensafely/documentation","Thu Sep 15 20:07:19 2022 +0100","steve/more-concrete-documentation-plan"
+"opensafely/documentation","Thu Aug 12 19:03:11 2021 +0100","steve/serve-in-docker"
+"opensafely/documentation","Wed Apr 6 17:55:52 2022 +0100","steve/try-diataxis-on-code-review-section"
+"opensafely/documentation","Tue Sep 6 10:03:16 2022 +0100","steve/wip-tooling"
+"opensafely/documentation","Mon Jul 11 10:28:46 2022 +0100","update-databuilder"
+"opensafely/documentation","Wed Jul 20 15:31:42 2022 +0000","update-docs-74b7492dbb7d0fdf8b8304414436d9ad625c9969"
+"opensafely/documentation","Wed Jul 20 15:36:39 2022 +0000","update-docs-c9bb1c7f363411b4e397f3cc9006c032f86043c1"
+"opensafely/documentation","Tue Aug 30 11:39:42 2022 +0100","vs-code-remote-ssh"
+"opensafely/drug-monitoring-sro","Wed Jan 20 20:44:07 2021 +0000","inr-demo"
+"opensafely/drug-monitoring-sro","Fri May 6 12:40:19 2022 +0100","master"
+"opensafely/early-inflammatory-arthritis","Fri Sep 9 13:45:30 2022 +0100","main"
+"opensafely/emis-qa","Fri May 6 12:40:35 2022 +0100","main"
+"opensafely/emis-qa","Wed Apr 7 14:52:11 2021 +0100","null-dates"
+"opensafely/emis-qa","Tue Jun 1 10:14:13 2021 +0100","other-tables"
+"opensafely/emis-qa","Wed Jun 30 09:05:53 2021 +0000","release-candidates"
+"opensafely/emis-qa","Mon Apr 19 19:05:13 2021 +0100","time-series"
+"opensafely/emis-smoke-tests","Fri May 6 12:40:51 2022 +0100","master"
+"opensafely/ethnicity-2021-update","Fri May 6 12:41:00 2022 +0100","main"
+"opensafely/ethnicity-2021-update","Fri Sep 10 12:06:15 2021 +0100","set-up-repo"
+"opensafely/Ethnicity-2nd-wave","Fri Jan 22 10:58:34 2021 +0000","add-icu-back-to-main-analyses"
+"opensafely/Ethnicity-2nd-wave","Fri May 6 12:41:08 2022 +0100","master"
+"opensafely/Ethnicity-2nd-wave","Fri Jan 15 17:28:53 2021 +0000","output_10jan2021"
+"opensafely/Ethnicity-2nd-wave","Wed Jan 20 14:28:12 2021 +0000","output_18jan"
+"opensafely/Ethnicity-2nd-wave","Sat Jan 23 11:18:45 2021 +0000","output_22jan"
+"opensafely/Ethnicity-2nd-wave","Tue Jan 12 17:53:21 2021 +0000","remove-ICU-outcome"
+"opensafely/Ethnicity-2nd-wave","Fri Jan 15 11:38:19 2021 +0000","tested"
+"opensafely/Ethnicity-3rd-wave","Fri May 6 12:41:16 2022 +0100","master"
+"opensafely/Ethnicity-3rd-wave","Wed May 5 17:17:04 2021 +0100","update-do-files-from-2nd-wave"
+"opensafely/ethnicity-covid-3rd-wave","Fri May 6 12:41:24 2022 +0100","master"
+"opensafely/ethnicity-covid-3rd-wave","Thu May 6 12:47:36 2021 +0100","update-household-vars"
+"opensafely/ethnicity-covid-research","Fri May 6 12:41:33 2022 +0100","main"
+"opensafely/ethnicity-covid-research","Wed Jul 14 16:46:50 2021 +0100","update-readme"
+"opensafely/ethnicity-short-data-report","Mon May 9 15:31:37 2022 +0100","count"
+"opensafely/ethnicity-short-data-report","Fri Jul 16 12:35:18 2021 +0100","gitpod-finessing"
+"opensafely/ethnicity-short-data-report","Fri Jul 16 12:35:17 2021 +0100","ignore-only-top-level-output-dir"
+"opensafely/ethnicity-short-data-report","Thu Jul 22 14:13:47 2021 +0100","initial-descriptives"
+"opensafely/ethnicity-short-data-report","Fri Jul 16 12:35:18 2021 +0100","limit-workers"
+"opensafely/ethnicity-short-data-report","Wed May 25 13:23:14 2022 +0100","main"
+"opensafely/ethnicity-short-data-report","Thu Sep 8 14:49:32 2022 +0100","notebook"
+"opensafely/ethnicity-short-data-report","Tue May 24 14:37:04 2022 +0100","notebook_registered"
+"opensafely/ethnicity-short-data-report","Mon Nov 1 15:44:36 2021 +0000","rollback-code-changes"
+"opensafely/ethnicity-short-data-report","Tue Aug 3 15:21:12 2021 +0100","simplify-study-def"
+"opensafely/ethnicity-short-data-report","Fri Jul 16 12:35:19 2021 +0100","steve/improve-readme"
+"opensafely/ethnicity-short-data-report","Mon Jul 26 13:28:36 2021 +0100","test"
+"opensafely/Factors-associated-with-COVID-19-vaccination","Fri May 6 12:41:48 2022 +0100","master"
+"opensafely/feather-to-dta","Wed Jun 1 17:01:07 2022 +0100","main"
+"opensafely/FLUCATS","Fri Sep 16 12:41:53 2022 +0100","main"
+"opensafely/FLUCATS","Fri Sep 16 12:17:26 2022 +0100","study-def-final-updates"
+"opensafely/FLUCATS","Mon Sep 12 13:44:21 2022 +0100","study-def-performance"
+"opensafely/flu-vacc-research","Fri Sep 11 15:14:11 2020 +0100","currentyear_update"
+"opensafely/flu-vacc-research","Mon Feb 1 05:14:49 2021 -0800","master"
+"opensafely/flu-vacc-research","Thu Oct 29 10:53:37 2020 +0000","october-update"
+"opensafely/flu-vacc-research","Wed Sep 9 15:11:48 2020 +0100","partial-update"
+"opensafely/GermDefence","Thu Jun 9 15:19:16 2022 +0100","main"
+"opensafely/gh-testing-research","Fri May 6 12:42:04 2022 +0100","master"
+"opensafely/gh-testing-research","Mon May 17 16:06:31 2021 +0100","release-candidates"
+"opensafely/gh-testing-research","Mon May 24 17:30:56 2021 +0100","test-publish-outputs"
+"opensafely/gib01","Fri May 6 12:42:13 2022 +0100","master"
+"opensafely/HbA1c-levels","Wed Jun 8 10:22:12 2022 +0100","master"
+"opensafely/hdruk-os-covid-paeds","Fri Sep 16 12:30:15 2022 +0100","main"
+"opensafely/hello","Fri May 6 12:42:36 2022 +0100","main"
+"opensafely/hepatitis_in_children","Tue Aug 30 15:08:54 2022 +0100","main"
+"opensafely/HEST_OS_study","Thu Oct 21 12:40:42 2021 +0000","add_rstudio"
+"opensafely/HEST_OS_study","Tue Oct 26 14:18:31 2021 +0000","figures"
+"opensafely/HEST_OS_study","Fri May 6 12:42:53 2022 +0100","main"
+"opensafely/hh-classification-research","Thu Jun 16 11:18:43 2022 +0100","master"
+"opensafely/highcostdrugs-research","Fri May 6 12:43:10 2022 +0100","master"
+"opensafely/hiv-research","Thu Jun 17 14:54:34 2021 +0100","main"
+"opensafely/hiv-research","Thu Jun 17 11:59:38 2021 +0100","pin-requirements"
+"opensafely/hiv-research","Tue Jul 20 16:17:20 2021 +0100","steve/fix-cohort-extractor-failure-in-tests"
+"opensafely/hospital-disruption-research","Tue May 24 09:56:27 2022 +0100","master"
+"opensafely/households-research","Mon Oct 12 17:27:25 2020 +0100","dave-fixes"
+"opensafely/households-research","Wed Nov 11 12:51:46 2020 +0000","fit-os"
+"opensafely/households-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/households-research","Fri May 6 14:42:05 2022 +0100","master"
+"opensafely/households-research","Thu Oct 22 16:22:58 2020 +0100","profiling"
+"opensafely/households-research","Mon Dec 7 07:32:40 2020 +0000","release-candidates"
+"opensafely/households-research","Tue Nov 24 13:32:51 2020 +0000","seb-fixes"
+"opensafely/households-short-data-report","Fri May 6 14:42:43 2022 +0100","main"
+"opensafely/households-short-data-report","Tue Jul 20 10:24:53 2021 +0100","release-candidates"
+"opensafely/hydroxychloroquine-research","Fri May 21 19:15:12 2021 +0100","add-high-cost-drugs"
+"opensafely/hydroxychloroquine-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/hydroxychloroquine-research","Tue Jan 5 14:43:29 2021 +0000","master"
+"opensafely/hydroxychloroquine-research","Wed Nov 11 13:02:23 2020 +0000","new-outputs-20201006"
+"opensafely/hypertension-sro","Thu Sep 15 16:18:28 2022 +0100","add-results"
+"opensafely/hypertension-sro","Sat May 28 11:05:54 2022 +0100","dev2"
+"opensafely/hypertension-sro","Tue Aug 2 12:21:11 2022 +0300","main"
+"opensafely/ics-research","Mon May 18 11:25:41 2020 +0100","First-rough-results"
+"opensafely/ics-research","Wed May 20 11:59:40 2020 +0100","first-regression-results"
+"opensafely/ics-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/ics-research","Sat Sep 19 08:00:32 2020 +0100","follow-up_table"
+"opensafely/ics-research","Sat Sep 19 08:23:50 2020 +0100","fu_table"
+"opensafely/ics-research","Mon Feb 1 05:13:57 2021 -0800","master"
+"opensafely/ics-research","Wed May 27 11:42:57 2020 +0100","more-results"
+"opensafely/ics-research","Wed Aug 19 19:26:18 2020 +0100","ps-plots"
+"opensafely/ics-research","Tue May 19 23:43:50 2020 +0100","reapply-allow-dates-in-categorised_as-expressions-hotfix"
+"opensafely/ics-research","Mon Feb 1 12:45:59 2021 +0000","remove-ili"
+"opensafely/ics-research","Mon Jun 8 17:58:53 2020 +0100","results-2020-06-08"
+"opensafely/ics-research","Tue May 19 22:59:55 2020 +0100","temp-population-logic-fix"
+"opensafely/imd-breakdown","Fri May 6 14:44:03 2022 +0100","master"
+"opensafely/immunosuppressant-meds-research","Fri Jun 10 16:10:22 2022 +0100","master"
+"opensafely/interactive","Fri Sep 16 11:31:51 2022 +0000","main"
+"opensafely/jobs-archive","Mon Dec 21 11:50:32 2020 +0000","main"
+"opensafely/job-server-repo-tests","Fri May 6 14:46:04 2022 +0100","master"
+"opensafely/job-server-repo-tests","Tue Dec 8 10:56:08 2020 +0000","yaml-indentation-error"
+"opensafely/lockdown-and-vulnerable-groups","Mon Jun 20 10:05:28 2022 +0100","main"
+"opensafely/lone_households","Mon Aug 29 10:53:03 2022 +0100","main"
+"opensafely/long-covid","Tue Sep 14 23:25:08 2021 +0100","EMIS"
+"opensafely/long-covid","Mon Jul 18 17:09:46 2022 +0200","imd"
+"opensafely/long-covid","Tue Jun 28 16:57:50 2022 +0200","main"
+"opensafely/long-covid","Wed Aug 4 10:44:23 2021 +0100","simplified-for-ce2"
+"opensafely/long-covid","Thu Jan 20 18:14:19 2022 +0000","steve/use-databuilder"
+"opensafely/long-covid","Mon Nov 8 11:53:35 2021 +0000","v2-with-validation"
+"opensafely/long-covid-diagnosis-interval","Fri May 6 14:52:22 2022 +0100","main"
+"opensafely/long-covid-historical-health","Tue Jun 28 21:03:35 2022 +0100","main"
+"opensafely/long-covid-risk-factors-and-prediction","Sun Sep 11 16:46:32 2022 +0100","main"
+"opensafely/long-covid-risk-factors-and-prediction","Sun Sep 11 22:42:10 2022 +0100","post_hoc"
+"opensafely/long-covid-sick-notes","Mon Jul 11 23:20:28 2022 +0100","general-population-index-dates"
+"opensafely/long-covid-sick-notes","Mon Jul 11 23:53:46 2022 +0100","master"
+"opensafely/long-covid-symptoms","Tue Sep 13 09:07:46 2022 +0100","master"
+"opensafely/LT-repeat-antimicrobial-prescribing","Thu Aug 11 01:16:50 2022 +0100","main"
+"opensafely/mab-av-non-users","Wed Sep 7 10:49:37 2022 +0100","main"
+"opensafely/mainroute_cancer","Thu Sep 8 00:28:02 2022 +0100","main"
+"opensafely/mechanical-valve-anticoag","Thu Jul 28 11:53:54 2022 +0100","master"
+"opensafely/mechanical-valve-anticoag","Mon Jun 28 20:11:46 2021 +0100","update-measures"
+"opensafely/mechanical-valve-anticoag","Fri Jan 14 11:43:53 2022 +0000","updates"
+"opensafely/medication-reviews","Tue Sep 13 14:38:22 2022 +0100","CW-loop-over-MR"
+"opensafely/medication-reviews","Mon Sep 5 17:10:48 2022 +0100","CW-tables"
+"opensafely/medication-reviews","Tue Aug 30 11:22:58 2022 +0100","Care_home_vs"
+"opensafely/medication-reviews","Mon Aug 22 11:06:40 2022 +0100","VS-plots"
+"opensafely/medication-reviews","Tue Aug 9 18:23:35 2022 +0100","VS_charts"
+"opensafely/medication-reviews","Thu Sep 8 20:30:36 2022 +0100","VS_table"
+"opensafely/medication-reviews","Thu Sep 8 20:30:36 2022 +0100","main"
+"opensafely/medication-reviews","Mon Aug 15 12:19:23 2022 +0100","main_vicky"
+"opensafely/med-safety-PoC","Wed Dec 8 16:42:47 2021 +0000","fix-study-dates"
+"opensafely/med-safety-PoC","Fri May 6 14:58:33 2022 +0100","main"
+"opensafely/med-safety-PoC","Tue Dec 14 15:41:29 2021 +0000","steve/migrate-to-databuilder"
+"opensafely/med-safety-PoC","Fri Jan 21 15:39:31 2022 +0000","tidying-up-reference-files"
+"opensafely/med-safety-PoC","Fri Dec 3 18:20:06 2021 +0000","unicorn-plots"
+"opensafely/MH_pandemic","Thu Sep 15 10:46:09 2022 +0100","main"
+"opensafely/misconduct-research","Mon Aug 3 16:49:55 2020 +0100","add-counts"
+"opensafely/misconduct-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/misconduct-research","Tue Jan 5 14:43:52 2021 +0000","master"
+"opensafely/mtx-monitoring-frequency","Tue Jul 27 15:50:22 2021 +0100","main"
+"opensafely/mv-dummy-data","Tue Jan 12 20:38:44 2021 +0000","main"
+"opensafely/nhs-covid-vaccination-coverage","Wed Aug 17 16:50:53 2022 +0100","main"
+"opensafely/nhsx-demo","Fri May 6 15:00:40 2022 +0100","main"
+"opensafely/NICE-audit-BP","Thu May 5 17:03:54 2022 +0100","main"
+"opensafely/NICE-audit-lipids","Mon May 23 17:30:18 2022 +0100","main"
+"opensafely/non-specific-immunity-research","Mon Jan 25 10:25:49 2021 +0000","DG-Dev"
+"opensafely/non-specific-immunity-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/non-specific-immunity-research","Thu Jun 9 22:43:23 2022 +0100","master"
+"opensafely/non-specific-immunity-research","Mon Jan 25 15:03:48 2021 +0000","release-candidates"
+"opensafely/notebook-action","Mon Sep 5 23:36:32 2022 +0000","dependabot/pip/black-22.8.0"
+"opensafely/notebook-action","Mon Mar 21 23:20:20 2022 +0000","dependabot/pip/flake8-implicit-str-concat-0.3.0"
+"opensafely/notebook-action","Mon May 16 23:23:08 2022 +0000","dependabot/pip/flake8-no-pep420-2.3.0"
+"opensafely/notebook-action","Mon Jul 4 23:33:52 2022 +0000","dependabot/pip/pip-tools-6.8.0"
+"opensafely/notebook-action","Mon Jul 11 23:31:36 2022 +0000","dependabot/pip/pre-commit-2.20.0"
+"opensafely/notebook-action","Mon Sep 5 23:35:16 2022 +0000","dependabot/pip/pytest-7.1.3"
+"opensafely/notebook-action","Mon Mar 14 23:22:08 2022 +0000","dependabot/pip/pytest-cov-3.0.0"
+"opensafely/notebook-action","Wed Mar 16 18:16:30 2022 +0000","initial-release"
+"opensafely/notebook-action","Fri Mar 11 15:22:41 2022 +0000","main"
+"opensafely/nsaids-covid-research","Fri Jan 22 11:10:17 2021 +0000","master"
+"opensafely/nsaids-covid-research","Mon Jul 27 16:43:54 2020 +0100","new-flowchart-re"
+"opensafely/nsaids-covid-research","Mon Jul 27 15:40:49 2020 +0100","new-result-dag"
+"opensafely/nsaids-covid-research","Tue Jul 14 09:56:09 2020 +0100","real-data-run"
+"opensafely/nsaids-covid-research","Thu Oct 8 11:53:51 2020 +0100","redacted_results"
+"opensafely/nsaids-covid-research","Mon Jul 13 10:58:38 2020 +0100","tweak-RA-inclusion"
+"opensafely/nsaids-research-archive","Tue Jun 30 08:58:13 2020 +0000","02-an-checks"
+"opensafely/nsaids-research-archive","Tue Jun 30 05:03:39 2020 +0100","04-an-descriptive-table"
+"opensafely/nsaids-research-archive","Tue Jun 30 08:14:04 2020 +0100","06-regression-model"
+"opensafely/nsaids-research-archive","Thu Jun 11 11:39:40 2020 +0100","bump-input-process"
+"opensafely/nsaids-research-archive","Mon Jun 22 14:47:37 2020 +0100","inglesp-patch-2"
+"opensafely/nsaids-research-archive","Tue Jun 30 11:10:48 2020 +0100","master"
+"opensafely/nsaids-research-archive","Mon Jun 15 15:00:22 2020 +0000","new-cr-dataset"
+"opensafely/opioids-covid-research","Thu Sep 15 17:21:51 2022 +0100","Output-creation"
+"opensafely/opioids-covid-research","Wed Sep 14 14:31:32 2022 +0100","main"
+"opensafely/oral-anticoagulant-covid-outcome","Mon Feb 7 15:22:01 2022 +0000","main"
+"opensafely/oral-anticoagulant-covid-outcome","Wed Oct 20 14:41:42 2021 +0100","release-candidates"
+"opensafely/os-demo-research","Wed Feb 3 09:43:47 2021 +0000","Millie-testing"
+"opensafely/os-demo-research","Sat Nov 14 11:24:15 2020 +0000","check-stp"
+"opensafely/os-demo-research","Mon Aug 23 17:47:06 2021 +0100","customdummy"
+"opensafely/os-demo-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/os-demo-research","Tue Aug 10 15:49:27 2021 +0100","master"
+"opensafely/os-demo-research","Wed Nov 4 13:05:57 2020 +0000","project-yaml-fixes-by-seb"
+"opensafely/os-demo-research","Fri Nov 13 15:16:04 2020 +0000","test-new-r"
+"opensafely/OS_OC_v001-research","Mon May 10 20:15:30 2021 +0100","add-on-clinicalhistory"
+"opensafely/OS_OC_v001-research","Wed Mar 24 12:37:42 2021 +0000","branch-24mar-redact"
+"opensafely/OS_OC_v001-research","Fri Jul 2 16:46:40 2021 +0100","emis-branch"
+"opensafely/OS_OC_v001-research","Tue Oct 19 16:35:33 2021 +0100","master"
+"opensafely/OS_OC_v001-research","Wed Mar 31 16:02:15 2021 +0100","mf-edit-23Mar"
+"opensafely/OS_OC_v001-research","Fri Mar 26 13:15:48 2021 +0000","mf-edit-23Mar-JS"
+"opensafely/OS_OC_v001-research","Mon Feb 8 15:48:49 2021 +0000","mf-edit-5feb"
+"opensafely/OS_OC_v001-research","Fri Jul 2 16:31:38 2021 +0000","release-candidates"
+"opensafely/os-sch-children-2021","Wed Aug 18 12:18:54 2021 +0100","Laurie-amendments"
+"opensafely/os-sch-children-2021","Sun Jul 25 14:53:28 2021 +0100","add_do_files"
+"opensafely/os-sch-children-2021","Wed Nov 24 14:06:58 2021 +0000","amend-histogram"
+"opensafely/os-sch-children-2021","Mon Aug 9 12:50:40 2021 +0100","amendments_from_first_run"
+"opensafely/os-sch-children-2021","Sat Jul 24 20:16:57 2021 +0100","analysis_code_branch"
+"opensafely/os-sch-children-2021","Tue Nov 23 11:16:22 2021 +0000","descrptive-stats-data"
+"opensafely/os-sch-children-2021","Mon Feb 7 13:48:32 2022 +0000","fix-gitpod"
+"opensafely/os-sch-children-2021","Sun May 29 20:46:17 2022 +0100","main"
+"opensafely/os-sch-children-2021","Thu Dec 16 13:16:12 2021 +0000","release-candidates"
+"opensafely/os-sch-children-2021","Thu Aug 26 11:48:00 2021 +0100","update-vaccine-int"
+"opensafely/os-sch-children-2021","Wed Aug 18 14:22:27 2021 +0100","yaml"
+"opensafely/OS_VidGroupClinic_v001-research","Mon Apr 26 13:44:58 2021 +0100","master"
+"opensafely/OS_VidGroupClinic_v001-research","Fri Apr 30 18:00:19 2021 +0100","snomed-version"
+"opensafely/outcomes-notebook","Wed Sep 30 16:53:24 2020 +0100","master"
+"opensafely/output-checking","Mon Aug 2 14:35:29 2021 +0100","main"
+"opensafely/output-explorer-test-repo","Wed Jun 2 11:52:37 2021 +0100","master"
+"opensafely/PaCa_Enzyme_Rx","Wed Mar 2 00:05:24 2022 +0000","building_the_study"
+"opensafely/PaCa_Enzyme_Rx","Tue Sep 13 15:18:03 2022 +0100","main"
+"opensafely/Pancreatic_cancer","Fri Feb 18 09:46:00 2022 +0000","Finalising-variables"
+"opensafely/Pancreatic_cancer","Wed Jan 26 23:01:49 2022 +0000","Study_popul_work"
+"opensafely/Pancreatic_cancer","Thu Apr 14 12:57:16 2022 +0100","Write_up"
+"opensafely/Pancreatic_cancer","Fri Mar 25 13:28:14 2022 +0000","correct_average"
+"opensafely/Pancreatic_cancer","Mon Feb 7 13:48:32 2022 +0000","fix-gitpod"
+"opensafely/Pancreatic_cancer","Wed Jan 26 23:27:16 2022 +0000","generating_measures"
+"opensafely/Pancreatic_cancer","Tue Feb 22 16:45:47 2022 +0000","generating_paca_plot"
+"opensafely/Pancreatic_cancer","Fri Sep 9 09:54:39 2022 +0100","main"
+"opensafely/Pancreatic_cancer","Tue Feb 22 08:40:49 2022 +0000","remove_measures"
+"opensafely/Pancreatic_cancer","Mon Jan 31 23:07:54 2022 +0000","simple_anali1"
+"opensafely/pathology-comparators-short-report","Wed Jul 6 17:22:48 2022 +0100","charts"
+"opensafely/pathology-comparators-short-report","Wed Jun 29 11:52:19 2022 +0100","master"
+"opensafely/Paxlovid-and-sotrovimab","Thu Sep 15 17:20:48 2022 +0100","main"
+"opensafely/pincer-measures","Thu Mar 10 10:39:00 2022 +0000","emis"
+"opensafely/pincer-measures","Mon Jun 20 14:45:27 2022 +0100","main"
+"opensafely/pincer-measures-change-detection","Mon Feb 7 13:48:33 2022 +0000","fix-gitpod"
+"opensafely/pincer-measures-change-detection","Thu Jan 20 13:36:57 2022 +0000","main"
+"opensafely/pincer-measures-change-detection","Thu Jan 20 16:44:01 2022 +0000","practice-characteristics"
+"opensafely/pincer-measures-change-detection","Tue Nov 30 10:50:24 2021 +0000","restore-cusum"
+"opensafely/population-outcomes-burden-research","Tue Apr 6 16:08:25 2021 +0100","CSVT"
+"opensafely/population-outcomes-burden-research","Sun Feb 21 22:51:34 2021 +0000","master"
+"opensafely/population-outcomes-burden-research","Tue Apr 6 17:23:07 2021 +0100","release-candidates"
+"opensafely/post-admission-admissions-research","Tue Feb 1 10:10:45 2022 +0000","master"
+"opensafely/post-covid-autoimmune","Wed Aug 24 09:44:36 2022 +0100","main"
+"opensafely/post-covid-autoimmune","Wed Aug 24 17:19:24 2022 +0100","preprocess"
+"opensafely/post-covid-bristol","Thu Oct 14 17:44:46 2021 +0100","Vaccination_censoring"
+"opensafely/post-covid-bristol","Mon Feb 7 13:48:33 2022 +0000","fix-gitpod"
+"opensafely/post-covid-bristol","Thu Apr 21 09:49:10 2022 +0100","main"
+"opensafely/post-covid-diabetes","Tue Jun 21 14:20:40 2022 +0100","incidence-plots"
+"opensafely/post-covid-diabetes","Tue Sep 13 17:20:00 2022 +0100","main"
+"opensafely/post-covid-diabetes","Wed Jun 8 13:38:40 2022 +0100","update-figure-scripts"
+"opensafely/post-covid-diabetes","Thu Sep 8 08:31:49 2022 +0100","update-figures-and-reports"
+"opensafely/post-covid-diabetes","Wed Jun 15 15:08:06 2022 +0100","update-vaccine-product-name"
+"opensafely/post-covid-gastrointestinal","Thu Sep 8 15:05:26 2022 +0100","main"
+"opensafely/post-covid-gastrointestinal","Fri Sep 9 23:05:09 2022 +0100","vax_data_update"
+"opensafely/post-covid-kidney-outcomes","Fri Sep 16 10:55:54 2022 +0100","main"
+"opensafely/post-covid-kidney-outcomes","Fri Jun 17 00:44:32 2022 +0100","working"
+"opensafely/post-covid-mentalhealth","Fri Jul 15 12:22:53 2022 +0100","MH-Main-analyses"
+"opensafely/post-covid-mentalhealth","Thu Jun 23 10:55:30 2022 +0100","MH-Prescriptions"
+"opensafely/post-covid-mentalhealth","Fri Jul 15 12:22:53 2022 +0100","MH-Recent-History"
+"opensafely/post-covid-mentalhealth","Thu Sep 15 10:02:44 2022 +0100","MH-pre-processing-scripts-part2"
+"opensafely/post-covid-mentalhealth","Tue Jul 26 14:11:16 2022 +0100","Main-analyses"
+"opensafely/post-covid-mentalhealth","Mon Aug 8 14:00:58 2022 +0100","Main-analyses-update"
+"opensafely/post-covid-mentalhealth","Wed Aug 17 16:23:57 2022 +0100","Missing-table"
+"opensafely/post-covid-mentalhealth","Mon Aug 22 12:58:19 2022 +0100","Preprocess_scriptsV2"
+"opensafely/post-covid-mentalhealth","Fri Jul 15 16:36:20 2022 +0100","Primary-Secondary-care"
+"opensafely/post-covid-mentalhealth","Fri Jul 15 12:22:53 2022 +0100","Secondary-outcomes"
+"opensafely/post-covid-mentalhealth","Thu Sep 1 12:33:44 2022 +0100","Study-definitions-Update"
+"opensafely/post-covid-mentalhealth","Wed Aug 17 10:26:51 2022 +0100","Table2"
+"opensafely/post-covid-mentalhealth","Wed Aug 17 10:26:51 2022 +0100","Venn-diagram-scripts"
+"opensafely/post-covid-mentalhealth","Fri Sep 9 15:02:42 2022 +0100","main"
+"opensafely/post-covid-neurodegenerative","Thu Aug 11 17:50:33 2022 +0100","Covariates"
+"opensafely/post-covid-neurodegenerative","Fri May 13 13:12:38 2022 +0100","Depression-Anxiety"
+"opensafely/post-covid-neurodegenerative","Fri May 13 08:18:07 2022 +0000","Initial-codelists"
+"opensafely/post-covid-neurodegenerative","Thu Jun 9 12:44:53 2022 +0100","Neuro-StudyDef"
+"opensafely/post-covid-neurodegenerative","Thu Sep 1 15:48:29 2022 +0100","New-Study-Definitions"
+"opensafely/post-covid-neurodegenerative","Thu Aug 11 14:04:49 2022 +0100","Preprocessing-scripts"
+"opensafely/post-covid-neurodegenerative","Fri May 13 13:12:38 2022 +0100","main"
+"opensafely/Post_covid_nice_compliance","Mon Apr 4 18:06:24 2022 +0100","master"
+"opensafely/post-covid-outcomes-research","Thu Apr 21 15:36:14 2022 +0100","main"
+"opensafely/post-covid-pre-vaccinated-cardiovascular","Thu Aug 18 12:21:19 2022 +0100","figures-and-tables"
+"opensafely/post-covid-pre-vaccinated-cardiovascular","Tue Sep 6 11:51:07 2022 +0100","main"
+"opensafely/post-covid-pre-vaccinated-cardiovascular","Thu Aug 11 15:20:08 2022 +0100","update_table2_aer"
+"opensafely/post-covid-respiratory","Tue Jul 5 15:54:23 2022 +0000","main"
+"opensafely/post-covid-respiratory","Thu Aug 4 13:58:46 2022 +0100","reusable_action_input"
+"opensafely/post-covid-respiratory","Wed Aug 17 13:57:55 2022 +0100","study-definition"
+"opensafely/post-covid-unvaccinated","Mon May 30 14:40:47 2022 +0100","Absolute_excess_risks"
+"opensafely/post-covid-unvaccinated","Fri May 13 13:13:53 2022 +0100","Confirmed-covariates-MH"
+"opensafely/post-covid-unvaccinated","Wed Jun 8 10:33:13 2022 +0100","MH-Analyses"
+"opensafely/post-covid-unvaccinated","Fri May 13 16:06:31 2022 +0100","NonhospCovid_timepoints_On"
+"opensafely/post-covid-unvaccinated","Tue Jul 26 09:45:44 2022 +0100","PrescriptionsMH"
+"opensafely/post-covid-unvaccinated","Tue Jun 21 10:12:27 2022 +0100","Secondary-Outcomes"
+"opensafely/post-covid-unvaccinated","Thu Aug 11 11:32:15 2022 +0100","Table2-AgeSexSubgroups"
+"opensafely/post-covid-unvaccinated","Thu May 5 10:00:08 2022 +0100","Table_2"
+"opensafely/post-covid-unvaccinated","Tue Jul 26 09:45:44 2022 +0100","Venn_diagram"
+"opensafely/post-covid-unvaccinated","Mon Feb 7 13:48:34 2022 +0000","fix-gitpod"
+"opensafely/post-covid-unvaccinated","Thu Jul 21 15:05:11 2022 +0100","incidence-plot"
+"opensafely/post-covid-unvaccinated","Fri Jul 15 09:39:42 2022 +0100","main"
+"opensafely/post-covid-unvaccinated","Mon May 16 09:28:09 2022 +0100","revert-47-Confirmed-covariates-MH"
+"opensafely/post-covid-vaccinated","Wed Aug 10 14:51:18 2022 +0100","AMI-stata-cox-model"
+"opensafely/post-covid-vaccinated","Thu Aug 11 17:51:26 2022 +0100","Update-figure-code"
+"opensafely/post-covid-vaccinated","Fri Sep 9 14:53:31 2022 +0100","add-stata-actions"
+"opensafely/post-covid-vaccinated","Fri Sep 9 12:44:01 2022 +0100","aer_update"
+"opensafely/post-covid-vaccinated","Mon Feb 7 13:48:34 2022 +0000","fix-gitpod"
+"opensafely/post-covid-vaccinated","Tue Jun 21 14:20:40 2022 +0100","incidence-plots"
+"opensafely/post-covid-vaccinated","Tue Sep 6 11:51:54 2022 +0100","main"
+"opensafely/post-covid-vaccinated","Fri Sep 9 14:38:16 2022 +0100","update-figure-scripts"
+"opensafely/PostOpCovid","Fri Sep 16 09:46:23 2022 +0100","main"
+"opensafely/post-vax-ae-attendance","Mon Feb 7 13:48:34 2022 +0000","fix-gitpod"
+"opensafely/post-vax-ae-attendance","Tue Oct 5 11:44:09 2021 +0100","main"
+"opensafely/post-vax-outcomes-report","Tue Apr 27 18:00:03 2021 +0100","master"
+"opensafely/pregnancy-vaccine-safety","Mon Feb 7 13:48:35 2022 +0000","fix-gitpod"
+"opensafely/pregnancy-vaccine-safety","Thu Sep 30 08:53:23 2021 +0100","main"
+"opensafely/primary-care-covid-codes-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/primary-care-covid-codes-research","Fri Sep 18 21:17:18 2020 +0100","lib-refactor"
+"opensafely/primary-care-covid-codes-research","Sun Jun 26 20:56:02 2022 +0100","master"
+"opensafely/primary-care-covid-codes-research","Fri Nov 6 16:59:11 2020 +0000","update-nov"
+"opensafely/primis-codelist-prevalence","Fri Mar 26 11:50:45 2021 +0000","comparison-notebooks"
+"opensafely/primis-codelist-prevalence","Fri Apr 16 12:51:39 2021 +0100","master"
+"opensafely/primis-covid-vacc-uptake-spec","Mon Feb 8 09:40:36 2021 +0000","main"
+"opensafely/principle-inhaler-uptake","Thu Aug 19 11:41:37 2021 +0000","end_of_month"
+"opensafely/principle-inhaler-uptake","Fri Jun 17 10:52:18 2022 +0100","main"
+"opensafely/principle-inhaler-uptake","Fri Feb 4 15:54:55 2022 +0000","monthly_analysis"
+"opensafely/principle-inhaler-uptake","Mon May 16 12:17:10 2022 +0100","publish-letter"
+"opensafely/PSA2021","Wed Nov 3 12:08:20 2021 +0000","development"
+"opensafely/PSA2021","Mon Feb 7 13:48:35 2022 +0000","fix-gitpod"
+"opensafely/PSA2021","Fri Jan 7 12:56:12 2022 +0000","main"
+"opensafely/Published-Protocols","Mon Jul 18 12:05:40 2022 +0100","master"
+"opensafely/qof-utilities","Fri Apr 8 16:01:47 2022 +0200","add-codelists"
+"opensafely/qof-utilities","Wed Apr 13 14:34:16 2022 +0100","add_ast_dm_regs"
+"opensafely/qof-utilities","Wed Apr 13 11:45:59 2022 +0100","asthma_register"
+"opensafely/qof-utilities","Thu Apr 14 14:02:12 2022 +0300","calc-regional-prevalence"
+"opensafely/qof-utilities","Tue Jul 5 10:08:09 2022 +0200","calculate-prevalence-region"
+"opensafely/qof-utilities","Tue Apr 5 07:59:12 2022 -0700","doc_parsing"
+"opensafely/qof-utilities","Thu Apr 28 06:35:34 2022 -0700","ethnicity_fix"
+"opensafely/qof-utilities","Tue Apr 19 09:43:34 2022 +0300","list-size-per-indicator"
+"opensafely/qof-utilities","Tue Jun 28 12:17:37 2022 +0100","main"
+"opensafely/qof-utilities","Thu Apr 14 17:46:16 2022 +0300","update-readme-for-users"
+"opensafely/qof-utilities","Wed Apr 27 12:48:09 2022 +0100","update_readme_naming_clinical_domains"
+"opensafely/RA_outcomes","Fri Sep 16 12:08:32 2022 +0100","main"
+"opensafely/rapid-reports","Tue Jul 21 17:06:45 2020 +0100","add-cod"
+"opensafely/rapid-reports","Thu Dec 3 17:26:23 2020 +0000","dbonly"
+"opensafely/rapid-reports","Mon Jan 11 15:04:07 2021 +0000","deprecate"
+"opensafely/rapid-reports","Mon Feb 1 03:14:49 2021 -0800","master"
+"opensafely/rapid-reports","Tue Dec 15 15:36:13 2020 +0000","update"
+"opensafely/raw-data-plausibility-checks","Thu Jul 7 17:43:24 2022 +0100","early-development"
+"opensafely/raw-data-plausibility-checks","Tue Mar 29 17:15:39 2022 +0100","master"
+"opensafely/raw-data-plausibility-checks","Tue Aug 16 10:51:26 2022 +0100","rebkwok/early-development"
+"opensafely/rct-test","Mon Feb 7 13:48:35 2022 +0000","fix-gitpod"
+"opensafely/rct-test","Tue Sep 21 14:56:12 2021 +0100","main"
+"opensafely/reinfection","Fri Feb 26 14:54:47 2021 +0000","master"
+"opensafely/release-process-test","Mon Feb 7 13:48:36 2022 +0000","fix-gitpod"
+"opensafely/release-process-test","Mon Jun 28 15:17:01 2021 +0000","main"
+"opensafely/renal-short-data-report","Fri Mar 25 16:27:18 2022 +0000","bzheng"
+"opensafely/renal-short-data-report","Fri Sep 16 13:43:21 2022 +0100","main"
+"opensafely/renal-short-data-report","Wed Aug 24 15:14:53 2022 +0100","updated-codelist-checks"
+"opensafely/representativeness","Mon Jan 31 17:08:21 2022 +0000","andrewscolm/comments"
+"opensafely/representativeness","Wed Oct 20 10:52:40 2021 +0000","gitpod"
+"opensafely/representativeness","Wed Aug 24 16:36:43 2022 +0100","master"
+"opensafely/representativeness","Wed Nov 10 12:31:14 2021 +0000","ons_process"
+"opensafely/representativeness","Tue Sep 14 16:32:06 2021 +0100","reformatting"
+"opensafely/representativeness","Tue Oct 19 08:56:00 2021 +0100","release-candidates"
+"opensafely/research-template","Wed Mar 16 08:30:15 2022 +0000","example-actions"
+"opensafely/research-template","Wed Dec 1 15:30:40 2021 +0000","gitpod-env-comment-fix"
+"opensafely/research-template","Wed Jun 9 18:28:55 2021 +0000","gitpod-finessing"
+"opensafely/research-template","Mon Mar 28 09:56:52 2022 +0100","gz-default"
+"opensafely/research-template","Thu Sep 23 14:07:04 2021 +0100","gzip"
+"opensafely/research-template","Wed Sep 29 15:57:36 2021 +0100","ignore-dsstore"
+"opensafely/research-template","Mon Jun 7 12:09:14 2021 +0100","ignore-only-top-level-output-dir"
+"opensafely/research-template","Thu May 5 17:05:44 2022 +0100","main"
+"opensafely/research-template","Wed Feb 9 10:57:18 2022 +0000","remlapmot/ignore-r"
+"opensafely/research-template","Wed Feb 16 15:24:28 2022 +0000","remlapmot/set-text-auto"
+"opensafely/research-template","Sun Jun 20 14:30:23 2021 +0100","steve/improve-readme"
+"opensafely/research_temp_tm","Tue May 18 09:27:08 2021 +0100","master"
+"opensafely/restoration-observatory-data-driven","Wed Jun 1 19:18:18 2022 +0100","master"
+"opensafely/restoration-observatory-emis-research","Thu Dec 17 16:36:32 2020 +0000","JPearson_MMR"
+"opensafely/restoration-observatory-emis-research","Fri Jan 29 08:15:14 2021 -0800","master"
+"opensafely/restoration-observatory-emis-research","Fri Dec 18 11:14:22 2020 +0000","release-candidates"
+"opensafely/restoration-observatory-notebook","Thu Oct 22 08:22:39 2020 +0100","master"
+"opensafely/restoration-observatory-notebook","Tue Oct 20 13:44:42 2020 +0000","setup"
+"opensafely/restoration-observatory-notebook","Wed Oct 28 17:17:58 2020 +0000","template-markdown-notebook"
+"opensafely/reverse-engineer-r-docker","Thu Oct 1 12:21:15 2020 +0100","add-debugging-tools"
+"opensafely/reverse-engineer-r-docker","Thu Dec 3 15:38:49 2020 +0000","add-odbc-sccs"
+"opensafely/reverse-engineer-r-docker","Tue Nov 17 15:59:57 2020 +0000","conda-packages"
+"opensafely/reverse-engineer-r-docker","Tue Nov 10 14:37:13 2020 +0000","ghcr-publish-and-available-packages"
+"opensafely/reverse-engineer-r-docker","Tue Sep 13 15:32:53 2022 +0100","master"
+"opensafely/reverse-engineer-r-docker","Mon Aug 1 15:48:18 2022 +0100","reverse-engineer"
+"opensafely/reverse-engineer-r-docker","Mon Aug 1 15:45:40 2022 +0100","reverse-engineer-min-layers"
+"opensafely/reverse-engineer-r-docker","Wed Sep 14 22:20:48 2022 +0100","reverse-engineer-min-layers-fixed-urls"
+"opensafely/reverse-engineer-r-docker","Thu Sep 1 15:23:58 2022 +0100","reverse-engineer-mran-min-layers"
+"opensafely/reverse-engineer-r-docker","Wed Sep 14 16:16:27 2022 +0100","reverse-engineer-rspm-fixed-urls"
+"opensafely/reverse-engineer-r-docker","Fri Mar 4 11:59:39 2022 +0000","tableone"
+"opensafely/risk-factors-research","Wed Aug 11 15:01:17 2021 +0100","main"
+"opensafely/risk-prediction-research","Wed Jan 27 09:01:15 2021 +0000","latest3"
+"opensafely/risk-prediction-research","Wed Jul 14 10:47:00 2021 +0100","master"
+"opensafely/risk-prediction-research","Sat Feb 20 10:51:16 2021 +0000","newresults"
+"opensafely/roadmap","Mon Jul 4 14:40:27 2022 +0100","main"
+"opensafely/SA_carehomerx","Mon Feb 7 15:22:11 2022 +0000","main"
+"opensafely/sarscov2-testing-data-report","Mon Jul 27 17:10:11 2020 +0100","add-notebook"
+"opensafely/sarscov2-testing-data-report","Mon Jul 27 15:54:54 2020 +0100","master"
+"opensafely/school-age-children-and-covid","Wed Aug 5 01:09:29 2020 +0100","2nd-round-revisions-weigthed-analyses"
+"opensafely/school-age-children-and-covid","Thu Oct 22 16:43:13 2020 +0100","Add-KM-survival-plot"
+"opensafely/school-age-children-and-covid","Wed Aug 5 12:13:31 2020 +0100","Add-in-ICU-data-to-outcome"
+"opensafely/school-age-children-and-covid","Mon Oct 19 14:53:37 2020 +0100","add-PH-tests"
+"opensafely/school-age-children-and-covid","Thu Sep 24 21:18:25 2020 +0100","add-project-file"
+"opensafely/school-age-children-and-covid","Mon Jun 29 13:35:09 2020 +0100","add_admitted_to_icu_outcome"
+"opensafely/school-age-children-and-covid","Thu Sep 10 13:16:14 2020 +0100","additional-corrections"
+"opensafely/school-age-children-and-covid","Thu Oct 29 12:28:00 2020 +0000","amend-sense5-again,-to-get-new-yaml-code"
+"opensafely/school-age-children-and-covid","Mon Oct 12 16:08:34 2020 +0100","amendments-sept-21st"
+"opensafely/school-age-children-and-covid","Wed Jun 24 14:05:08 2020 +0100","data_checks"
+"opensafely/school-age-children-and-covid","Wed Aug 19 18:31:24 2020 +0100","exploratoryrun"
+"opensafely/school-age-children-and-covid","Mon Oct 5 13:13:39 2020 +0100","fix-expected-cox-outputs-in-project-yaml"
+"opensafely/school-age-children-and-covid","Tue Aug 18 10:52:18 2020 +0100","icnarcnumbers"
+"opensafely/school-age-children-and-covid","Thu Nov 5 13:08:46 2020 +0000","master"
+"opensafely/school-age-children-and-covid","Thu Nov 5 12:38:04 2020 +0000","more-action-pinning"
+"opensafely/school-age-children-and-covid","Tue Oct 27 17:55:03 2020 +0000","new_time_int-SENSE-5"
+"opensafely/school-age-children-and-covid","Wed Nov 4 14:47:40 2020 +0000","pin-rollback-action"
+"opensafely/school-age-children-and-covid","Thu Jul 9 13:46:53 2020 +0100","real-data-run"
+"opensafely/school-age-children-and-covid","Mon Sep 21 14:35:30 2020 +0100","release-21-sept"
+"opensafely/school-age-children-and-covid","Fri Oct 23 16:56:54 2020 +0100","remove-phtest-sense5"
+"opensafely/school-age-children-and-covid","Wed Oct 28 23:38:48 2020 +0000","remove-phtests-sense5"
+"opensafely/school-age-children-and-covid","Fri Jul 24 14:52:57 2020 +0100","results_2407"
+"opensafely/school-age-children-and-covid","Mon Aug 3 12:40:00 2020 +0100","revision-following-weghted-data-run"
+"opensafely/school-age-children-and-covid","Mon Aug 24 10:51:56 2020 +0100","run22aug"
+"opensafely/school-age-children-and-covid","Mon Jun 29 13:10:44 2020 +0100","sens-analysis"
+"opensafely/school-age-children-and-covid","Fri Sep 11 17:38:17 2020 +0100","troubleshoot-type-mismatch-error-do-file12"
+"opensafely/school-age-children-and-covid","Fri Jan 29 14:26:00 2021 +0000","update-action"
+"opensafely/school-age-children-and-covid","Thu Sep 10 10:40:35 2020 +0100","updated-run"
+"opensafely/school-age-children-and-covid","Mon Jul 6 22:16:20 2020 +0100","updates"
+"opensafely/school-age-children-and-covid","Fri Sep 4 14:55:08 2020 +0100","will-run-senseanaly"
+"opensafely/school-age-children-and-covid2","Tue Aug 10 14:45:30 2021 +0100","Age-60-under"
+"opensafely/school-age-children-and-covid2","Thu Jan 14 10:08:56 2021 +0000","change-infection-outcome"
+"opensafely/school-age-children-and-covid2","Sat Oct 31 06:11:21 2020 +0000","changes-to-incorporate-study-period-extension"
+"opensafely/school-age-children-and-covid2","Mon Jan 11 19:39:05 2021 +0000","changes_11_jan"
+"opensafely/school-age-children-and-covid2","Wed Jul 14 11:32:12 2021 +0100","changes_since_feb2021"
+"opensafely/school-age-children-and-covid2","Mon Jan 25 17:32:59 2021 +0000","covidadmission-censor-"
+"opensafely/school-age-children-and-covid2","Mon Jan 18 08:25:03 2021 +0000","fix-table-3"
+"opensafely/school-age-children-and-covid2","Wed Jan 13 15:40:24 2021 +0000","hh-variable-with-mixed-ages-category"
+"opensafely/school-age-children-and-covid2","Wed Aug 11 11:25:58 2021 +0100","master"
+"opensafely/school-age-children-and-covid2","Fri Jan 15 09:26:43 2021 +0000","move-sex,-imd-drops,-changed-grouped-exposure"
+"opensafely/school-age-children-and-covid2","Fri Jan 22 23:30:06 2021 +0000","nursery-school-age"
+"opensafely/school-age-children-and-covid2","Tue Jan 26 13:55:40 2021 +0000","ph-models"
+"opensafely/school-age-children-and-covid2","Fri Aug 13 10:15:50 2021 +0100","release-candidates"
+"opensafely/school-age-children-and-covid2","Thu Jan 28 13:26:02 2021 +0000","remove-time_ints-from-sense-tables"
+"opensafely/school-age-children-and-covid2","Fri Jan 29 14:24:56 2021 +0000","update-action"
+"opensafely/school-age-children-and-covid2","Mon Nov 2 08:52:51 2020 +0000","update-time-interaction-do-file"
+"opensafely/school-age-children-and-covid2","Tue Jan 12 15:42:23 2021 +0000","update-time-interactions-Jan-12"
+"opensafely/second-line-diabetes-covid-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/second-line-diabetes-covid-research","Tue Sep 28 21:13:54 2021 +0100","master"
+"opensafely/second-line-diabetes-covid-research","Tue Jan 25 18:45:56 2022 +0000","measures-branch"
+"opensafely/server-instructions","Fri Dec 4 16:52:54 2020 +0000","add-stata-license"
+"opensafely/server-instructions","Fri Sep 17 12:09:25 2021 +0100","dave-test"
+"opensafely/server-instructions","Tue Oct 6 15:50:58 2020 +0100","fix-batch-db-name"
+"opensafely/server-instructions","Tue May 10 16:45:37 2022 +0100","master"
+"opensafely/server-instructions","Thu Dec 10 19:19:09 2020 +0000","update-docker-url"
+"opensafely/SGTF-617-research","Fri Jan 14 11:36:38 2022 +0000","master"
+"opensafely/SGTF-CFR-research","Tue Nov 16 12:23:46 2021 +0000","master"
+"opensafely/SGTF-CFR-research","Fri Jul 2 15:46:18 2021 +0100","release-candidates"
+"opensafely/SGTF-Omi-research","Thu Feb 17 15:39:22 2022 +0000","main"
+"opensafely/SGTF-Omi-research","Thu Feb 3 15:40:53 2022 +0000","release-candidates"
+"opensafely/Shared-Care-Monitoring","Tue Sep 13 10:11:57 2022 +0100","main"
+"opensafely/sotrovimab-and-molnupiravir","Thu Sep 15 14:43:50 2022 +0100","main"
+"opensafely/sro-gastro","Thu Aug 4 18:54:05 2022 +0200","main"
+"opensafely/sro-gastro","Tue Mar 15 08:59:02 2022 +0000","release-candidates"
+"opensafely/SRO-Measures","Thu Jun 9 16:14:45 2022 +0100","emis"
+"opensafely/SRO-Measures","Mon Sep 12 17:51:19 2022 +0100","master"
+"opensafely/SRO-Measures","Thu Sep 15 17:30:52 2022 +0100","population-count"
+"opensafely/SRO-Measures","Wed Sep 14 11:19:48 2022 +0100","updating-report-using-interactive"
+"opensafely/sro-measures-demo","Wed Mar 23 10:01:19 2022 +0000","main"
+"opensafely/SRO-pulse-oximetry","Mon Feb 7 15:22:18 2022 +0000","master"
+"opensafely/SRO-pulse-oximetry","Fri Feb 12 09:39:16 2021 +0000","smr_priority_variables"
+"opensafely/SRO-pulse-oximetry","Fri Apr 16 16:31:43 2021 +0100","template"
+"opensafely/SRO-PULSE-OXIMETRY-UPD","Mon Feb 7 15:22:22 2022 +0000","master"
+"opensafely/SRO-PULSE-OXIMETRY-UPD","Thu Jun 24 15:57:22 2021 +0000","pulse-ox"
+"opensafely/SRO-PULSE-OXIMETRY-UPD","Fri Jun 25 11:24:51 2021 +0000","pulseox"
+"opensafely/SRO-PULSE-OXIMETRY-UPD","Mon Oct 11 17:45:52 2021 +0100","release-candidates"
+"opensafely/SRO-PULSE-OXIMETRY-UPD","Fri Nov 5 11:42:26 2021 +0000","rounding"
+"opensafely/SRO-smr","Fri May 27 12:38:18 2022 +0100","master"
+"opensafely/sro-template","Mon Apr 11 15:34:39 2022 +0100","master"
+"opensafely/sro-template","Thu Jun 17 18:08:05 2021 +0100","reformatting"
+"opensafely/suicide-deaths-pcc","Fri Jun 24 16:44:09 2022 +0100","main"
+"opensafely/surg-covid-safely","Wed Sep 14 17:51:40 2022 +0100","edits"
+"opensafely/surg-covid-safely","Tue Apr 12 15:23:45 2022 +0100","main"
+"opensafely/surg-covid-safely","Fri Aug 26 19:01:13 2022 +0100","master"
+"opensafely/surg-covid-safely","Wed Aug 17 16:23:29 2022 +0100","rfactoring_syntax"
+"opensafely/surgery-research","Mon Sep 13 15:48:56 2021 +0100","master"
+"opensafely/T1DM_covid_research","Thu Dec 10 17:21:17 2020 +0000","create-project-pipeline"
+"opensafely/T1DM_covid_research","Mon Oct 12 22:41:48 2020 +0100","kw_adding_sus"
+"opensafely/T1DM_covid_research","Thu Apr 29 12:13:36 2021 +0100","master"
+"opensafely/T1DM_covid_research","Wed Feb 3 17:26:55 2021 +0000","matchingoutput_03feb"
+"opensafely/T1DM_covid_research","Tue Sep 8 09:12:15 2020 +0100","outputs"
+"opensafely/T1DM_covid_research","Wed Feb 3 12:44:50 2021 +0000","python-matching"
+"opensafely/T1DM_covid_research","Wed Sep 9 10:35:48 2020 +0100","real-data-run"
+"opensafely/T1DM_covid_research","Fri Sep 11 22:01:00 2020 +0100","real-data-run-2"
+"opensafely/T1DM_covid_research","Sat Sep 12 21:23:03 2020 +0100","real-data-run-3"
+"opensafely/T1DM_covid_research","Tue Sep 1 15:01:12 2020 +0100","update-README"
+"opensafely/T1DM_covid_research","Tue Sep 1 15:01:09 2020 +0100","update-codelists-before-using-them"
+"opensafely/T1DM_covid_research","Tue Sep 1 15:01:08 2020 +0100","update-default-study-def"
+"opensafely/T1DM_covid_research","Tue Sep 1 15:01:10 2020 +0100","update-gitignore"
+"opensafely/T1DM_covid_research","Tue Sep 1 15:01:11 2020 +0100","update-gitignore-1"
+"opensafely/T1DM_covid_research","Thu Dec 10 17:25:35 2020 +0000","update-project-yaml"
+"opensafely/test-age-distribution","Fri Sep 9 16:48:35 2022 +0100","benbc/acutally-analyse-ages"
+"opensafely/test-age-distribution","Fri Sep 9 16:16:04 2022 +0100","benbc/misc-updates"
+"opensafely/test-age-distribution","Fri Sep 16 14:08:32 2022 +0100","main"
+"opensafely/test-point-and-click","Fri May 13 13:42:17 2022 +0100","hypothesis-testing"
+"opensafely/test-point-and-click","Thu May 12 12:02:58 2022 +0100","main"
+"opensafely/test-point-and-click","Fri May 13 12:10:02 2022 +0100","testing"
+"opensafely/test-repository","Tue May 11 11:21:09 2021 +0100","master"
+"opensafely/test-repository","Wed Jan 6 16:33:52 2021 +0000","unredacted-info"
+"opensafely/tncc_ve","Thu Oct 28 10:49:53 2021 +0100","Pfizer-name-changed"
+"opensafely/tncc_ve","Sat May 14 12:59:10 2022 +0100","main"
+"opensafely/tncc_ve","Fri Feb 25 11:59:48 2022 +0000","study-def-dates-amended"
+"opensafely/tncc_ve","Mon Jul 19 14:38:41 2021 +0100","testtime-and-covid2-l58-63"
+"opensafely/tpp-sql-notebook","Mon Jan 18 11:20:15 2021 +0000","BMK-vacc-test"
+"opensafely/tpp-sql-notebook","Tue Mar 31 16:22:19 2020 +0100","R-model"
+"opensafely/tpp-sql-notebook","Wed Apr 29 19:26:48 2020 +0100","Test-fixes"
+"opensafely/tpp-sql-notebook","Wed Apr 1 16:42:02 2020 +0100","covariate-library-poc"
+"opensafely/tpp-sql-notebook","Wed May 13 11:09:36 2020 +0100","helen_branch"
+"opensafely/tpp-sql-notebook","Tue Oct 13 17:30:13 2020 +0100","high_cost_drugs"
+"opensafely/tpp-sql-notebook","Tue Mar 31 19:33:53 2020 +0100","htn"
+"opensafely/tpp-sql-notebook","Thu Feb 11 15:57:47 2021 +0000","master"
+"opensafely/tpp-sql-notebook","Mon Mar 30 20:10:48 2020 +0100","mvp"
+"opensafely/tpp-sql-notebook","Mon Mar 30 18:16:17 2020 +0100","seb-covariates-experiments"
+"opensafely/tpp-sql-notebook","Fri Jan 29 15:30:42 2021 +0000","update-action"
+"opensafely/Uptake-of-NHS-home-interventions-during-COVID-19","Mon Aug 8 08:53:39 2022 +0100","main"
+"opensafely/vaccinations-dashboard","Mon Jul 20 12:10:24 2020 +0100","flu-dash"
+"opensafely/vaccinations-dashboard","Fri Jun 19 15:45:42 2020 +0100","master"
+"opensafely/vaccinations-dashboard","Fri Jun 26 12:00:52 2020 +0100","real-data-run"
+"opensafely/vaccinations-dashboard","Thu Jul 2 17:44:02 2020 +0100","update-study-def"
+"opensafely/vaccine-characteristics-research","Mon May 10 10:26:39 2021 +0100","master"
+"opensafely/vaccine-effectiveness-hospital-admissions-validation","Mon Apr 4 11:52:36 2022 +0100","master"
+"opensafely/vaccine-effectiveness-hospital-admissions-validation","Thu Mar 25 12:09:21 2021 +0000","release-candidates"
+"opensafely/vaccine-effectiveness-in-kids","Thu Sep 15 22:16:56 2022 +0100","combine"
+"opensafely/vaccine-effectiveness-in-kids","Tue Sep 6 15:51:32 2022 +0100","create-project"
+"opensafely/vaccine-effectiveness-in-kids","Wed Jul 20 16:01:41 2022 +0100","debug"
+"opensafely/vaccine-effectiveness-in-kids","Thu Sep 15 09:38:25 2022 +0100","main"
+"opensafely/vaccine-effectiveness-in-kids","Thu Jul 28 15:54:44 2022 +0100","multiple_matches"
+"opensafely/vaccine-effectiveness-in-kids","Wed Aug 3 15:16:10 2022 +0100","skim"
+"opensafely/vaccine-effectiveness-in-kids","Wed Sep 14 11:39:44 2022 +0100","under12"
+"opensafely/vaccine-eligibility","Thu Dec 3 13:38:52 2020 +0000","Jonny-GreenBookChanges"
+"opensafely/vaccine-eligibility","Thu Nov 26 15:41:10 2020 +0000","dan-branch"
+"opensafely/vaccine-eligibility","Tue Feb 23 14:46:19 2021 +0000","master"
+"opensafely/vaccine-eligibility","Fri Jan 29 15:31:07 2021 +0000","update-action"
+"opensafely/vaccine-eligibility","Thu Dec 17 15:57:33 2020 +0000","will-run"
+"opensafely/vaccine-neuro-cohort","Tue Jun 21 15:21:16 2022 +0100","main"
+"opensafely/vaccine-neuro-cohort","Mon Jan 31 18:19:16 2022 +0000","study_population"
+"opensafely/vaccine-rd-research","Thu Feb 18 17:25:23 2021 +0000","edits-01"
+"opensafely/vaccine-rd-research","Wed Mar 31 15:36:20 2021 +0100","edits-02"
+"opensafely/vaccine-rd-research","Wed Apr 28 12:13:13 2021 +0100","edits-05"
+"opensafely/vaccine-rd-research","Tue May 18 14:03:40 2021 +0100","main"
+"opensafely/vaccine_status","Fri Mar 4 15:32:40 2022 +0000","loop"
+"opensafely/vaccine_status","Thu Mar 3 15:38:29 2022 +0000","main"
+"opensafely/vacc-trial-monitoring-research","Tue Jan 5 14:35:59 2021 +0000","fix-codelist-line-endings"
+"opensafely/vacc-trial-monitoring-research","Tue Jan 5 14:45:20 2021 +0000","master"
+"opensafely/variable-library","Tue Mar 16 19:29:59 2021 +0000","main"
+"opensafely/waning-ve-2dose-1year","Tue Aug 23 16:09:00 2022 +0100","main"
+"opensafely/waning-ve-2dose-cancer","Mon Aug 15 13:22:49 2022 +0100","main"
+"opensafely/waning-ve-2dose-cancer","Thu Sep 8 19:29:23 2022 +0100","redraft-manuscript"
+"opensafely/waning-ve-3dose","Mon Sep 5 15:54:32 2022 +0100","main"
+"opensafely/waning-ve-3dose","Tue Sep 6 16:47:03 2022 +0100","updates-to-vax-data"

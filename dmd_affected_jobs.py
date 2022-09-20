@@ -14,9 +14,17 @@ df_jobserver['started_at']=pd.to_datetime(df_jobserver.started_at)
 df_jobserver = df_jobserver.groupby(['repo','branch']).agg(last_run_time=('started_at',np.max)).reset_index()
 print(f"latest run time per workspace:{len(df_jobserver.index)}")
 # %%
+df_latest_commit = pd.read_csv("latest_commit.csv")
+df_latest_commit["latest_commit_timestamp"] = pd.to_datetime(df_latest_commit.latest_commit_timestamp)
+
+# %%
 df_branches = pd.read_csv('oldcodes_deduped.csv')
 print(f"affected code instances in research repos:{len(df_branches.index)}")
 df_branches['code'] = df_branches.code.astype('Int64')
+# %%
+df_branches = df_branches.merge(df_latest_commit,how='left',on=['repository','branch'])
+df_branches[df_branches.latest_commit_timestamp.isna()][['repository','branch']].drop_duplicates().to_csv('deleted_branches.csv',index=False)
+
 # %%
 df_vmp = pd.read_gbq('''SELECT
     vpidprev,vpiddt
@@ -32,10 +40,10 @@ print(f"expired dmd VMP best-before dates:{len(df_best_before.index)}")
 # %%
 df_branches = df_branches.merge(df_best_before,how='inner',left_on='code',right_on='vpidprev')
 print(f"instances ∩ best-before:{len(df_branches.index)}")
-df_branches = df_branches.groupby(['repository','branch','filename']).agg(bbd=('bbd',np.min)).reset_index()
+df_branches = df_branches.groupby(['repository','branch','filename']).agg(bbd=('bbd',np.min),latest_commit_timestamp=('latest_commit_timestamp',np.max)).reset_index()
 print(f"max-best-before dates per codelist instance:{len(df_branches.index)}")
 # %%
-df = df_branches.merge(df_jobserver,how='inner',left_on=('repository','branch'),right_on=('repo','branch'))
+df = df_branches.merge(df_jobserver,how='left',left_on=('repository','branch'),right_on=('repo','branch'))
 print(f"succeeded jobs ∩ codelist best-before dates:{len(df.index)}")
 # %%
 df_deltas=pd.read_csv('codelist_deltas.tsv',delimiter='\t')
@@ -48,8 +56,13 @@ df = df.merge(df_deltas,on='codelist',how='inner')
 print(f"deltas ∩ succeeded jobs ∩ codelist best-before dates:{len(df.index)}")
 # %%
 df['bbd'] = pd.to_datetime(df.bbd)
+df['latest_commit_timestamp'] = pd.to_datetime(df.latest_commit_timestamp,utc=True)
 # %%
-df = df[(df.last_run_time.dt.date>df.bbd)]
+never_run_repos = set(df['repository'][df.repo.isna()].drop_duplicates()).difference(set(df['repository'][df.repo.notna()].drop_duplicates()))
+
+# %%
+df = df[(df.last_run_time.dt.date>df.bbd)|(df['repository'].isin(never_run_repos)&(df.latest_commit_timestamp.dt.tz_localize(None)>df.bbd))]
+df = df[df.delta>0]
 print(f"affected job-codelists:{len(df.index)}")
 
 #%%
