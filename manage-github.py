@@ -161,7 +161,7 @@ def configure_repo(repo, **kwargs):
 
     except GithubException as exc:
         if exc.status == 403:
-            print("Token does not have permissions to query repo collabortors (need write access)")
+            print("Token does not have permissions to query repo collaborators (need write access)")
         else:
             raise
 
