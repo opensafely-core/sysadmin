@@ -21,5 +21,9 @@ jobs:
       env:
         ORG_TOKEN: ${{ secrets.ORG_READONLY_TOKEN }}
       run: |
-        echo "WARNING: ignore output from this command - it is running w/o elevated privileges needed to correctly read branch protection details"
+        echo "WARNING: if this step fails randomly, you may need to update the repo secret ORG_READONLY_TOKEN"
+        echo
+        echo "WARNING: ignore output from command as long as it does not fail."
+        echo "It is running w/o elevated privileges needed to correctly read branch protection details"
+        echo
         python manage-github.py --dry-run
