@@ -19,7 +19,7 @@ dokku domains:remove otel-gateway otel-gateway.dokku2.ebmdatalab.net
 # create a place to store config files
 dokku storage:ensure-directory otel-gateway
 
-dokku config:set otel-gateway HONEYCOMB_KEY=...honeycomb_key...
+dokku config:set otel-gateway HONEYCOMB_API_KEY=...honeycomb_key...
 ```
 
 Contents of `/var/lib/dokku/data/storage/otel-gateway/config.yaml`:
@@ -40,7 +40,7 @@ exporters:
   otlphttp:
     endpoint: "https://api.honeycomb.io"
     headers:
-      "x-honeycomb-team": "${HONEYCOMB_KEY}"
+      "x-honeycomb-team": "${HONEYCOMB_API_KEY}"
 # required to support metrics spans
 #      "x-honeycomb-dataset": "gateway-test"
 
@@ -154,7 +154,7 @@ exporters:
   otlphttp:
     endpoint: "https://api.honeycomb.io"
     headers:
-      "x-honeycomb-team": "...honeycomb_key..."
+      "x-honeycomb-team": "${HONEYCOMB_API_KEY}"
 
 service:
   extensions: [basicauth/server]
