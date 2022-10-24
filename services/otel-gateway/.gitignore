@@ -1,0 +1,4 @@
+exported
+.venv
+__cache__
+.pytest*

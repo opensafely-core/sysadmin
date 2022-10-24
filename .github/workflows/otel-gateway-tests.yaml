@@ -1,0 +1,22 @@
+name: otel-gateway tests
+on: 
+  pull_request:
+    paths: "services/otel-gateway/**"
+  workflow_dispatch:
+jobs:
+  test_dry_run:
+    runs-on: ubuntu-latest
+    name: Run CI tests
+    steps:
+    - name: Checkout
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8  # 3.1.0
+    - name: Set up Python 3.8
+      uses: actions/setup-python@13ae5bb136fac2878aff31522b9efb785519f984  # 4.3.0
+      with:
+        python-version: 3.8
+    - name: Set up just
+      uses: extractions/setup-just@aa5d15c144db4585980a44ebfdd2cf337c4f14cb  # 1.4.0
+    - name: build
+      run: env -C services/otel-gateway just build
+    - name: test
+      run: env -C services/otel-gateway just test-ci

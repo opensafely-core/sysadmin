@@ -1,0 +1,78 @@
+set dotenv-load := true	
+
+export IMAGE_NAME := "otel-gateway"
+export DOCKER_BUILDKIT := "1"
+
+
+# build the docker image
+build:
+    docker build . -t $IMAGE_NAME 
+
+
+# run the gateway, in the foreground by default. 
+run *args: build
+    docker rm --force otel-gateway 2>/dev/null || true
+    docker run --name otel-gateway \
+        -e BASIC_AUTH_USER=$BASIC_AUTH_USER \
+        -e BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD \
+        -e HONEYCOMB_KEY \
+        {{ args }} {{ IMAGE_NAME }}
+
+
+# run integration test. You will need a HONEYCOMB_KEY set in the environment
+test-integration: venv
+    #!/bin/bash
+    set -eu
+    {{ just_executable() }} run -d -e LOG_LEVEL=debug
+    {{ just_executable() }} run-python generate.py
+    echo "Data sent to honeycomb"
+    echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
+
+
+# spin up a pretend honeycomb and run tests
+test-ci: venv
+    #!/bin/bash
+    set -eu
+    mkdir -p exported
+
+    # run a different instance of a collector as a test endpoint
+    docker rm --force otel-gateway-test 2>/dev/null || true
+    docker run -d --name otel-gateway-test -u "$(id -u):$(id -g)" \
+        -v $PWD/test-config.yaml:/etc/otelcol-contrib/config.yaml \
+        -v $PWD/exported:/exported \
+        otel/opentelemetry-collector-contrib:0.62.1
+
+    test "$(docker inspect otel-gateway-test -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway-test; exit 1; }
+
+    TEST_IP="$(docker inspect -f '{{{{range.NetworkSettings.Networks}}{{{{.IPAddress}}{{{{end}}' otel-gateway-test)"
+    export ENDPOINT="http://$TEST_IP:4318"
+
+    # run otel-gateway pointing at the test endpoint
+    {{ just_executable() }} run -d -e ENDPOINT -e LOG_LEVEL=debug
+
+    test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
+    {{ just_executable() }} run-python -m pytest tests.py
+
+
+# run a python script in the correct environment 
+run-python *args:
+    #!/bin/bash
+    set -eu
+    GATEWAY_IP="$(docker inspect -f '{{{{range.NetworkSettings.Networks}}{{{{.IPAddress}}{{{{end}}' otel-gateway)"
+    TOKEN=$(echo -n "$BASIC_AUTH_USER:$BASIC_AUTH_PASSWORD" | base64)
+
+    export OTEL_EXPORTER_OTLP_ENDPOINT="http://$GATEWAY_IP:4318"
+    export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic%20$TOKEN"
+    export OTEL_SERVICE_NAME="otel-gateway-tests"
+ 
+    .venv/bin/python {{ args }}
+
+
+
+# quick and dirty venv provision for the simple python tests
+venv:
+    #!/bin/bash
+    set -eu
+    test -d .venv && exit 0
+    python3 -m venv .venv
+    .venv/bin/pip install pytest opentelemetry-exporter-otlp-proto-http
