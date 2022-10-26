@@ -4,8 +4,11 @@ export IMAGE_NAME := "otel-gateway"
 export DOCKER_BUILDKIT := "1"
 
 
+_env:
+    test -e .env || cp dotenv-sample .env
+
 # build the docker image
-build:
+build: _env
     docker build . -t $IMAGE_NAME 
 
 
@@ -24,7 +27,7 @@ test-integration: venv
     #!/bin/bash
     set -eu
     {{ just_executable() }} run -d -e LOG_LEVEL=debug
-    {{ just_executable() }} run-python generate.py
+    {{ just_executable() }} run-python tests.py
     echo "Data sent to honeycomb"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
 
@@ -55,7 +58,7 @@ test-ci: venv
 
 
 # run a python script in the correct environment 
-run-python *args:
+run-python *args: venv
     #!/bin/bash
     set -eu
     GATEWAY_IP="$(docker inspect -f '{{{{range.NetworkSettings.Networks}}{{{{.IPAddress}}{{{{end}}' otel-gateway)"
@@ -70,7 +73,7 @@ run-python *args:
 
 
 # quick and dirty venv provision for the simple python tests
-venv:
+venv: _env
     #!/bin/bash
     set -eu
     test -d .venv && exit 0

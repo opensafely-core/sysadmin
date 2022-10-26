@@ -1,0 +1,40 @@
+name: Deploy otel-gateway
+on:
+  push:
+    branches: [miain]
+    paths:
+        - "services/otel-gateway/**"
+  workflow_dispatch:
+env:
+  SSH_AUTH_SOCK: /tmp/agent.sock
+  IMAGE_NAME: otel-gateway
+  IMAGE_ID: ghcr.io/opensafely-core/otel-gateway
+permissions:
+  packages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8  # 3.1.0
+    - name: Set up just
+      uses: extractions/setup-just@aa5d15c144db4585980a44ebfdd2cf337c4f14cb  # 1.4.0
+    - name: build Image
+      run: env -C services/otel-gateway just build
+    - name: test
+      run: env -C services/otel-gateway just test-ci
+    - name: Log into GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }} |  docker login https://ghcr.io -u ${{ github.actor }} --password-stdin"
+    - name: Push image to GitHub Container Registry
+      run: |
+        docker tag $IMAGE_NAME $IMAGE_ID:latest
+        docker push $IMAGE_ID:latest
+    - name: Setup SSH Agent
+      run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.DOKKU2_DEPLOY_SSH_KEY }}"
+    - name: Deploy
+      run: |
+          SHA=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE_ID:latest)
+          ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" dokku@dokku2.ebmdatalab.net git:from-image otel-gateway $SHA
+
