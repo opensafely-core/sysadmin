@@ -2,3 +2,6 @@ org-token
 env
 __pycache__
 research
+.venv
+__cache__
+.pytest*

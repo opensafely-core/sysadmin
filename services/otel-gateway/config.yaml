@@ -1,0 +1,50 @@
+# see https://docs.honeycomb.io/getting-data-in/otel-collector/
+
+extensions:
+  basicauth/server:
+    htpasswd:
+      inline: |
+          ${BASIC_AUTH_USER}:${BASIC_AUTH_PASSWORD}
+
+receivers:
+  otlp:
+    protocols:
+      http:
+        auth:
+          authenticator: basicauth/server
+
+processors:
+  batch:
+
+exporters:
+  logging:
+    logLevel: "${LOG_LEVEL}"
+
+  otlphttp/traces:
+    endpoint: "${ENDPOINT}"
+    headers:
+      x-honeycomb-team: "${HONEYCOMB_KEY}"
+      # Do not set a dataset - let forwarding application set that.
+      
+  # for some reason, metrics requires an explicit dataset, so we have
+  # a separate exporter config for that
+  otlphttp/metrics:
+    endpoint: "${ENDPOINT}"
+    headers:
+      x-honeycomb-team: "${HONEYCOMB_KEY}"
+      x-honeycomb-dataset: "${METRICS_DATASET}"
+
+service:
+  telemetry:
+    logs:
+      level: "${LOG_LEVEL}"
+  extensions: [basicauth/server]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/traces, logging]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp/metrics, logging]
