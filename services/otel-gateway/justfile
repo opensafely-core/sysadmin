@@ -40,15 +40,14 @@ test-ci: venv
 
     # run a different instance of a collector as a test endpoint
     docker rm --force otel-gateway-test 2>/dev/null || true
-    docker run -d --name otel-gateway-test -u "$(id -u):$(id -g)" \
+    docker run -d -p 4318:4318 --name otel-gateway-test -u "$(id -u):$(id -g)" \
         -v $PWD/test-config.yaml:/etc/otelcol-contrib/config.yaml \
         -v $PWD/exported:/exported \
         otel/opentelemetry-collector-contrib:0.62.1
 
     test "$(docker inspect otel-gateway-test -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway-test; exit 1; }
 
-    TEST_IP="$(docker inspect -f '{{{{range.NetworkSettings.Networks}}{{{{.IPAddress}}{{{{end}}' otel-gateway-test)"
-    export ENDPOINT="http://$TEST_IP:4318"
+    export ENDPOINT="http://127.0.0.1:4318"
 
     # run otel-gateway pointing at the test endpoint
     {{ just_executable() }} run -d -e ENDPOINT -e LOG_LEVEL=debug
@@ -61,10 +60,10 @@ test-ci: venv
 run-python *args: venv
     #!/bin/bash
     set -eu
-    GATEWAY_IP="$(docker inspect -f '{{{{range.NetworkSettings.Networks}}{{{{.IPAddress}}{{{{end}}' otel-gateway)"
     TOKEN=$(echo -n "$BASIC_AUTH_USER:$BASIC_AUTH_PASSWORD" | base64)
 
-    export OTEL_EXPORTER_OTLP_ENDPOINT="http://$GATEWAY_IP:4318"
+
+    export OTEL_EXPORTER_OTLP_ENDPOINT="http://127.0.0.1:4318"
     export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic%20$TOKEN"
     export OTEL_SERVICE_NAME="otel-gateway-tests"
  
