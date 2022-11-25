@@ -32,9 +32,9 @@ jobs:
     - name: Setup SSH Agent
       run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.DOKKU2_DEPLOY_SSH_KEY }}"
+          ssh-add - <<< "${{ secrets.DOKKU4_DEPLOY_SSH_KEY }}"
     - name: Deploy
       run: |
           SHA=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE_ID:latest)
-          ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" dokku@dokku2.ebmdatalab.net git:from-image otel-gateway $SHA
+          ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" dokku@dokku4.ebmdatalab.net git:from-image otel-gateway $SHA
 
