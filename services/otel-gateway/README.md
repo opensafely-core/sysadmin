@@ -2,7 +2,7 @@
 
 This is a deployment of the OpenTelemetry Collector
 [Gateway](https://opentelemetry.io/docs/concepts/data-collection/#deployment)
-on dokku2.
+on dokku4.
 
 ## Testing
 
@@ -36,7 +36,7 @@ This will print a link where you can go and view the data in the Honeycomb UI.
 
 ## Deploy to dokku
 
-From dokku2
+From dokku4
 
 ```bash
 docker pull ghcr.io/opensafely-core/otel-gateway:latest
