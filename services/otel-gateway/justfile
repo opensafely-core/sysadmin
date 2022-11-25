@@ -55,6 +55,8 @@ test-ci: venv
     test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
     {{ just_executable() }} run-python -m pytest tests.py
 
+    docker stop otel-gateway
+    docker stop otel-gateway-test
 
 # run a python script in the correct environment 
 run-python *args: venv
