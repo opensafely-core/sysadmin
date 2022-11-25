@@ -1,7 +1,7 @@
 name: Deploy otel-gateway
 on:
   push:
-    branches: [miain]
+    branches: [main]
     paths:
         - "services/otel-gateway/**"
   workflow_dispatch:
