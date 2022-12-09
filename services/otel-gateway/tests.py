@@ -52,16 +52,6 @@ def generate_test_metric():
     counter.add(2)
 
 
-@pytest.fixture(autouse=True)
-def clear_files():
-    # ensure clean data
-    # TODO: don't wipe out the trace data if doing metrics test
-    if trace_file.exists():
-        os.truncate(str(trace_file), 0)
-    if metric_file.exists():
-        os.truncate(str(metric_file), 0)
-
-
 def get_output(path):
     # wait for file to be written to, typically a few hundred 100ms
     while path.exists() and path.stat().st_size == 0:
