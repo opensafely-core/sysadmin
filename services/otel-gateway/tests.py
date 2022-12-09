@@ -15,9 +15,9 @@ trace_file = Path("exported/traces.json")
 metric_file = Path("exported/metrics.json")
 
 # set up trace exporting
-provider = TracerProvider()
-provider.add_span_processor(SimpleSpanProcessor(OTLPSpanExporter()))
-trace.set_tracer_provider(provider)
+tracer_provider = TracerProvider()
+tracer_provider.add_span_processor(SimpleSpanProcessor(OTLPSpanExporter()))
+trace.set_tracer_provider(tracer_provider)
 tracer = trace.get_tracer("testscope")
 
 
