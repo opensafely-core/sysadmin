@@ -24,7 +24,7 @@ jobs:
     - name: test
       run: env -C services/otel-gateway just test-ci
     - name: Log into GitHub Container Registry
-      run: echo "${{ secrets.GITHUB_TOKEN }} |  docker login https://ghcr.io -u ${{ github.actor }} --password-stdin"
+      run: echo "${{ secrets.GITHUB_TOKEN }}" |  docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Push image to GitHub Container Registry
       run: |
         docker tag $IMAGE_NAME $IMAGE_ID:latest
