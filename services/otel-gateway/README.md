@@ -55,6 +55,9 @@ dokku logs otel-gateway
 ```bash
 dokku apps:create otel-gateway
 dokku domains:add otel-gateway collector.opensafely.org
+# use proxy:ports-set in order to remove unused default ports
+# port 80 required to set up letsencrypt
+dokku proxy:ports-set otel-gateway http:80:4318
 dokku proxy:ports-add otel-gateway https:443:4318
 dokku letsencrypt:enable otel-gateway
 
@@ -64,13 +67,12 @@ dokku config:set otel-gateway HONEYCOMB_KEY=... BASIC_AUTH_USER=... BASIC_AUTH_P
 ```
 
 
-
 ## Refs
 
-https://opentelemetry.io/docs/concepts/data-collection
-https://docs.honeycomb.io/getting-data-in/otel-collector/
-https://dokku.com/docs~v0.26.8//deployment/methods/git/#initializing-an-app-repository-from-a-docker-image
-https://jessitron.com/2021/08/11/run-an-opentelemetry-collector-locally-in-docker/
+* https://opentelemetry.io/docs/concepts/data-collection
+* https://docs.honeycomb.io/getting-data-in/otel-collector/
+* https://dokku.com/docs~v0.26.8//deployment/methods/git/#initializing-an-app-repository-from-a-docker-image
+* https://jessitron.com/2021/08/11/run-an-opentelemetry-collector-locally-in-docker/
 
 ## future reference
 
