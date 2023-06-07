@@ -34,9 +34,10 @@ When window closes:
 When the VM is back up:
  - [ ] Is docker up? run `docker ps` on the VM
  - [ ] Is job-runner up? [check status](https://jobs.opensafely.org/status/), or `sudo systemctl status jobrunner`
+
+If Level 4 was rebooted:
  - [ ] [manually start release hatch on the level 4 VM](https://bennettinstitute-team-manual.pages.dev/tech-group/playbooks/opensafely-tpp-level-4/#release-hatch)
    - Note: once we've got the releases UI this will not be necessary
- - [ ] manualy start [level3/VM rsync](https://github.com/opensafely-core/backend-server/blob/main/jobrunner/playbook.md#level-3-file-sync)
 
 Finally
  - [ ] close window on freshstatus if still active.
