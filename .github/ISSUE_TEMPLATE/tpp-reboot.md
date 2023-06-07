@@ -15,8 +15,8 @@ Preparation:
 
  - [ ] bring window start forward 10min, and extend window close by 30min, as TPP can be a bit optimistic about how long they need
  - [ ] schedule [maintenance window](https://support.freshstatus.io/en/support/solutions/articles/50000001851-how-to-create-a-planned-maintenance-incident-) in freshstatus
- - [ ] communicate advance notice of window to users on #opensafely and #opensafely-users channel (possibly freshstatus may be able to do this for us?)
- - [ ] set reminder for window start (again freshping might be able to do this)
+ - [ ] communicate advance notice of window to users on #opensafely and #opensafely-users channel
+ - [ ] set reminder for window start
 
 When window starts:
  - [ ] stop job runner
