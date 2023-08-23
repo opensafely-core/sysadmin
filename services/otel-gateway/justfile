@@ -25,7 +25,8 @@ run *args: build
 # run integration test. You will need a HONEYCOMB_KEY set in the environment
 test-integration: venv
     #!/bin/bash
-    set -eu
+    set -euo pipefail
+
     {{ just_executable() }} run -d -e LOG_LEVEL=debug
     {{ just_executable() }} run-python tests.py
     echo "Data sent to honeycomb"
@@ -35,7 +36,8 @@ test-integration: venv
 # spin up a pretend honeycomb and run tests
 test-ci: venv
     #!/bin/bash
-    set -eu
+    set -euo pipefail
+
     mkdir -p exported
 
     # run a different instance of a collector as a test endpoint
@@ -61,7 +63,8 @@ test-ci: venv
 # run a python script in the correct environment 
 run-python *args: venv
     #!/bin/bash
-    set -eu
+    set -euo pipefail
+
     TOKEN=$(echo -n "$BASIC_AUTH_USER:$BASIC_AUTH_PASSWORD" | base64)
 
 
@@ -76,7 +79,8 @@ run-python *args: venv
 # quick and dirty venv provision for the simple python tests
 venv: _env
     #!/bin/bash
-    set -eu
+    set -euo pipefail
+
     test -d .venv && exit 0
     python3 -m venv .venv
     .venv/bin/pip install pytest opentelemetry-exporter-otlp-proto-http
