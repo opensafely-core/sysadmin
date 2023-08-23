@@ -4,10 +4,8 @@ import time
 from pathlib import Path
 
 from opentelemetry import metrics, trace
-from opentelemetry.exporter.otlp.proto.http.metric_exporter import \
-    OTLPMetricExporter
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import \
-    OTLPSpanExporter
+from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 from opentelemetry.metrics import (
     get_meter_provider,
     set_meter_provider,
@@ -30,7 +28,7 @@ tracer = trace.get_tracer("testscope")
 
 # set up metric exporting
 exporter = OTLPMetricExporter()
-# There isn't a direct equivalent of SimpleSpanProcessor, but with the 
+# There isn't a direct equivalent of SimpleSpanProcessor, but with the
 # export interval set to 1sec it's close enough
 reader = PeriodicExportingMetricReader(exporter, export_interval_millis=1000)
 meter_provider = MeterProvider(metric_readers=[reader])
@@ -54,8 +52,12 @@ def generate_test_metric():
 
 def get_output(path):
     # wait for file to be written to, typically a few hundred 100ms
+    timeout_count = 0
     while path.exists() and path.stat().st_size == 0:
         time.sleep(0.01)
+        timeout_count = timeout_count + 1
+        if timeout_count > 500:
+            raise Exception("Test timed out - no output written to file after 5 seconds")
 
     return json.loads(path.read_text())
 
@@ -63,11 +65,11 @@ def get_output(path):
 def service_name_helper(resource_attributes):
     # annoying json
     return list(
-            filter(
-                lambda d: d["key"] == "service.name",
-                resource_attributes,
-            )
-        )[0]
+        filter(
+            lambda d: d["key"] == "service.name",
+            resource_attributes,
+        )
+    )[0]
 
 
 def test_trace():
@@ -104,7 +106,7 @@ def test_metric():
     assert metric["scopeMetrics"][0]["scope"]["name"] == "testmetricscope"
     metric_data = metric["scopeMetrics"][0]["metrics"][0]
     assert metric_data["name"] == "counter"
-    assert metric_data["sum"]["dataPoints"][0]["asInt"] == '3'
+    assert metric_data["sum"]["dataPoints"][0]["asInt"] == "3"
 
 
 if __name__ == "__main__":
@@ -112,7 +114,3 @@ if __name__ == "__main__":
     generate_test_trace()
     print("Generating metric data")
     generate_test_metric()
-
-
-
-
