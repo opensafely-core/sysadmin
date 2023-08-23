@@ -5,6 +5,10 @@ extensions:
     htpasswd:
       inline: |
           ${BASIC_AUTH_USER}:${BASIC_AUTH_PASSWORD}
+  basicauth/otlp:
+    client_auth:
+      username: ${GRAFANA_INSTANCE_ID}
+      password: ${GRAFANA_API_TOKEN}
 
 receivers:
   otlp:
@@ -34,17 +38,22 @@ exporters:
       x-honeycomb-team: "${HONEYCOMB_KEY}"
       x-honeycomb-dataset: "${METRICS_DATASET}"
 
+  otlphttp/grafana:
+    auth:
+      authenticator: basicauth/otlp
+    endpoint: https://otlp-gateway-prod-gb-south-0.grafana.net/otlp
+
 service:
   telemetry:
     logs:
       level: "${LOG_LEVEL}"
-  extensions: [basicauth/server]
+  extensions: [basicauth/server, basicauth/otlp]
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/traces, logging]
+      exporters: [otlphttp/traces, otlphttp/grafana, logging]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/metrics, logging]
+      exporters: [otlphttp/metrics, otlphttp/grafana, logging]

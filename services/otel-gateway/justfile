@@ -19,10 +19,12 @@ run *args: build
         -e BASIC_AUTH_USER=$BASIC_AUTH_USER \
         -e BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD \
         -e HONEYCOMB_KEY \
+        -e GRAFANA_INSTANCE_ID \
+        -e GRAFANA_API_TOKEN \
         {{ args }} {{ IMAGE_NAME }}
 
 
-# run integration test. You will need a HONEYCOMB_KEY set in the environment
+# run integration test. You will need keys for Honeycomb & Grafana set in the environment
 test-integration: venv
     #!/bin/bash
     set -euo pipefail
