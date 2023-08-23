@@ -27,7 +27,7 @@ test-integration: venv
     #!/bin/bash
     set -euo pipefail
 
-    {{ just_executable() }} run -d -e LOG_LEVEL=debug
+    {{ just_executable() }} run -d -e LOG_LEVEL=debug -p 4318:4318
     {{ just_executable() }} run-python tests.py
     echo "Data sent to honeycomb"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
