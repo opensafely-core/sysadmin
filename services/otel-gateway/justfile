@@ -27,7 +27,7 @@ test-integration: venv
     #!/bin/bash
     set -euo pipefail
 
-    {{ just_executable() }} run -d -e LOG_LEVEL=debug
+    {{ just_executable() }} run -d -e LOG_LEVEL=debug -p 4318:4318
     {{ just_executable() }} run-python tests.py
     echo "Data sent to honeycomb"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
@@ -41,24 +41,24 @@ test-ci: venv
     mkdir -p exported
 
     # run a different instance of a collector as a test endpoint
-    docker rm --force otel-gateway-test 2>/dev/null || true
-    docker run -d -p 4318:4318 --name otel-gateway-test -u "$(id -u):$(id -g)" \
+    docker rm --force mock-honeycomb 2>/dev/null || true
+    docker run -d -p 4319:4318 --name mock-honeycomb -u "$(id -u):$(id -g)" \
         -v $PWD/test-config.yaml:/etc/otelcol-contrib/config.yaml \
         -v $PWD/exported:/exported \
         otel/opentelemetry-collector-contrib:0.62.1
 
-    test "$(docker inspect otel-gateway-test -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway-test; exit 1; }
+    test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
 
-    export ENDPOINT="http://127.0.0.1:4318"
+    export ENDPOINT="http://host.docker.internal:4319"
 
     # run otel-gateway pointing at the test endpoint
-    {{ just_executable() }} run -d -e ENDPOINT -e LOG_LEVEL=debug
+    {{ just_executable() }} run -d -e ENDPOINT -e LOG_LEVEL=debug -p 4318:4318 --add-host=host.docker.internal:host-gateway
 
     test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
     {{ just_executable() }} run-python -m pytest tests.py
 
     docker stop otel-gateway
-    docker stop otel-gateway-test
+    docker stop mock-honeycomb
 
 # run a python script in the correct environment 
 run-python *args: venv
