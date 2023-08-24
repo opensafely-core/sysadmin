@@ -49,10 +49,10 @@ test-ci: venv
 
     test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
 
-    export ENDPOINT="http://host.docker.internal:4319"
+    export HONEYCOMB_ENDPOINT="http://host.docker.internal:4319"
 
     # run otel-gateway pointing at the test endpoint
-    {{ just_executable() }} run -d -e ENDPOINT -e LOG_LEVEL=debug -p 4318:4318 --add-host=host.docker.internal:host-gateway
+    {{ just_executable() }} run -d -e HONEYCOMB_ENDPOINT -e LOG_LEVEL=debug -p 4318:4318 --add-host=host.docker.internal:host-gateway
 
     test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
     {{ just_executable() }} run-python -m pytest tests.py

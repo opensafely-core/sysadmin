@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.authors="tech@opensafely.org" \
       org.opencontainers.image.source="https://github.com/opensafely-sysadmin"
 
 # default config, can be overridden at runtime
-ENV ENDPOINT="https://api.honeycomb.io"
+ENV HONEYCOMB_ENDPOINT="https://api.honeycomb.io"
 ENV METRICS_DATASET="jobrunner-metrics"
 ENV LOG_LEVEL="info"
 
