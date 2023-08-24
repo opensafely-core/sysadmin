@@ -15,7 +15,7 @@ jobs:
       with:
         python-version: 3.8
     - name: Set up just
-      uses: extractions/setup-just@aa5d15c144db4585980a44ebfdd2cf337c4f14cb  # 1.4.0
+      uses: extractions/setup-just@69d82fb0233557aec017ef13706851d0694e0f1d  # 1.6.0
     - name: build
       run: env -C services/otel-gateway just build
     - name: test
