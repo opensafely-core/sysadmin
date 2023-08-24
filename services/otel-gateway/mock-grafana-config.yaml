@@ -1,0 +1,39 @@
+
+extensions:
+  basicauth/server:
+    htpasswd:
+      inline: |
+          ${GRAFANA_INSTANCE_ID}:${GRAFANA_API_TOKEN}
+
+receivers:
+  otlp:
+    protocols:
+      http:
+        auth:
+          authenticator: basicauth/server
+
+processors:
+  batch:
+
+exporters:
+  logging:
+    logLevel: debug
+  file/traces:
+    path: /exported/traces.json
+  file/metrics:
+    path: /exported/metrics.json
+
+service:
+  telemetry:
+    logs:
+      level: "debug"
+  extensions: [basicauth/server]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [file/traces, logging]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [file/metrics, logging]

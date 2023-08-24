@@ -41,7 +41,7 @@ exporters:
   otlphttp/grafana:
     auth:
       authenticator: basicauth/otlp
-    endpoint: https://otlp-gateway-prod-gb-south-0.grafana.net/otlp
+    endpoint: "${GRAFANA_ENDPOINT}"
 
 service:
   telemetry:

@@ -13,6 +13,7 @@ LABEL org.opencontainers.image.authors="tech@opensafely.org" \
 
 # default config, can be overridden at runtime
 ENV HONEYCOMB_ENDPOINT="https://api.honeycomb.io"
+ENV GRAFANA_ENDPOINT="https://otlp-gateway-prod-gb-south-0.grafana.net/otlp"
 ENV METRICS_DATASET="jobrunner-metrics"
 ENV LOG_LEVEL="info"
 
