@@ -41,13 +41,13 @@ test-ci: venv
     mkdir -p exported
 
     # run a different instance of a collector as a test endpoint
-    docker rm --force otel-gateway-test 2>/dev/null || true
-    docker run -d -p 4319:4318 --name otel-gateway-test -u "$(id -u):$(id -g)" \
+    docker rm --force mock-honeycomb 2>/dev/null || true
+    docker run -d -p 4319:4318 --name mock-honeycomb -u "$(id -u):$(id -g)" \
         -v $PWD/test-config.yaml:/etc/otelcol-contrib/config.yaml \
         -v $PWD/exported:/exported \
         otel/opentelemetry-collector-contrib:0.62.1
 
-    test "$(docker inspect otel-gateway-test -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway-test; exit 1; }
+    test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
 
     export ENDPOINT="http://host.docker.internal:4319"
 
@@ -58,7 +58,7 @@ test-ci: venv
     {{ just_executable() }} run-python -m pytest tests.py
 
     docker stop otel-gateway
-    docker stop otel-gateway-test
+    docker stop mock-honeycomb
 
 # run a python script in the correct environment 
 run-python *args: venv
