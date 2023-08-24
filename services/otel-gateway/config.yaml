@@ -5,6 +5,10 @@ extensions:
     htpasswd:
       inline: |
           ${BASIC_AUTH_USER}:${BASIC_AUTH_PASSWORD}
+  basicauth/otlp:
+    client_auth:
+      username: ${GRAFANA_INSTANCE_ID}
+      password: ${GRAFANA_API_TOKEN}
 
 receivers:
   otlp:
@@ -21,7 +25,7 @@ exporters:
     logLevel: "${LOG_LEVEL}"
 
   otlphttp/traces:
-    endpoint: "${ENDPOINT}"
+    endpoint: "${HONEYCOMB_ENDPOINT}"
     headers:
       x-honeycomb-team: "${HONEYCOMB_KEY}"
       # Do not set a dataset - let forwarding application set that.
@@ -29,22 +33,27 @@ exporters:
   # for some reason, metrics requires an explicit dataset, so we have
   # a separate exporter config for that
   otlphttp/metrics:
-    endpoint: "${ENDPOINT}"
+    endpoint: "${HONEYCOMB_ENDPOINT}"
     headers:
       x-honeycomb-team: "${HONEYCOMB_KEY}"
       x-honeycomb-dataset: "${METRICS_DATASET}"
+
+  otlphttp/grafana:
+    auth:
+      authenticator: basicauth/otlp
+    endpoint: "${GRAFANA_ENDPOINT}"
 
 service:
   telemetry:
     logs:
       level: "${LOG_LEVEL}"
-  extensions: [basicauth/server]
+  extensions: [basicauth/server, basicauth/otlp]
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/traces, logging]
+      exporters: [otlphttp/traces, otlphttp/grafana, logging]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/metrics, logging]
+      exporters: [otlphttp/metrics, otlphttp/grafana, logging]

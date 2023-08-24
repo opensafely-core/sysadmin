@@ -19,46 +19,83 @@ run *args: build
         -e BASIC_AUTH_USER=$BASIC_AUTH_USER \
         -e BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD \
         -e HONEYCOMB_KEY \
+        -e GRAFANA_INSTANCE_ID \
+        -e GRAFANA_API_TOKEN \
         {{ args }} {{ IMAGE_NAME }}
 
 
-# run integration test. You will need a HONEYCOMB_KEY set in the environment
+# run integration test. You will need keys for Honeycomb & Grafana set in the environment
 test-integration: venv
     #!/bin/bash
     set -euo pipefail
 
     {{ just_executable() }} run -d -e LOG_LEVEL=debug -p 4318:4318
     {{ just_executable() }} run-python tests.py
-    echo "Data sent to honeycomb"
+    echo "Data sent to honeycomb and grafana"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
 
 
-# spin up a pretend honeycomb and run tests
-test-ci: venv
+_mock_honeycomb_start:
     #!/bin/bash
     set -euo pipefail
 
-    mkdir -p exported
+    mkdir -p exported/honeycomb
 
     # run a different instance of a collector as a test endpoint
     docker rm --force mock-honeycomb 2>/dev/null || true
     docker run -d -p 4319:4318 --name mock-honeycomb -u "$(id -u):$(id -g)" \
-        -v $PWD/test-config.yaml:/etc/otelcol-contrib/config.yaml \
-        -v $PWD/exported:/exported \
+        -v $PWD/mock-honeycomb-config.yaml:/etc/otelcol-contrib/config.yaml \
+        -v $PWD/exported/honeycomb:/exported \
         otel/opentelemetry-collector-contrib:0.62.1
 
     test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
 
-    export ENDPOINT="http://host.docker.internal:4319"
+_mock_honeycomb_stop:
+    docker stop mock-honeycomb
+
+_mock_grafana_start:
+    #!/bin/bash
+    set -euo pipefail
+
+    mkdir -p exported/grafana
+
+    # run a different instance of a collector as a test endpoint
+    docker rm --force mock-grafana 2>/dev/null || true
+    docker run -d -p 4320:4318 --name mock-grafana -u "$(id -u):$(id -g)" \
+        -v $PWD/mock-grafana-config.yaml:/etc/otelcol-contrib/config.yaml \
+        -v $PWD/exported/grafana:/exported \
+        -e GRAFANA_INSTANCE_ID \
+        -e GRAFANA_API_TOKEN \
+        otel/opentelemetry-collector-contrib:0.62.1
+
+    test "$(docker inspect mock-grafana -f '{{{{.State.Status}}')" == "running" || { docker logs mock-grafana; exit 1; }
+
+_mock_grafana_stop:
+    docker stop mock-grafana
+
+# run tests against mock upstream servers
+test-ci: venv _mock_honeycomb_start _mock_grafana_start && _mock_honeycomb_stop _mock_grafana_stop
+    #!/bin/bash
+    set -euo pipefail
+
+    export HONEYCOMB_ENDPOINT="http://host.docker.internal:4319"
+    export GRAFANA_ENDPOINT="http://host.docker.internal:4320"
 
     # run otel-gateway pointing at the test endpoint
-    {{ just_executable() }} run -d -e ENDPOINT -e LOG_LEVEL=debug -p 4318:4318 --add-host=host.docker.internal:host-gateway
+    {{ just_executable() }} run -d \
+        -e HONEYCOMB_ENDPOINT \
+        -e GRAFANA_ENDPOINT \
+        -e GRAFANA_INSTANCE_ID \
+        -e GRAFANA_API_TOKEN \
+        -e LOG_LEVEL=debug \
+        -p 4318:4318 \
+        --add-host=host.docker.internal:host-gateway
 
     test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
     {{ just_executable() }} run-python -m pytest tests.py
 
     docker stop otel-gateway
-    docker stop mock-honeycomb
+
 
 # run a python script in the correct environment 
 run-python *args: venv

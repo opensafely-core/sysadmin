@@ -17,8 +17,14 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 import pytest
 
-trace_file = Path("exported/traces.json")
-metric_file = Path("exported/metrics.json")
+trace_files = [
+    Path("exported/grafana/traces.json"),
+    Path("exported/honeycomb/traces.json"),
+]
+metric_files = [
+    Path("exported/grafana/metrics.json"),
+    Path("exported/honeycomb/metrics.json"),
+]
 
 # set up trace exporting
 tracer_provider = TracerProvider()
@@ -57,7 +63,9 @@ def get_output(path):
         time.sleep(0.01)
         timeout_count = timeout_count + 1
         if timeout_count > 500:
-            raise Exception("Test timed out - no output written to file after 5 seconds")
+            raise Exception(
+                "Test timed out - no output written to file after 5 seconds"
+            )
 
     return json.loads(path.read_text())
 
@@ -72,7 +80,8 @@ def service_name_helper(resource_attributes):
     )[0]
 
 
-def test_trace():
+@pytest.mark.parametrize("trace_file", trace_files)
+def test_trace(trace_file):
     generate_test_trace()
 
     output = get_output(trace_file)
@@ -91,7 +100,8 @@ def test_trace():
     assert span_data["attributes"][0]["value"] == {"stringValue": "testvalue"}
 
 
-def test_metric():
+@pytest.mark.parametrize("metric_file", metric_files)
+def test_metric(metric_file):
     generate_test_metric()
 
     output = get_output(metric_file)
