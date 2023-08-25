@@ -22,7 +22,7 @@ processors:
 
 exporters:
   logging:
-    logLevel: "${LOG_LEVEL}"
+    loglevel: "${LOG_LEVEL}"
 
   otlphttp/traces:
     endpoint: "${HONEYCOMB_ENDPOINT}"
