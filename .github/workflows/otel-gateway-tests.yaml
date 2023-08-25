@@ -10,12 +10,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8  # 3.1.0
-    - name: Set up Python 3.8
-      uses: actions/setup-python@13ae5bb136fac2878aff31522b9efb785519f984  # 4.3.0
+    - uses: "opensafely-core/setup-action@v1"
       with:
-        python-version: 3.8
-    - name: Set up just
-      uses: extractions/setup-just@69d82fb0233557aec017ef13706851d0694e0f1d  # 1.6.0
+        python-version: "3.8"
+        install-just: true
     - name: build
       run: env -C services/otel-gateway just build
     - name: test
