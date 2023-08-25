@@ -13,6 +13,7 @@ jobs:
     - uses: "opensafely-core/setup-action@v1"
       with:
         python-version: "3.8"
+        cache-dependency-path: "requirements.txt"
         install-just: true
     - name: build
       run: env -C services/otel-gateway just build
