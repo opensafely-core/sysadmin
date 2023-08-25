@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "Docker" # See documentation for possible values
+  - package-ecosystem: "docker" # See documentation for possible values
     directory: "services/otel-gateway/" # Location of package manifests
     schedule:
       interval: "weekly"
