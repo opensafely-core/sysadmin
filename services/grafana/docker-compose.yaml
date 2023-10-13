@@ -1,0 +1,34 @@
+# For local testing of Grafana
+services:
+  db:
+    image: "postgres:13"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: jobserver
+    ports:
+      - "6543:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  grafana:
+    build: 
+      dockerfile: Dockerfile
+    environment:
+      GF_DATABASE_TYPE: postgres
+      # TODO: should this be 6543?
+      GF_DATABASE_HOST: db:5432
+      GF_DATABASE_NAME: grafana
+      GF_DATABASE_USER: user
+      GF_DATABASE_PASSWORD: pass
+      GF_DATABASE_SSL_MODE: disable
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana:/var/lib/grafana
+
+volumes:
+  postgres_data:
+  grafana:
