@@ -21,7 +21,8 @@ jobs:
       env:
         ORG_TOKEN: ${{ secrets.ORG_READONLY_TOKEN }}
       run: |
-        echo "WARNING: if this step fails randomly, you may need to update the repo secret ORG_READONLY_TOKEN"
+        echo "WARNING: if this step fails randomly, you may need to update the repo secret `ORG_READONLY_TOKEN`"
+        echo "This is a Personal Access Token (Classic), that only has `read:org`."
         echo
         echo "WARNING: ignore output from command as long as it does not fail."
         echo "It is running w/o elevated privileges needed to correctly read branch protection details"

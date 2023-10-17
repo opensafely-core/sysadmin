@@ -5,7 +5,7 @@ from github import Github
 
 ERROR_MSG = '''
 Error: missing environment variable ORG_TOKEN. You need a Personal
-Access Token, with the admin:org and all repo permssions
+Access Token (Classic), with admin:org and all repo permissions.
 
 https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 '''
