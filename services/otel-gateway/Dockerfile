@@ -4,7 +4,7 @@
 # 
 # https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/Dockerfile
 #
-FROM otel/opentelemetry-collector-contrib:0.84.0
+FROM otel/opentelemetry-collector-contrib:0.91.0
 
 LABEL org.opencontainers.image.authors="tech@opensafely.org" \
       org.opencontainers.image.url="opensafely.org" \
