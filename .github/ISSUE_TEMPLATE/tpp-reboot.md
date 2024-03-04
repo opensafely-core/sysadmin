@@ -22,9 +22,9 @@ When window starts:
  - [ ] stop job runner
  - [ ] gracefully kill jobs
 
-See the [preparing for reboot](https://github.com/opensafely-core/backend-server/blob/main/jobrunner/playbook.md#preparing-for-reboot) section of the playbook for how to do this.
+See the [preparing for reboot](https://github.com/opensafely-core/backend-server/blob/main/playbook.md#preparing-for-reboot) section of the playbook for how to do this.
 
-These commands can also be scheduled in advance if the maintenance window is out of hours, see the [planned maintenance](https://github.com/opensafely-core/backend-server/blob/main/jobrunner/playbook.md#planned-maintenance) section for more details.
+These commands can also be scheduled in advance if the maintenance window is out of hours, see the [planned maintenance](https://github.com/opensafely-core/backend-server/blob/main/playbook.md#planned-maintenance) section for more details.
 
 When window closes:
  - [ ] Check the VM is up and you can SSH in
