@@ -29,6 +29,23 @@ force-pushes from anywhere.
 Additionally, protected repos require code review, and signing. This
 prevents pushes to master/main without a review.
 
+# Readonly Classic PATs
+
+At the time this system was impelemented, Github only had classic PATs. And
+whilst these supported a readonly scope for public repos, if you wanted private
+repo access, you *had* to have write access too. However, it was not acceptable
+for job-server or job-runner to have write access.
+
+So, in order to acheive a readonly opensafely org PAT, we:
+
+a) lowered the base permissions for the opensafely org to read (they were admin!)
+b) added the machinery described about to elevate approved users permissions to be able to *write*.
+c) created an opensafely-readonly bot account, that was *not* included in the machinery above
+c) use this bot use to create PATs for job-server and job-runner.
+
+Over time, this readonly user has also been used to create issues in various
+private repo, so is also a collaborator on specific repos in ebmdatalab org as well.
+
 # Run
 
 Ensure you have a GH PAT with org admin permissions in `./org-token`
