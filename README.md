@@ -31,7 +31,7 @@ prevents pushes to master/main without a review.
 
 # Readonly Classic PATs
 
-At the time this system was impelemented, Github only had classic PATs. And
+At the time this system was implemented, Github only had classic PATs. And
 whilst these supported a readonly scope for public repos, if you wanted private
 repo access, you *had* to have write access too. However, it was not acceptable
 for job-server or job-runner to have write access.
@@ -39,7 +39,7 @@ for job-server or job-runner to have write access.
 So, in order to acheive a readonly opensafely org PAT, we:
 
 a) lowered the base permissions for the opensafely org to read (they were admin!)
-b) added the machinery described about to elevate approved users permissions to be able to *write*.
+b) added the machinery described above to elevate approved users permissions to be able to *write*.
 c) created an opensafely-readonly bot account, that was *not* included in the machinery above
 c) use this bot use to create PATs for job-server and job-runner.
 
