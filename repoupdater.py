@@ -67,7 +67,8 @@ def update():
 
         if os.path.exists(path):
             os.chdir(path)
-            subprocess.run(["git", "checkout", "master"], check=True)
+            subprocess.run(["git", "checkout", "master"], check=False)
+            subprocess.run(["git", "checkout", "main"], check=False)
             subprocess.run(["git", "pull"], check=True)
         else:
             subprocess.run(["git", "clone", repo.ssh_url, path], check=True)

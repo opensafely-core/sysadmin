@@ -2,3 +2,5 @@ pip-tools
 google-cloud-bigquery
 PyGithub
 PyYaml
+opensafely
+python-textops3
