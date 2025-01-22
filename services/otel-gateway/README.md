@@ -24,7 +24,7 @@ traffic and basic auth.
 
 ### Integration Tests
 
-You will need a valid API key for the developement environment
+You will need a valid API key for the development environment
 
 ```
 export HONEYCOMB_KEY=...
