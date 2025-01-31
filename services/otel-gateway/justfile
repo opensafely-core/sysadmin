@@ -4,6 +4,11 @@ export IMAGE_NAME := "otel-gateway"
 export DOCKER_BUILDKIT := "1"
 
 
+# list available commands
+default:
+    @"{{ just_executable() }}" --list
+
+
 _env:
     test -e .env || cp dotenv-sample .env
 
