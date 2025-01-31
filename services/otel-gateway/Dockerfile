@@ -13,7 +13,6 @@ LABEL org.opencontainers.image.authors="tech@opensafely.org" \
 
 # default config, can be overridden at runtime
 ENV HONEYCOMB_ENDPOINT="https://api.honeycomb.io"
-ENV GRAFANA_ENDPOINT="https://otlp-gateway-prod-gb-south-0.grafana.net/otlp"
 ENV METRICS_DATASET="jobrunner-metrics"
 ENV LOG_LEVEL="info"
 
@@ -21,7 +20,5 @@ ENV LOG_LEVEL="info"
 # ENV HONEYCOMB_KEY
 # ENV BASIC_AUTH_USER
 # ENV BASIC_AUTH_PASSWORD
-# ENV GRAFANA_INSTANCE_ID
-# ENV GRAFANA_API_TOKEN
 
 COPY config.yaml /etc/otelcol-contrib/config.yaml

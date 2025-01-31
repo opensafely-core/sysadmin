@@ -18,11 +18,9 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 import pytest
 
 trace_files = [
-    Path("exported/grafana/traces.json"),
     Path("exported/honeycomb/traces.json"),
 ]
 metric_files = [
-    Path("exported/grafana/metrics.json"),
     Path("exported/honeycomb/metrics.json"),
 ]
 

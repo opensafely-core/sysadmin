@@ -24,16 +24,14 @@ traffic and basic auth.
 
 ### Integration Tests
 
-You will need valid API keys for the development environment
+You will need a valid API key for the development environment
 
 ```
 export HONEYCOMB_KEY=...
-export GRAFANA_INSTANCE_ID=...
-export GRAFANA_API_TOKEN=...
 just test-integration
 ```
 
-This will print a link where you can go and view the data in the Honeycomb UI. It should also send data to Grafana.
+This will print a link where you can go and view the data in the Honeycomb UI.
 
 
 ## Deploy to dokku
@@ -64,7 +62,7 @@ dokku proxy:ports-add otel-gateway https:443:4318
 dokku letsencrypt:enable otel-gateway
 
 # secrets
-dokku config:set otel-gateway HONEYCOMB_KEY=... BASIC_AUTH_USER=... BASIC_AUTH_PASSWORD=... GRAFANA_INSTANCE_ID=... GRAFANA_API_TOKEN=...
+dokku config:set otel-gateway HONEYCOMB_KEY=... BASIC_AUTH_USER=... BASIC_AUTH_PASSWORD=...
 
 ```
 
