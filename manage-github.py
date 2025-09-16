@@ -36,6 +36,7 @@ CODE_BRANCH_POLICY = {
     "required_approving_review_count": 1,
 }
 
+EXCLUDED_REPOS = ["opensafely-core/ethelred"]
 
 def convert_protection(protection):
     """Convert protection read format to the right format.
@@ -191,10 +192,12 @@ def input_with_timeout(prompt, timeout=5.0):
         return None
 
 
-def manage_code(org, repo_policy=None, branch_policy=None):
+def manage_code(org, repo_policy=None, branch_policy=None, excluded_repos=None):
     """Ensure that all opensafe-core repos have the correct configuration."""
     code = client.GithubTeam(org)
-    for repo in code.repos.values():
+    excluded_repos = set() if excluded_repos is None else set(excluded_repos)
+    repos = [repo for name, repo in code.repos.items() if name not in excluded_repos]
+    for repo in repos:
         print(repo.full_name)
         if repo_policy:
             yield from configure_repo(repo, **repo_policy)
@@ -264,7 +267,7 @@ def main(argv=sys.argv[1:]):
         # analyse changes needed
         changes = itertools.chain(
             manage_studies(studies, REPO_POLICY, STUDY_BRANCH_POLICY),
-            manage_code(core, REPO_POLICY, CODE_BRANCH_POLICY),
+            manage_code(core, REPO_POLICY, CODE_BRANCH_POLICY, EXCLUDED_REPOS),
         )
 
         for change in changes:
