@@ -1,0 +1,220 @@
+diff --git ehrql/dummy_data/generator.py ehrql/dummy_data/generator.py
+index 38ec21cd..8cd714bc 100644
+--- ehrql/dummy_data/generator.py
++++ ehrql/dummy_data/generator.py
+@@ -70,11 +70,12 @@ class DummyDataGenerator:
+             "Use `dataset.configure_dummy_data(population_size=N)` "
+             "to change number of patients generated"
+         )
+-        start = time.time()
++        real_start = time.time()
+ 
+         for patient_id_batch in self.get_patient_id_batches():  # pragma: no branch
+             # Generate batches of patient data (just enough to determine population
+             # membership) and find those matching the population definition
++            start = time.time()
+             patient_batch = {
+                 patient_id: generator.get_patient_data_for_population_condition(
+                     patient_id
+@@ -82,8 +83,17 @@ class DummyDataGenerator:
+                 for patient_id in patient_id_batch
+             }
+             generated += len(patient_batch)
++            log.info(f"Raw dummy batch: {time.time() - start}")
++
++            start = time.time()
+             database.populate(merge_table_data(*patient_batch.values()))
++            log.info(f"database.populate: {time.time() - start}")
++
++            start = time.time()
+             results = engine.get_results(population_query)
++            log.info(f"engine.get_results: {time.time() - start}")
++
++            start = time.time()
+             # Accumulate all data from matching patients, returning once we have enough
+             for row in results:
+                 # Because of the existence of InlinePatientTables it's possible to get
+@@ -100,15 +110,18 @@ class DummyDataGenerator:
+                     generator.get_remaining_patient_data(row.patient_id),
+                 )
+                 found += 1
+-                if found >= self.population_size:
++                if False:  # found >= self.population_size:
+                     break
+ 
+-            if found >= self.population_size:
+-                return data
+-
++            log.info(f"accumulate patients from batch: {time.time() - start}")
+             log.info(f"Generated {generated} patients, found {found} matching")
+ 
+-            if time.time() - start > self.timeout:
++            if True:  # found >= self.population_size:
++                log.info(f"Dummy data generation took: {time.time() - real_start}")
++                return data
++
++            duration = time.time() - start
++            if duration > self.timeout:
+                 log.warning(
+                     f"Failed to find {self.population_size} matching patients within "
+                     f"{self.timeout} seconds — giving up"
+@@ -117,6 +130,7 @@ class DummyDataGenerator:
+                     f"Use e.g. `dataset.configure_dummy_data(timeout={self.timeout * 2})` "
+                     f"to try for longer"
+                 )
++                log.info(f"Dummy data generation took: {duration}")
+                 return data
+ 
+     def get_patient_id_batches(self):
+diff --git ehrql/dummy_data_nextgen/generator.py ehrql/dummy_data_nextgen/generator.py
+index 8e414a2d..2ff9a5b0 100644
+--- ehrql/dummy_data_nextgen/generator.py
++++ ehrql/dummy_data_nextgen/generator.py
+@@ -101,7 +101,7 @@ class DummyDataGenerator:
+             raise ValueError(
+                 "May specify configuration or provide kwargs but not both."
+             )
+-        assert not configuration.legacy
++        # assert not configuration.legacy
+         self.configuration = configuration
+         if self.configuration.additional_population_constraint is not None:
+             dataset = dataclasses.replace(
+@@ -150,11 +150,16 @@ class DummyDataGenerator:
+             "Use `dataset.configure_dummy_data(population_size=N)` "
+             "to change number of patients generated"
+         )
+-        start = time.time()
++        real_start = time.time()
+ 
+-        for patient_id_batch in self.get_patient_id_batches():  # pragma: no branch
++        total_found = 0
++
++        for n, patient_id_batch in enumerate(
++            self.get_patient_id_batches()
++        ):  # pragma: no branch
+             # Generate batches of patient data (just enough to determine population
+             # membership) and find those matching the population definition
++            start = time.time()
+             patient_batch = {
+                 patient_id: generator.get_patient_data_for_population_condition(
+                     patient_id
+@@ -162,9 +167,18 @@ class DummyDataGenerator:
+                 for patient_id in patient_id_batch
+             }
+             generated += len(patient_batch)
++            log.info(f"batch {n}: Raw dummy batch: {time.time() - start}")
++
++            start = time.time()
+             database.populate(merge_table_data(*patient_batch.values()))
++            log.info(f"batch {n}: database.populate: {time.time() - start}")
++
++            start = time.time()
+             results = engine.get_results(population_query)
++            log.info(f"batch {n}: engine.get_results: {time.time() - start}")
++
+             valid_patient_ids = set()
++            start = time.time()
+             # Accumulate all data from matching patients, returning once we have enough
+             for row in results:
+                 # Because of the existence of InlinePatientTables it's possible to get
+@@ -183,9 +197,17 @@ class DummyDataGenerator:
+                     generator.get_remaining_patient_data(row.patient_id),
+                 )
+                 found += 1
+-                if found >= self.population_size:
++                if False:  # found >= self.population_size:
+                     break
+ 
++            log.info(
++                f"batch {n}: accumulate patients from batch: {time.time() - start}"
++            )
++            log.info(f"batch {n}: found this batch: {found}")
++            log.info(
++                f"batch {n}: Generated total {generated} patients, total {total_found} matching"
++            )
++
+             # With each batch of patients we can look at what empirical
+             # characteristics patients that make it into the population definition
+             # have. We can then use this to inform how we generate patients for
+@@ -225,21 +247,13 @@ class DummyDataGenerator:
+                 generator.required_tables = frozenset(required_tables)
+                 generator.forbidden_tables = frozenset(forbidden_tables)
+ 
+-            if found >= self.population_size:
+-                return data
+-
+-            log.info(f"Generated {generated} patients, found {found} matching")
+-
+-            if time.time() - start > self.timeout:
+-                log.warning(
+-                    f"Failed to find {self.population_size} matching patients within "
+-                    f"{self.timeout} seconds — giving up"
+-                )
+-                log.info(
+-                    f"Use e.g. `dataset.configure_dummy_data(timeout={self.timeout * 2})` "
+-                    f"to try for longer"
+-                )
++            # generate 2 batches, then exit
++            if n > 0:  # found >= self.population_size:
++                log.info(f"Dummy data generation took: {time.time() - real_start}")
+                 return data
++            else:
++                total_found += found
++                found = 0
+ 
+     def get_patient_id_batches(self):
+         id_stream = self.get_patient_id_stream()
+diff --git ehrql/main.py ehrql/main.py
+index d9ac9894..3cd2da70 100644
+--- ehrql/main.py
++++ ehrql/main.py
+@@ -117,15 +117,16 @@ def generate_dataset_with_dsn(
+ def generate_dataset_with_dummy_data(
+     *, dataset, dummy_data_config, table_specs, dummy_data_file, dummy_tables_path
+ ):
+-    if dummy_data_file:
++    if False:  # dummy_data_file:
+         log.info(f"Reading dummy data from {dummy_data_file}")
+         return read_tables(dummy_data_file, table_specs)
+-    elif dummy_tables_path:
++    elif False:  # dummy_tables_path:
+         log.info(f"Reading table data from {dummy_tables_path}")
+         query_engine = LocalFileQueryEngine(dummy_tables_path)
+         return query_engine.get_results_tables(dataset)
+     else:
+         generator = get_dummy_data_generator(dataset, dummy_data_config)
++
+         return generator.get_results_tables()
+ 
+ 
+@@ -149,7 +150,7 @@ def create_dummy_tables(definition_file, dummy_tables_path, user_args, environ):
+ 
+ 
+ def get_dummy_data_generator(dataset, dummy_data_config):
+-    if dummy_data_config.legacy:
++    if False:  # dummy_data_config.legacy:
+         return DummyDataGenerator(
+             dataset,
+             population_size=dummy_data_config.population_size,
+@@ -293,10 +294,10 @@ def generate_measures_with_dummy_data(
+     dummy_tables_path=None,
+     dummy_data_file=None,
+ ):
+-    if dummy_data_file:
++    if False:  # dummy_data_file:
+         log.info(f"Reading dummy data from {dummy_data_file}")
+         return read_measure_results(dummy_data_file, measure_definitions)
+-    elif dummy_tables_path:
++    elif False:  # dummy_tables_path:
+         log.info(f"Reading data from {dummy_tables_path}")
+         query_engine = LocalFileQueryEngine(dummy_tables_path)
+         return get_measure_results(query_engine, measure_definitions)
+@@ -308,7 +309,7 @@ def generate_measures_with_dummy_data(
+ 
+ 
+ def get_dummy_measures_data_class(dummy_data_config):
+-    if dummy_data_config.legacy:
++    if False:  # dummy_data_config.legacy:
+         return DummyMeasuresDataGenerator
+     else:
+         return NextGenDummyMeasuresDataGenerator

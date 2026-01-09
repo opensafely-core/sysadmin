@@ -1,0 +1,91 @@
+column_name,description
+project,Project directory name under legacy- or nextgen-dummy-data
+log_name,Log filename used to align legacy and nextgen runs
+analysis_file,Path reported by Compiling line for dataset or measure
+analysis_link,GitHub link to analysis_file at current project HEAD when known
+run_type,dataset or measure inferred from log_name or analysis_file text
+target,Requested matching patient count from Attempting to generate line
+users,Most frequent commit author in research/{project} git log excluding dependabot
+uses_table_from_file,True when metadata/<action>.json contains InlinePatientTable marker
+population_nodes,Count of nodes in population expression parsed from metadata JSON
+uses_dummy_tables_flag,True when project.yaml run command for the action includes --dummy-tables
+nextgen_tomw2_exit_code,Exit code parsed from nextgen_tomw2 log
+nextgen_tomw2_overall_sec,Total dummy generation time from nextgen_tomw2 log
+nextgen_tomw3_exit_code,Exit code parsed from nextgen_tomw3 log
+nextgen_tomw3_overall_sec,Total dummy generation time from nextgen_tomw3 log
+legacy_exit_code,Exit code parsed from legacy log
+legacy_overall_sec,Total dummy generation time from legacy log
+nextgen_exit_code,Exit code parsed from nextgen log
+nextgen_overall_sec,Total dummy generation time from nextgen log
+nextgen_old_exit_code,Exit code parsed from nextgen_old log
+nextgen_old_overall_sec,Total dummy generation time from nextgen_old log
+legacy_batch0_found,Legacy matching patients from Generated ... found ... line
+legacy_batch0_raw_sec,Legacy raw dummy batch time
+legacy_batch0_populate_sec,Legacy database.populate time
+legacy_batch0_engine_sec,Legacy engine.get_results time
+legacy_batch0_accumulate_sec,Legacy accumulate patients from batch time
+legacy_batch0_total_sec,Legacy batch 0 total time equal to legacy_overall_sec
+legacy_batch0_dps,Legacy dummy patients per second found divided by legacy_batch0_total_sec
+nextgen_batch_improvement,Percent increase in nextgen batch 1 found vs batch 0
+found_diff_pct,Symmetric percent difference between nextgen_batch0_found and legacy_batch0_found (positive means nextgen found more; negative means legacy found more)
+tomw_improvements_batch0,Percent reduction in total time from nextgen_old batch 0 to nextgen batch 0
+tomw_improvements_batch1,Percent reduction in total time from nextgen_old batch 1 to nextgen batch 1
+tomw2_found_improvement,Percent increase in nextgen_tomw2 batch 1 found vs nextgen batch 1
+tomw3_improvements_batch0,Percent reduction in total time from nextgen batch 0 to nextgen_tomw3 batch 0
+tomw3_improvements_batch1,Percent increase in nextgen_tomw3 batch 1 found vs nextgen batch 1
+nextgen_batch0_found,Nextgen batch 0 matching patients from found this batch line
+nextgen_batch0_raw_sec,Nextgen batch 0 raw dummy batch time
+nextgen_batch0_populate_sec,Nextgen batch 0 database.populate time
+nextgen_batch0_engine_sec,Nextgen batch 0 engine.get_results time
+nextgen_batch0_accumulate_sec,Nextgen batch 0 accumulate patients from batch time
+nextgen_batch0_total_sec,Nextgen batch 0 total time sum of raw populate engine accumulate
+nextgen_batch0_dps,Nextgen batch 0 dummy patients per second found divided by total time
+nextgen_batch1_found,Nextgen batch 1 matching patients from found this batch line
+nextgen_batch1_raw_sec,Nextgen batch 1 raw dummy batch time
+nextgen_batch1_populate_sec,Nextgen batch 1 database.populate time
+nextgen_batch1_engine_sec,Nextgen batch 1 engine.get_results time
+nextgen_batch1_accumulate_sec,Nextgen batch 1 accumulate patients from batch time
+nextgen_batch1_total_sec,Nextgen batch 1 total time sum of raw populate engine accumulate
+nextgen_batch1_dps,Nextgen batch 1 dummy patients per second found divided by total time
+nextgen_tomw2_batch0_found,Nextgen_tomw2 batch 0 matching patients from found this batch line
+nextgen_tomw2_batch0_raw_sec,Nextgen_tomw2 batch 0 raw dummy batch time
+nextgen_tomw2_batch0_populate_sec,Nextgen_tomw2 batch 0 database.populate time
+nextgen_tomw2_batch0_engine_sec,Nextgen_tomw2 batch 0 engine.get_results time
+nextgen_tomw2_batch0_accumulate_sec,Nextgen_tomw2 batch 0 accumulate patients from batch time
+nextgen_tomw2_batch0_total_sec,Nextgen_tomw2 batch 0 total time sum of raw populate engine accumulate
+nextgen_tomw2_batch0_dps,Nextgen_tomw2 batch 0 dummy patients per second found divided by total time
+nextgen_tomw2_batch1_found,Nextgen_tomw2 batch 1 matching patients from found this batch line
+nextgen_tomw2_batch1_raw_sec,Nextgen_tomw2 batch 1 raw dummy batch time
+nextgen_tomw2_batch1_populate_sec,Nextgen_tomw2 batch 1 database.populate time
+nextgen_tomw2_batch1_engine_sec,Nextgen_tomw2 batch 1 engine.get_results time
+nextgen_tomw2_batch1_accumulate_sec,Nextgen_tomw2 batch 1 accumulate patients from batch time
+nextgen_tomw2_batch1_total_sec,Nextgen_tomw2 batch 1 total time sum of raw populate engine accumulate
+nextgen_tomw2_batch1_dps,Nextgen_tomw2 batch 1 dummy patients per second found divided by total time
+nextgen_tomw3_batch0_found,Nextgen_tomw3 batch 0 matching patients from found this batch line
+nextgen_tomw3_batch0_raw_sec,Nextgen_tomw3 batch 0 raw dummy batch time
+nextgen_tomw3_batch0_populate_sec,Nextgen_tomw3 batch 0 database.populate time
+nextgen_tomw3_batch0_engine_sec,Nextgen_tomw3 batch 0 engine.get_results time
+nextgen_tomw3_batch0_accumulate_sec,Nextgen_tomw3 batch 0 accumulate patients from batch time
+nextgen_tomw3_batch0_total_sec,Nextgen_tomw3 batch 0 total time sum of raw populate engine accumulate
+nextgen_tomw3_batch0_dps,Nextgen_tomw3 batch 0 dummy patients per second found divided by total time
+nextgen_tomw3_batch1_found,Nextgen_tomw3 batch 1 matching patients from found this batch line
+nextgen_tomw3_batch1_raw_sec,Nextgen_tomw3 batch 1 raw dummy batch time
+nextgen_tomw3_batch1_populate_sec,Nextgen_tomw3 batch 1 database.populate time
+nextgen_tomw3_batch1_engine_sec,Nextgen_tomw3 batch 1 engine.get_results time
+nextgen_tomw3_batch1_accumulate_sec,Nextgen_tomw3 batch 1 accumulate patients from batch time
+nextgen_tomw3_batch1_total_sec,Nextgen_tomw3 batch 1 total time sum of raw populate engine accumulate
+nextgen_tomw3_batch1_dps,Nextgen_tomw3 batch 1 dummy patients per second found divided by total time
+nextgen_old_batch0_found,Nextgen_old batch 0 matching patients from found this batch line
+nextgen_old_batch0_raw_sec,Nextgen_old batch 0 raw dummy batch time
+nextgen_old_batch0_populate_sec,Nextgen_old batch 0 database.populate time
+nextgen_old_batch0_engine_sec,Nextgen_old batch 0 engine.get_results time
+nextgen_old_batch0_accumulate_sec,Nextgen_old batch 0 accumulate patients from batch time
+nextgen_old_batch0_total_sec,Nextgen_old batch 0 total time sum of raw populate engine accumulate
+nextgen_old_batch0_dps,Nextgen_old batch 0 dummy patients per second found divided by total time
+nextgen_old_batch1_found,Nextgen_old batch 1 matching patients from found this batch line
+nextgen_old_batch1_raw_sec,Nextgen_old batch 1 raw dummy batch time
+nextgen_old_batch1_populate_sec,Nextgen_old batch 1 database.populate time
+nextgen_old_batch1_engine_sec,Nextgen_old batch 1 engine.get_results time
+nextgen_old_batch1_accumulate_sec,Nextgen_old batch 1 accumulate patients from batch time
+nextgen_old_batch1_total_sec,Nextgen_old batch 1 total time sum of raw populate engine accumulate
+nextgen_old_batch1_dps,Nextgen_old batch 1 dummy patients per second found divided by total time
