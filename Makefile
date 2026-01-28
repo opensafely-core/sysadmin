@@ -1,8 +1,8 @@
-ENV = env
+ENV = .venv
 
 $(ENV)/done: requirements.txt
-	virtualenv $(ENV)
-	$(ENV)/bin/pip install -r requirements.txt
+	uv virtualenv $(ENV)
+	uv pip install -r requirements.txt
 	touch $@
 
 
