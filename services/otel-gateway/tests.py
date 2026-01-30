@@ -1,9 +1,8 @@
 import json
-import os
 import time
 from pathlib import Path
 
-from opentelemetry import metrics, trace
+from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 from opentelemetry.metrics import (
