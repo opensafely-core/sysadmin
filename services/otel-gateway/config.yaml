@@ -18,8 +18,8 @@ processors:
   batch:
 
 exporters:
-  logging:
-    loglevel: "${LOG_LEVEL}"
+  debug:
+    verbosity: "${VERBOSITY}"
 
   otlphttp/traces:
     endpoint: "${HONEYCOMB_ENDPOINT}"
@@ -44,8 +44,8 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/traces, logging]
+      exporters: [otlphttp/traces, debug]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/metrics, logging]
+      exporters: [otlphttp/metrics, debug]

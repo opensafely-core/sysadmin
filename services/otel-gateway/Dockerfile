@@ -15,6 +15,7 @@ LABEL org.opencontainers.image.authors="tech@opensafely.org" \
 ENV HONEYCOMB_ENDPOINT="https://api.honeycomb.io"
 ENV METRICS_DATASET="jobrunner-metrics"
 ENV LOG_LEVEL="info"
+ENV VERBOSITY="normal"
 
 # these must be provided at runtime
 # ENV HONEYCOMB_KEY
