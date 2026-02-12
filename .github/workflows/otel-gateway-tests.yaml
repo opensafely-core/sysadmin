@@ -3,6 +3,8 @@ on:
   pull_request:
     paths: "services/otel-gateway/**"
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   test_dry_run:
     runs-on: ubuntu-latest
