@@ -1,4 +1,3 @@
 pip-tools
-google-cloud-bigquery==1.28.3
 PyGithub
 PyYaml
