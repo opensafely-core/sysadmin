@@ -1,13 +1,11 @@
-set dotenv-load := true	
+set dotenv-load := true
 
 export IMAGE_NAME := "otel-gateway"
 export DOCKER_BUILDKIT := "1"
 
-
 # list available commands
 default:
     @"{{ just_executable() }}" --list
-
 
 # Create a valid .env if none exists
 _dotenv:
@@ -93,14 +91,12 @@ fix:
     uv run ruff check --fix .
     uv run ruff format .
     just --fmt --unstable
-    just --fmt --unstable --justfile docker/justfile
 
 # build the docker image
 build: _dotenv
     docker build . -t $IMAGE_NAME 
 
-
-# run the gateway, in the foreground by default. 
+# run the gateway, in the foreground by default.
 run *args: _checkenv build
     docker rm --force otel-gateway 2>/dev/null || true
     docker run --name otel-gateway \
@@ -108,7 +104,6 @@ run *args: _checkenv build
         -e BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD \
         -e HONEYCOMB_KEY \
         {{ args }} {{ IMAGE_NAME }}
-
 
 # run integration test. You will need a HONEYCOMB_KEY set in the environment
 test-integration: _checkenv
@@ -119,7 +114,6 @@ test-integration: _checkenv
     {{ just_executable() }} run-python tests.py
     echo "Data sent to honeycomb"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
-
 
 _mock_honeycomb_start:
     #!/bin/bash
@@ -158,8 +152,7 @@ test-ci: _checkenv _mock_honeycomb_start && _mock_honeycomb_stop
 
     docker stop otel-gateway
 
-
-# run a python script in the correct environment 
+# run a python script in the correct environment
 run-python *args: _checkenv
     #!/bin/bash
     set -euo pipefail
@@ -170,5 +163,5 @@ run-python *args: _checkenv
     export OTEL_EXPORTER_OTLP_ENDPOINT="http://127.0.0.1:4318"
     export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic%20$TOKEN"
     export OTEL_SERVICE_NAME="otel-gateway-tests"
- 
+
     uv run python {{ args }}
