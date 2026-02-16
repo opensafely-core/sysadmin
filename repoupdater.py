@@ -103,14 +103,17 @@ def pull_request(branch, title, merge):
         if merge:
             pr.merge()
 
+
 def get_client():
     return client.github_client()
 
 
 def get_repos(client, org_name=ORG_NAME):
     org = client.get_organization(org_name)
-    config = yaml.safe_load(open('config.yaml'))
-    excluded = config.get('non_study_repos', [])
+    config = {}
+    if Path("config.yaml").exists():
+        config = yaml.safe_load(open("config.yaml"))
+    excluded = config.get("non_study_repos", [])
     repos = [repo for repo in org.get_repos() if repo.full_name not in excluded]
     return sorted(repos, key=lambda repo: repo.name)
 
