@@ -4,6 +4,37 @@ This is a deployment of the OpenTelemetry Collector
 [Gateway](https://opentelemetry.io/docs/concepts/data-collection/#deployment)
 on dokku4.
 
+## System prerequisites
+
+### Just
+
+We use [`just`](https://github.com/casey/just) as our command runner. It's
+a single file binary available for many platforms so should be easy to
+install.
+
+```sh
+# macOS
+brew install just
+
+# Linux
+# Install from https://github.com/casey/just/releases
+
+# Add completion for your shell. E.g. for bash:
+source <(just --completions bash)
+
+# Show all available commands
+just #  shortcut for just --list
+```
+
+### uv
+
+Follow installation instructions from the [uv documentation](https://docs.astral.sh/uv/getting-started/installation/) for your OS.
+
+### Python
+
+You'll need an appropriate version of Python on your PATH. Check the
+`.python-version` file for the required version.
+
 ## Testing
 
 ### CI Tests
@@ -36,7 +67,10 @@ This will print a link where you can go and view the data in the Honeycomb UI.
 
 ## Deploy to dokku
 
-From dokku4
+
+The app is deployed to our `dokku4` instance [automatically via GitHub actions](#deployment-via-github-actions).
+
+To deploy manually, from dokku4:
 
 ```bash
 docker pull ghcr.io/opensafely-core/otel-gateway:latest

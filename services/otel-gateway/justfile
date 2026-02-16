@@ -9,16 +9,99 @@ default:
     @"{{ just_executable() }}" --list
 
 
-_env:
-    test -e .env || cp dotenv-sample .env
+# Create a valid .env if none exists
+_dotenv:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [[ ! -f .env ]]; then
+      echo "No '.env' file found; creating a default '.env' from 'dotenv-sample'"
+      cp dotenv-sample .env
+    fi
+
+# Check if a .env exists
+# Use this (rather than _dotenv or devenv) for recipes that require that a .env file exists.
+# just will not pick up environment variables from a .env that it's just created,
+# and there isn't an easy way to load those into the environment, so we just
+
+# prompt the user to run just devenv to set up their local environment properly.
+_checkenv:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [[ ! -f .env ]]; then
+        echo "No '.env' file found; run 'just devenv' to create one"
+        exit 1
+    fi
+
+# clean up temporary files
+clean:
+    rm -rf .venv
+
+# Install dev requirements into venv without removing extraneous packages
+devenv: _dotenv
+    uv sync --inexact
+
+upgrade-package package: devenv
+    uv lock --upgrade-package {{ package }}
+
+upgrade-all: devenv
+    uv lock --upgrade
+
+format *args:
+    uv run ruff format --diff --quiet {{ args }} .
+
+lint *args:
+    uv run ruff check {{ args }} .
+
+lint-docker:
+    docker run --rm -i ghcr.io/hadolint/hadolint:v2.14.0-alpine < Dockerfile
+
+# Run the various dev checks but does not change any files
+check:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    failed=0
+
+    check() {
+      echo -e "\e[1m=> ${1}\e[0m"
+      rc=0
+      # Run it
+      eval $1 || rc=$?
+      # Increment the counter on failure
+      if [[ $rc != 0 ]]; then
+        failed=$((failed + 1))
+        # Add spacing to separate the error output from the next check
+        echo -e "\n"
+      fi
+    }
+
+    check "just format"
+    check "just lint"
+    check "just lint-docker"
+
+    if [[ $failed > 0 ]]; then
+      echo -en "\e[1;31m"
+      echo "   $failed checks failed"
+      echo -e "\e[0m"
+      exit 1
+    fi
+
+# Fix formatting and import sort ordering
+fix:
+    uv run ruff check --fix .
+    uv run ruff format .
+    just --fmt --unstable
+    just --fmt --unstable --justfile docker/justfile
 
 # build the docker image
-build: _env
+build: _dotenv
     docker build . -t $IMAGE_NAME 
 
 
 # run the gateway, in the foreground by default. 
-run *args: build
+run *args: _checkenv build
     docker rm --force otel-gateway 2>/dev/null || true
     docker run --name otel-gateway \
         -e BASIC_AUTH_USER=$BASIC_AUTH_USER \
@@ -28,7 +111,7 @@ run *args: build
 
 
 # run integration test. You will need a HONEYCOMB_KEY set in the environment
-test-integration: venv
+test-integration: _checkenv
     #!/bin/bash
     set -euo pipefail
 
@@ -57,7 +140,7 @@ _mock_honeycomb_stop:
     docker stop mock-honeycomb
 
 # run tests against mock upstream servers
-test-ci: venv _mock_honeycomb_start && _mock_honeycomb_stop
+test-ci: _checkenv _mock_honeycomb_start && _mock_honeycomb_stop
     #!/bin/bash
     set -euo pipefail
 
@@ -77,7 +160,7 @@ test-ci: venv _mock_honeycomb_start && _mock_honeycomb_stop
 
 
 # run a python script in the correct environment 
-run-python *args: venv
+run-python *args: _checkenv
     #!/bin/bash
     set -euo pipefail
 
@@ -88,15 +171,4 @@ run-python *args: venv
     export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic%20$TOKEN"
     export OTEL_SERVICE_NAME="otel-gateway-tests"
  
-    .venv/bin/python {{ args }}
-
-
-
-# quick and dirty venv provision for the simple python tests
-venv: _env
-    #!/bin/bash
-    set -euo pipefail
-
-    test -d .venv && exit 0
-    python3 -m venv .venv
-    .venv/bin/pip install pytest opentelemetry-exporter-otlp-proto-http
+    uv run python {{ args }}
