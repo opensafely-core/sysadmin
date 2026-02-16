@@ -1,20 +1,28 @@
 name: Deploy otel-gateway
+
 on:
   push:
     branches: [main]
     paths:
         - "services/otel-gateway/**"
   workflow_dispatch:
+
 env:
+  APP_NAME:  otel-gateway
+  IMAGE_NAME:  otel-gateway
+  PUBLIC_IMAGE_NAME: ghcr.io/opensafely-core/otel-gateway
+  REGISTRY: ghcr.io
+  HOST: dokku4.ebmdatalab.net
   SSH_AUTH_SOCK: /tmp/agent.sock
-  IMAGE_NAME: otel-gateway
-  IMAGE_ID: ghcr.io/opensafely-core/otel-gateway
+
 permissions:
   packages: write
+
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
+
     - name: Checkout
       uses: actions/checkout@v6
     - uses: "opensafely-core/setup-action@v1"
@@ -22,22 +30,43 @@ jobs:
         install-just: true
         install-uv: true
         cache: uv
+
     - name: build Image
       run: env -C services/otel-gateway just build
+
     - name: test
       run: env -C services/otel-gateway just test-ci
-    - name: Log into GitHub Container Registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" |  docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-    - name: Push image to GitHub Container Registry
-      run: |
-        docker tag $IMAGE_NAME $IMAGE_ID:latest
-        docker push $IMAGE_ID:latest
-    - name: Setup SSH Agent
-      run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.DOKKU4_DEPLOY_SSH_KEY }}"
-    - name: Deploy
-      run: |
-          SHA=$(docker inspect --format='{{index .RepoDigests 0}}' $IMAGE_ID:latest)
-          ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" dokku@dokku4.ebmdatalab.net git:from-image otel-gateway $SHA
 
+    - name: Publish docker image
+      run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login "$REGISTRY" -u ${{ github.actor }} --password-stdin
+          docker tag "$IMAGE_NAME" "$PUBLIC_IMAGE_NAME:latest"
+          docker push "$PUBLIC_IMAGE_NAME:latest"
+          # dump the full local container metadata into the logs in case its useful
+          docker inspect "$PUBLIC_IMAGE_NAME:latest"
+
+    - name: Deploy image
+      run: |
+          set -euo pipefail
+
+          # Find the full qualified "repo digest" for this image
+          IMAGE_DIGEST="$(
+            docker inspect --format='{{join .RepoDigests "\n"}}' "$PUBLIC_IMAGE_NAME:latest" \
+              | grep --fixed-strings "$PUBLIC_IMAGE_NAME" || true
+          )"
+          # Fail if we have none or more than one (as indicated by the presence of whitespace)
+          if [[ -z "$IMAGE_DIGEST" || "$IMAGE_DIGEST" =~ [[:space:]] ]]; then
+            echo "Expected exactly one value in IMAGE_DIGEST, got: $IMAGE_DIGEST"
+            echo
+            echo "Debug info:"
+            set -x
+            docker inspect --format='{{join .RepoDigests "\n"}}' "$PUBLIC_IMAGE_NAME:latest"
+            exit 1
+          fi
+
+          echo "Deploying to $HOST"
+          echo "dokku git:from-image $APP_NAME $IMAGE_DIGEST"
+          ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
+          ssh-add - <<< "${{ secrets.DOKKU4_DEPLOY_SSH_KEY }}"
+          ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" \
+            "dokku@$HOST" git:from-image "$APP_NAME" "$IMAGE_DIGEST"
