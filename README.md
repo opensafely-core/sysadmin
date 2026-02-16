@@ -46,13 +46,55 @@ c) use this bot use to create PATs for job-server and job-runner.
 Over time, this readonly user has also been used to create issues in various
 private repo, so is also a collaborator on specific repos in ebmdatalab org as well.
 
+# System prerequisites
+
+## Just
+
+We use [`just`](https://github.com/casey/just) as our command runner. It's
+a single file binary available for many platforms so should be easy to
+install.
+
+```sh
+# macOS
+brew install just
+
+# Linux
+# Install from https://github.com/casey/just/releases
+
+# Add completion for your shell. E.g. for bash:
+source <(just --completions bash)
+
+# Show all available commands
+just #  shortcut for just --list
+```
+
+## uv
+
+Follow installation instructions from the [uv documentation](https://docs.astral.sh/uv/getting-started/installation/) for your OS.
+
+## Python
+
+You'll need an appropriate version of Python on your PATH. Check the
+`.python-version` file for the required version.
+
+# Setup
+
+Create virtual environment, .env file and install requirements.
+```
+just devenv
+```
+
+* Create a GitHub personal access token with admin:org permissions, and update
+  it the `ORG_TOKEN` variable in the `.env` file.
+
+
 # Run
 
 Ensure you have a GH PAT with org admin permissions in `./org-token`
 
-`make manage` will run the command in dryrun mode, printing changes it would have made
+`just manage-github` will run the command in dryrun mode, printing changes it would have made
 
-`make manage ARGS=--exec` will actually apply the changes.
+`just manage-github --exec` will actually apply the changes.
 
 
 # Cron Job
