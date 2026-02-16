@@ -1,11 +1,10 @@
 import argparse
-from datetime import datetime
 import itertools
-import os
 import select
 import sys
+from datetime import datetime
 
-from github import Github, GithubException, RateLimitExceededException
+from github import GithubException, RateLimitExceededException
 
 import client
 
@@ -19,9 +18,7 @@ BOTS = [
 
 # This applies to all repos. Values are from
 # https://docs.github.com/en/rest/reference/repos#update-a-repository
-REPO_POLICY = {
-    "delete_branch_on_merge": True
-}
+REPO_POLICY = {"delete_branch_on_merge": True}
 
 # This applies to study repo master/main branchs. See convert_protection
 # function for values.
@@ -38,6 +35,7 @@ CODE_BRANCH_POLICY = {
 
 EXCLUDED_REPOS = ["opensafely-core/ethelred"]
 
+
 def convert_protection(protection):
     """Convert protection read format to the right format.
 
@@ -53,43 +51,45 @@ def convert_protection(protection):
     reviews = protection.required_pull_request_reviews
     output = dict(
         enforce_admins=protection.enforce_admins,
-        dismissal_users=getattr(reviews, 'dismissal_users', None),
-        dismissal_teams=getattr(reviews, 'dismissal_teams', None),
-        dismiss_stale_reviews=getattr(reviews, 'dismiss_stale_reviews', None),
-        require_code_owner_reviews=getattr(reviews, 'require_code_owner_reviews', None),
-        required_approving_review_count=getattr(reviews, 'required_approving_review_count', None),
-        strict=getattr(protection.required_status_checks, 'strict', None),
-        contexts=getattr(protection.required_status_checks, 'contexts', None),
+        dismissal_users=getattr(reviews, "dismissal_users", None),
+        dismissal_teams=getattr(reviews, "dismissal_teams", None),
+        dismiss_stale_reviews=getattr(reviews, "dismiss_stale_reviews", None),
+        require_code_owner_reviews=getattr(reviews, "require_code_owner_reviews", None),
+        required_approving_review_count=getattr(
+            reviews, "required_approving_review_count", None
+        ),
+        strict=getattr(protection.required_status_checks, "strict", None),
+        contexts=getattr(protection.required_status_checks, "contexts", None),
         # TODO: user/team push restrictions if we need them
     )
- 
+
     return output
 
 
 def protect_branch(repo, branch=None, **kwargs):
     """Audit and enforce branch protections.
-    
+
     Keyword args can be used to set additional restrictions, as per:
 
     https://pygithub.readthedocs.io/en/latest/github_objects/Branch.html#github.Branch.Branch.edit_protection
-    
+
     We set enforce_admins=True by default
 
     """
     # our security model requires enforce_admins
-    kwargs['enforce_admins'] = True
+    kwargs["enforce_admins"] = True
     protection = {}
     protected_branches = []
 
     # cope with master -> main name transition, including possibility that both
     # exist
     if branch is None:
-        branches = ['master', 'main']
+        branches = ["master", "main"]
     else:
         branches = [branch]
 
     for branch_name in branches:
-        try: 
+        try:
             b = repo.get_branch(branch_name)
             protected_branches.append(b)
         except GithubException as e:
@@ -116,7 +116,7 @@ def protect_branch(repo, branch=None, **kwargs):
                 # currently just vaccine-eligibility repo, we want to avoid that in future.
                 yield client.Change(
                     lambda: None,
-                    'ERROR: exception getting branch protection on {}/{}\n{}',
+                    "ERROR: exception getting branch protection on {}/{}\n{}",
                     repo.full_name,
                     protected_branch.name,
                     e,
@@ -127,13 +127,13 @@ def protect_branch(repo, branch=None, **kwargs):
                 if current_protection[k] != v:
                     protection[k] = v
 
-        if protection: 
+        if protection:
             yield client.Change(
                 lambda: protected_branch.edit_protection(**protection),
-                'setting branch protection on {}/{} to:\n{}',
+                "setting branch protection on {}/{} to:\n{}",
                 repo.name,
                 protected_branch.name,
-                ', '.join('{}={}'.format(k, v) for k, v in protection.items()),
+                ", ".join(f"{k}={v}" for k, v in protection.items()),
             )
 
 
@@ -144,7 +144,9 @@ def configure_repo(repo, **kwargs):
         for user in repo.get_collaborators("direct"):
             # a direct user with the admin permission is the repo creator, or someone added by the repo creator
             if user.permissions.admin:
-                msg = f"removing direct admin collaborator {user.login} from {repo.name}"
+                msg = (
+                    f"removing direct admin collaborator {user.login} from {repo.name}"
+                )
                 if repo.archived:
                     yield client.Change(
                         lambda: print(
@@ -159,10 +161,11 @@ def configure_repo(repo, **kwargs):
                         msg,
                     )
 
-
     except GithubException as exc:
         if exc.status == 403:
-            print("Token does not have permissions to query repo collaborators (need write access)")
+            print(
+                "Token does not have permissions to query repo collaborators (need write access)"
+            )
         else:
             raise
 
@@ -171,14 +174,14 @@ def configure_repo(repo, **kwargs):
         return
 
     to_change = {}
-    for name, value  in kwargs.items():
+    for name, value in kwargs.items():
         if getattr(repo, name) != value:
             to_change[name] = value
 
     if to_change:
         yield client.Change(
             lambda: repo.edit(**to_change),
-            'setting repo policy:\n{}',
+            "setting repo policy:\n{}",
             to_change,
         )
 
@@ -212,8 +215,8 @@ def manage_studies(org, repo_policy, branch_policy):
     others to the researchers team.
     """
     opensafely = client.GithubTeam(org)
-    researchers = client.GithubTeam(org.get_team_by_slug('researchers'))
-    editors = client.GithubTeam(org.get_team_by_slug('editors'))
+    researchers = client.GithubTeam(org.get_team_by_slug("researchers"))
+    editors = client.GithubTeam(org.get_team_by_slug("editors"))
 
     # everyone is in researchers group
     for member in opensafely.members.values():
@@ -228,39 +231,45 @@ def manage_studies(org, repo_policy, branch_policy):
 
         # another api request :(
         if "non-research" in repo.get_topics():
-            yield from editors.add_repo(repo, 'maintain')
+            yield from editors.add_repo(repo, "maintain")
         else:
             # researchers have access to all studies
-            yield from researchers.add_repo(repo, 'push')
-         
+            yield from researchers.add_repo(repo, "push")
+
 
 def main(argv=sys.argv[1:]):
     parser = argparse.ArgumentParser(
-        description='Apply policy to OpenSAFELY github org'
+        description="Apply policy to OpenSAFELY github org"
     )
-    parser.add_argument('--exec', action='store_true',
-                        dest='execute',
-                        help='Automatically execute commands')
-    parser.add_argument('--dry-run', action='store_true',
-                        dest='dry_run',
-                        help='Just print what would change and exit')
+    parser.add_argument(
+        "--exec",
+        action="store_true",
+        dest="execute",
+        help="Automatically execute commands",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        dest="dry_run",
+        help="Just print what would change and exit",
+    )
 
     args = parser.parse_args(argv)
     # we run in one of three modes:
     # --dry-run: analyse changes, but do not apply
     # --exec: analyse changes and apply immediately
     # default: analyse changes and ask for confirmation before applying them
-    mode = 'default'
+    mode = "default"
     if args.dry_run:
-        mode = 'dry-run'
+        mode = "dry-run"
     elif args.execute:
-        mode = 'execute'
+        mode = "execute"
 
-    if mode == 'dry-run':
-        print('*** DRY RUN - no changes will be made ***')
+    if mode == "dry-run":
+        print("*** DRY RUN - no changes will be made ***")
     try:
-        studies = client.get_org('opensafely')
-        core = client.get_org('opensafely-core')
+        studies = client.get_org("opensafely")
+        core = client.get_org("opensafely-core")
 
         pending_changes = []
 
@@ -272,32 +281,32 @@ def main(argv=sys.argv[1:]):
 
         for change in changes:
             print(change)
-            if mode == 'execute':
+            if mode == "execute":
                 change()
             else:
                 pending_changes.append(change)
 
-        if mode == 'dry-run':
-            print('*** DRY RUN - no changes were made ***')
-        elif mode == 'default': 
+        if mode == "dry-run":
+            print("*** DRY RUN - no changes were made ***")
+        elif mode == "default":
             if pending_changes:
                 answer = input_with_timeout(
-                    "Do you want to apply the above changes (y/n)?", 
+                    "Do you want to apply the above changes (y/n)?",
                     30.0,
                 )
-                if answer == 'y':
+                if answer == "y":
                     for change in pending_changes:
                         print(change)
                         change()
             else:
-                print('No changes needed')
-    
+                print("No changes needed")
+
     except RateLimitExceededException as exc:
         print("Github ratelimit hit")
         try:
             reset = datetime.fromtimestamp(int(exc.headers["x-ratelimit-reset"]))
             print(f"Will reset at {reset.isoformat()}")
-        except:
+        except Exception:
             pass
 
         for k, v in exc.headers.items():
@@ -305,6 +314,5 @@ def main(argv=sys.argv[1:]):
                 print(f"{k}: {v}")
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
