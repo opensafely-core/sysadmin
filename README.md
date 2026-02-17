@@ -90,7 +90,7 @@ just devenv
 
 # Run
 
-Ensure you have a GH PAT with org admin permissions in `./org-token`
+Ensure you have a GH PAT with org admin permissions in `.env`
 
 `just manage-github` will run the command in dryrun mode, printing changes it would have made
 
