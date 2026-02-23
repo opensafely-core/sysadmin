@@ -4,7 +4,7 @@
 # 
 # https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/Dockerfile
 #
-FROM otel/opentelemetry-collector-contrib:0.110.0
+FROM otel/opentelemetry-collector-contrib:0.146.0
 
 LABEL org.opencontainers.image.authors="tech@opensafely.org" \
       org.opencontainers.image.url="opensafely.org" \
@@ -14,7 +14,10 @@ LABEL org.opencontainers.image.authors="tech@opensafely.org" \
 # default config, can be overridden at runtime
 ENV HONEYCOMB_ENDPOINT="https://api.honeycomb.io"
 ENV METRICS_DATASET="jobrunner-metrics"
+# log level for the collector's telemetry
 ENV LOG_LEVEL="info"
+# verbosity level for the debug exporter
+ENV LOG_VERBOSITY="normal"
 
 # these must be provided at runtime
 # ENV HONEYCOMB_KEY

@@ -146,6 +146,7 @@ test-ci: _checkenv _mock_honeycomb_start && _mock_honeycomb_stop
     {{ just_executable() }} run -d \
         -e HONEYCOMB_ENDPOINT \
         -e LOG_LEVEL=debug \
+        -e LOG_VERBOSITY=detailed \
         -p 4318:4318 \
         --add-host=host.docker.internal:host-gateway
 
