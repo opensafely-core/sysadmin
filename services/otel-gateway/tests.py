@@ -1,9 +1,9 @@
 import json
-import os
 import time
 from pathlib import Path
 
-from opentelemetry import metrics, trace
+import pytest
+from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 from opentelemetry.metrics import (
@@ -15,7 +15,6 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
-import pytest
 
 trace_files = [
     Path("exported/honeycomb/traces.json"),

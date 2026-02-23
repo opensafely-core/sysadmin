@@ -1,0 +1,48 @@
+[project]
+name = "otel-gateway"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "opentelemetry-exporter-otlp-proto-http",
+    "pytest",
+    "ruff"
+]
+
+[tool.ruff]
+line-length = 88
+exclude = [
+  ".direnv",
+  ".git",
+  ".github",
+  ".ipynb_checkpoints",
+  ".pytest_cache",
+  ".venv",
+  "__pycache__",
+  "docker",
+  "htmlcov",
+  "venv",
+]
+
+[tool.ruff.lint]
+extend-select = [
+  "A",  # flake8-builtins
+  "I",  # isort
+  "INP",  # flake8-no-pep420
+  "ISC",  # flake8-implicit-str-concat
+  "UP",  # pyupgrade
+  "W",  # pycodestyle warning
+]
+extend-ignore = [
+  "E501",
+  "E731",
+]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+
+
+[tool.uv]
+required-version = ">=0.9"
+

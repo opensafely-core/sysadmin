@@ -10,8 +10,9 @@ else
 fi
 
 cd $checkout
+echo "ORG_TOKEN=$(cat $tokenfile)" > .env
 code=0
 export PYTHONUNBUFFERED=1
-time make manage ARGS=--exec ORG_TOKEN="$(<$tokenfile)" || code=$?
+time just manage-github --exec || code=$?
 echo "Exit: $code"
 exit $code

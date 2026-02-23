@@ -1,15 +1,15 @@
 import argparse
 import glob
 import os
-import re
-import sys
 import subprocess
+import sys
+from pathlib import Path
 
-from github import Github
-from github.GithubException import GithubException
 import yaml
+from github.GithubException import GithubException
 
 import client
+
 
 ORG_NAME = "OpenSAFELY"
 BASE_PATH = os.path.abspath("research")
@@ -18,10 +18,8 @@ BASE_PATH = os.path.abspath("research")
 def main():
     parser = argparse.ArgumentParser(prog="repoupdater")
     subparsers = parser.add_subparsers(help="sub-command help", dest="subcommand")
-    list_parser = subparsers.add_parser("list", help="list all repos")
-    update_parser = subparsers.add_parser(
-        "update", help="update all repos via pull or clone"
-    )
+    subparsers.add_parser("list", help="list all repos")
+    subparsers.add_parser("update", help="update all repos via pull or clone")
     exec_parser = subparsers.add_parser(
         "exec", help="execute command against all repos"
     )
@@ -32,7 +30,7 @@ def main():
     )
     pull_request_parser.add_argument("branch")
     pull_request_parser.add_argument("title")
-    pull_request_parser.add_argument('--merge', action='store_true')
+    pull_request_parser.add_argument("--merge", action="store_true")
 
     args = parser.parse_args()
 
@@ -103,14 +101,17 @@ def pull_request(branch, title, merge):
         if merge:
             pr.merge()
 
+
 def get_client():
     return client.github_client()
 
 
 def get_repos(client, org_name=ORG_NAME):
     org = client.get_organization(org_name)
-    config = yaml.safe_load(open('config.yaml'))
-    excluded = config.get('non_study_repos', [])
+    config = {}
+    if Path("config.yaml").exists():
+        config = yaml.safe_load(open("config.yaml"))
+    excluded = config.get("non_study_repos", [])
     repos = [repo for repo in org.get_repos() if repo.full_name not in excluded]
     return sorted(repos, key=lambda repo: repo.name)
 

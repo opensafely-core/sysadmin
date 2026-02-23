@@ -7,16 +7,16 @@ permissions:
   contents: read
 jobs:
   test_dry_run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Run CI tests
     steps:
     - name: Checkout
-      uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8  # 3.1.0
-    - uses: "opensafely-core/setup-action@v1"
+      uses: actions/checkout@v6
+    - uses: opensafely-core/setup-action@v1
       with:
-        python-version: "3.8"
-        cache-dependency-path: "requirements.txt"
         install-just: true
+        install-uv: true
+        cache: uv
     - name: build
       run: env -C services/otel-gateway just build
     - name: test
