@@ -131,7 +131,7 @@ _mock_honeycomb_start:
         -v $PWD/mock-honeycomb-config.yaml:/etc/otelcol-contrib/config.yaml \
         -v $PWD/exported/honeycomb:/exported \
         --network=otel-test-net \
-        otel/opentelemetry-collector-contrib:0.62.1
+        otel/opentelemetry-collector-contrib:0.69.0
     test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
 
 _mock_honeycomb_stop:
