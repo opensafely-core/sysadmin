@@ -98,7 +98,8 @@ build: _dotenv
 
 # run the gateway, in the foreground by default.
 run *args: _checkenv build
-    docker run --rm --name otel-gateway \
+    docker rm --force otel-gateway 2>/dev/null || true
+    docker run --name otel-gateway \
         -e BASIC_AUTH_USER=$BASIC_AUTH_USER \
         -e BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD \
         -e HONEYCOMB_KEY \
@@ -123,7 +124,9 @@ _mock_honeycomb_start:
 
     # run a different instance of a collector as a test endpoint
     docker network create otel-test-net 2>/dev/null || true
-    docker run --rm -d -p 4319:4318 \
+
+    docker rm --force mock-honeycomb 2>/dev/null || true
+    docker run -d -p 4319:4318 \
         --name mock-honeycomb -u "$(id -u):$(id -g)" \
         -v $PWD/mock-honeycomb-config.yaml:/etc/otelcol-contrib/config.yaml \
         -v $PWD/exported/honeycomb:/exported \
@@ -133,7 +136,6 @@ _mock_honeycomb_start:
 
 _mock_honeycomb_stop:
     docker stop mock-honeycomb
-    docker network remove otel-test-net
 
 # run tests against mock upstream servers
 test-ci: _checkenv _mock_honeycomb_start && _mock_honeycomb_stop
