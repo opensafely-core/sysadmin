@@ -26,4 +26,8 @@ ENV LOG_VERBOSITY="normal"
 # ENV BASIC_AUTH_USER
 # ENV BASIC_AUTH_PASSWORD
 
+# app.json must be in the WORKDIR, so make the implicit /app explict 
+WORKDIR /app
+
+COPY app.json /app/app.json
 COPY config.yaml /etc/otelcol-contrib/config.yaml

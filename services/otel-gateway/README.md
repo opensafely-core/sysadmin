@@ -83,6 +83,19 @@ dokku git:from-image otel-gateway ghcr.io/opensafely-core/otel-gateway:latest
 dokku logs otel-gateway
 ```
 
+## Health checks
+
+Dokku deploy checks are configured in [`app.json`](app.json) using the collector
+health endpoint at `:13133/healthz`. The file is copied into the image during
+build so `dokku git:from-image` can use it.
+
+Useful commands on dokku:
+
+```bash
+dokku checks:report otel-gateway
+dokku checks:run otel-gateway
+```
+
 
 ## Dokku app set up
 

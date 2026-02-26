@@ -1,0 +1,14 @@
+{
+  "healthchecks": {
+    "web": [
+      {
+        "type": "startup",
+        "path": "/healthz",
+        "port": 13133,
+        "wait": 2,
+        "timeout": 5,
+        "attempts": 15
+      }
+    ]
+  }
+}
