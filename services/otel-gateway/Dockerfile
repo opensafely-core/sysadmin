@@ -1,10 +1,12 @@
 # we use the contrib image for basicauth and other bits
 #
 # This image is build FROM scratch, so doesn't include *any* tools:
-# 
+#
 # https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/Dockerfile
 #
-FROM otel/opentelemetry-collector-contrib:0.146.0
+FROM otel/opentelemetry-collector-contrib:0.146.0 AS otelcol-base
+
+FROM otelcol-base AS otel-gateway
 
 LABEL org.opencontainers.image.authors="tech@opensafely.org" \
       org.opencontainers.image.url="opensafely.org" \

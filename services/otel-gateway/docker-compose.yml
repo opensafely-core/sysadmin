@@ -1,0 +1,39 @@
+services:
+  otel-gateway:
+    build:
+      context: .
+      target: otel-gateway
+    image: otel-gateway
+    environment:
+      BASIC_AUTH_USER: ${BASIC_AUTH_USER}
+      BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD}
+      HONEYCOMB_KEY: ${HONEYCOMB_KEY}
+      HONEYCOMB_ENDPOINT: ${HONEYCOMB_ENDPOINT:-https://api.honeycomb.io}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_VERBOSITY: ${LOG_VERBOSITY:-normal}
+    ports:
+      # otlp
+      - "4318:4318"
+      # http health check
+      - "13133:13133"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - otel-test-net
+
+  mock-honeycomb:
+    build:
+      context: .
+      target: otelcol-base
+    image: otel-gateway-mock
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    volumes:
+      - ./mock-honeycomb-config.yaml:/etc/otelcol-contrib/config.yaml:ro
+      - ./exported/honeycomb:/exported
+    ports:
+      - "4319:4318"
+    networks:
+      - otel-test-net
+
+networks:
+  otel-test-net:
