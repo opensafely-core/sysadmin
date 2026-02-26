@@ -116,6 +116,16 @@ test-integration: _checkenv
     echo "Data sent to honeycomb"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
 
+_wait_for_health container url:
+    #!/bin/bash
+    set -euo pipefail
+
+    if ! curl -fsS --retry 20 --retry-delay 1 --retry-connrefused --retry-all-errors "{{ url }}" >/dev/null 2>&1; then
+        echo "{{ container }} did not become healthy in time: {{ url }}"
+        docker logs "{{ container }}"
+        exit 1
+    fi
+
 _mock_honeycomb_start:
     #!/bin/bash
     set -euo pipefail
@@ -131,7 +141,7 @@ _mock_honeycomb_start:
         -v $PWD/mock-honeycomb-config.yaml:/etc/otelcol-contrib/config.yaml \
         -v $PWD/exported/honeycomb:/exported \
         --network=otel-test-net \
-        otel/opentelemetry-collector-contrib:0.69.0
+        otel/opentelemetry-collector-contrib:0.146.0
     test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
 
 _mock_honeycomb_stop:
@@ -150,9 +160,11 @@ test-ci: _checkenv _mock_honeycomb_start && _mock_honeycomb_stop
         -e LOG_LEVEL=debug \
         -e LOG_VERBOSITY=detailed \
         -p 4318:4318 \
+        -p 13133:13133 \
         --add-host=host.docker.internal:host-gateway
 
     test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
+    {{ just_executable() }} _wait_for_health otel-gateway "http://127.0.0.1:13133/healthz"
     {{ just_executable() }} run-python -m pytest tests.py
 
     docker stop otel-gateway
