@@ -12,8 +12,6 @@ exporters:
     verbosity: detailed
   file/traces:
     path: /exported/traces.json
-    # In collector 0.70.0+, non-rotation file writer is buffered and may not
-    # flush within the test timeout. Explicit rotation keeps writes visible.
   file/metrics:
     path: /exported/metrics.json
 

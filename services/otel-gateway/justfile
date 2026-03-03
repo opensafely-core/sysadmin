@@ -2,6 +2,10 @@ set dotenv-load := true
 
 export DOCKER_BUILDKIT := "1"
 
+# when runnign via just, ensure we have detail logs for debugging tests
+export LOG_LEVEL := "debug"
+export LOG_VERBOSITY := "detailed"
+
 # list available commands
 default:
     @"{{ just_executable() }}" --list
@@ -109,7 +113,6 @@ test-integration: _checkenv
 
     trap 'docker compose stop otel-gateway >/dev/null 2>&1 || true' EXIT
 
-    export LOG_LEVEL=debug
     docker compose up -d --build --force-recreate --no-deps otel-gateway
     docker compose ps --status running --services | grep -qx otel-gateway || { docker compose logs otel-gateway; exit 1; }
     {{ just_executable() }} _wait_for_health otel-gateway "http://127.0.0.1:13133/healthz"
@@ -133,12 +136,13 @@ _mock_honeycomb_start:
 
     mkdir -p exported/honeycomb
 
-    # Start both collectors for CI in one compose call.
-    LOCAL_UID="$(id -u)" \
-    LOCAL_GID="$(id -g)" \
-    HONEYCOMB_ENDPOINT="http://mock-honeycomb:4318" \
-    LOG_LEVEL=debug \
-    LOG_VERBOSITY=detailed \
+    # we need these so we can read/write the files as the right user
+    export LOCAL_UID="$(id -u)"
+    export LOCAL_GID="$(id -g)"
+
+    # point otel-gateway at the mock instance.
+    export HONEYCOMB_ENDPOINT="http://mock-honeycomb:4318"
+
     docker compose up -d --build --force-recreate mock-honeycomb otel-gateway
     docker compose ps --status running --services | grep -qx mock-honeycomb || { docker compose logs mock-honeycomb; exit 1; }
     docker compose ps --status running --services | grep -qx otel-gateway || { docker compose logs otel-gateway; exit 1; }
@@ -160,7 +164,6 @@ run-python *args: _checkenv
     set -euo pipefail
 
     TOKEN=$(echo -n "$BASIC_AUTH_USER:$BASIC_AUTH_PASSWORD" | base64)
-
 
     export OTEL_EXPORTER_OTLP_ENDPOINT="http://127.0.0.1:4318"
     export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic%20$TOKEN"
