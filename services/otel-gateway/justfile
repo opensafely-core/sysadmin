@@ -1,7 +1,10 @@
 set dotenv-load := true
 
-export IMAGE_NAME := "otel-gateway"
 export DOCKER_BUILDKIT := "1"
+
+# when runnign via just, ensure we have detail logs for debugging tests
+export LOG_LEVEL := "debug"
+export LOG_VERBOSITY := "detailed"
 
 # list available commands
 default:
@@ -94,26 +97,38 @@ fix:
 
 # build the docker image
 build: _dotenv
-    docker build . -t $IMAGE_NAME 
+    docker compose build otel-gateway
 
 # run the gateway, in the foreground by default.
 run *args: _checkenv build
-    docker run --rm --name otel-gateway \
-        -e BASIC_AUTH_USER=$BASIC_AUTH_USER \
-        -e BASIC_AUTH_PASSWORD=$BASIC_AUTH_PASSWORD \
-        -e HONEYCOMB_KEY \
-        --network=otel-test-net \
-        {{ args }} {{ IMAGE_NAME }}
+    #!/bin/bash
+    set -euo pipefail
+
+    docker compose up --force-recreate --no-deps {{ args }} otel-gateway
 
 # run integration test. You will need a HONEYCOMB_KEY set in the environment
 test-integration: _checkenv
     #!/bin/bash
     set -euo pipefail
 
-    {{ just_executable() }} run -d -e LOG_LEVEL=debug -p 4318:4318
+    trap 'docker compose stop otel-gateway >/dev/null 2>&1 || true' EXIT
+
+    docker compose up -d --build --force-recreate --no-deps otel-gateway
+    docker compose ps --status running --services | grep -qx otel-gateway || { docker compose logs otel-gateway; exit 1; }
+    {{ just_executable() }} _wait_for_health otel-gateway "http://127.0.0.1:13133/healthz"
     {{ just_executable() }} run-python tests.py
     echo "Data sent to honeycomb"
     echo "https://ui.honeycomb.io/bennett-institute-for-applied-data-science/environments/development/datasets/otel-gateway-tests?query=%7B%22time_range%22%3A600%2C%22granularity%22%3A0%2C%22breakdowns%22%3A%5B%5D%2C%22calculations%22%3A%5B%5D%2C%22orders%22%3A%5B%5D%2C%22havings%22%3A%5B%5D%2C%22limit%22%3A100%7D"
+
+_wait_for_health service url:
+    #!/bin/bash
+    set -euo pipefail
+
+    if ! curl -fsS --retry 20 --retry-delay 1 --retry-connrefused --retry-all-errors "{{ url }}" >/dev/null 2>&1; then
+        echo "{{ service }} did not become healthy in time: {{ url }}"
+        docker compose logs "{{ service }}"
+        exit 1
+    fi
 
 _mock_honeycomb_start:
     #!/bin/bash
@@ -121,38 +136,27 @@ _mock_honeycomb_start:
 
     mkdir -p exported/honeycomb
 
-    # run a different instance of a collector as a test endpoint
-    docker network create otel-test-net 2>/dev/null || true
-    docker run --rm -d -p 4319:4318 \
-        --name mock-honeycomb -u "$(id -u):$(id -g)" \
-        -v $PWD/mock-honeycomb-config.yaml:/etc/otelcol-contrib/config.yaml \
-        -v $PWD/exported/honeycomb:/exported \
-        --network=otel-test-net \
-        otel/opentelemetry-collector-contrib:0.62.1
-    test "$(docker inspect mock-honeycomb -f '{{{{.State.Status}}')" == "running" || { docker logs mock-honeycomb; exit 1; }
+    # we need these so we can read/write the files as the right user
+    export LOCAL_UID="$(id -u)"
+    export LOCAL_GID="$(id -g)"
+
+    # point otel-gateway at the mock instance.
+    export HONEYCOMB_ENDPOINT="http://mock-honeycomb:4318"
+
+    docker compose up -d --build --force-recreate mock-honeycomb otel-gateway
+    docker compose ps --status running --services | grep -qx mock-honeycomb || { docker compose logs mock-honeycomb; exit 1; }
+    docker compose ps --status running --services | grep -qx otel-gateway || { docker compose logs otel-gateway; exit 1; }
+    {{ just_executable() }} _wait_for_health otel-gateway "http://127.0.0.1:13133/healthz"
 
 _mock_honeycomb_stop:
-    docker stop mock-honeycomb
-    docker network remove otel-test-net
+    docker compose stop otel-gateway mock-honeycomb
 
 # run tests against mock upstream servers
 test-ci: _checkenv _mock_honeycomb_start && _mock_honeycomb_stop
     #!/bin/bash
     set -euo pipefail
 
-    export HONEYCOMB_ENDPOINT="http://mock-honeycomb:4318"
-
-    # run otel-gateway pointing at the test endpoint
-    {{ just_executable() }} run -d \
-        -e HONEYCOMB_ENDPOINT \
-        -e LOG_LEVEL=debug \
-        -p 4318:4318 \
-        --add-host=host.docker.internal:host-gateway
-
-    test "$(docker inspect otel-gateway -f '{{{{.State.Status}}')" == "running" || { docker logs otel-gateway; exit 1; }
     {{ just_executable() }} run-python -m pytest tests.py
-
-    docker stop otel-gateway
 
 # run a python script in the correct environment
 run-python *args: _checkenv
@@ -160,7 +164,6 @@ run-python *args: _checkenv
     set -euo pipefail
 
     TOKEN=$(echo -n "$BASIC_AUTH_USER:$BASIC_AUTH_PASSWORD" | base64)
-
 
     export OTEL_EXPORTER_OTLP_ENDPOINT="http://127.0.0.1:4318"
     export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic%20$TOKEN"

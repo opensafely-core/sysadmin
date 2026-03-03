@@ -1,10 +1,12 @@
 # we use the contrib image for basicauth and other bits
 #
 # This image is build FROM scratch, so doesn't include *any* tools:
-# 
+#
 # https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/Dockerfile
 #
-FROM otel/opentelemetry-collector-contrib:0.110.0
+FROM otel/opentelemetry-collector-contrib:0.146.0 AS otelcol-base
+
+FROM otelcol-base AS otel-gateway
 
 LABEL org.opencontainers.image.authors="tech@opensafely.org" \
       org.opencontainers.image.url="opensafely.org" \
@@ -14,11 +16,18 @@ LABEL org.opencontainers.image.authors="tech@opensafely.org" \
 # default config, can be overridden at runtime
 ENV HONEYCOMB_ENDPOINT="https://api.honeycomb.io"
 ENV METRICS_DATASET="jobrunner-metrics"
+# log level for the collector's telemetry
 ENV LOG_LEVEL="info"
+# verbosity level for the debug exporter
+ENV LOG_VERBOSITY="normal"
 
 # these must be provided at runtime
 # ENV HONEYCOMB_KEY
 # ENV BASIC_AUTH_USER
 # ENV BASIC_AUTH_PASSWORD
 
+# app.json must be in the WORKDIR, so make the implicit /app explict 
+WORKDIR /app
+
+COPY app.json /app/app.json
 COPY config.yaml /etc/otelcol-contrib/config.yaml

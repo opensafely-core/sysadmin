@@ -2,13 +2,14 @@ receivers:
   otlp:
     protocols:
       http:
+        endpoint: 0.0.0.0:4318
 
 processors:
   batch:
 
 exporters:
-  logging:
-    logLevel: debug
+  debug:
+    verbosity: detailed
   file/traces:
     path: /exported/traces.json
   file/metrics:
@@ -22,8 +23,8 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file/traces, logging]
+      exporters: [file/traces, debug]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file/metrics, logging]
+      exporters: [file/metrics, debug]

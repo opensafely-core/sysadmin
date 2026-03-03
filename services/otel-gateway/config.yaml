@@ -5,6 +5,9 @@ extensions:
     htpasswd:
       inline: |
           ${BASIC_AUTH_USER}:${BASIC_AUTH_PASSWORD}
+  health_check:
+    endpoint: 0.0.0.0:13133
+    path: /healthz
 
 receivers:
   otlp:
@@ -18,8 +21,12 @@ processors:
   batch:
 
 exporters:
-  logging:
-    loglevel: "${LOG_LEVEL}"
+  # The debug exporter replaces the old logging exporter and takes a verbosity
+  # argument instead of a log level (detailed/normal/basic vs debug/info/warn).
+  # https://github.com/open-telemetry/opentelemetry-collector/issues/11337
+  # https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter
+  debug:
+    verbosity: "${LOG_VERBOSITY}"
 
   otlphttp/traces:
     endpoint: "${HONEYCOMB_ENDPOINT}"
@@ -39,13 +46,13 @@ service:
   telemetry:
     logs:
       level: "${LOG_LEVEL}"
-  extensions: [basicauth/server]
+  extensions: [basicauth/server, health_check]
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/traces, logging]
+      exporters: [otlphttp/traces, debug]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/metrics, logging]
+      exporters: [otlphttp/metrics, debug]

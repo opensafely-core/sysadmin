@@ -54,9 +54,9 @@ def generate_test_metric():
 
 
 def get_output(path):
-    # wait for file to be written to, typically a few hundred 100ms
+    # Wait for the exporter to create and write the file.
     timeout_count = 0
-    while path.exists() and path.stat().st_size == 0:
+    while (not path.exists()) or path.stat().st_size == 0:
         time.sleep(0.01)
         timeout_count = timeout_count + 1
         if timeout_count > 500:
@@ -64,7 +64,11 @@ def get_output(path):
                 "Test timed out - no output written to file after 5 seconds"
             )
 
-    return json.loads(path.read_text())
+    # file exporter writes one JSON object per line (ndjson); read the latest.
+    lines = [line for line in path.read_text().splitlines() if line.strip()]
+    if not lines:
+        raise Exception("Test timed out - output file was empty")
+    return json.loads(lines[-1])
 
 
 def service_name_helper(resource_attributes):
