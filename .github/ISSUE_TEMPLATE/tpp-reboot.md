@@ -13,7 +13,7 @@ Checklist for TPP reboot
 
 Preparation:
 
- - [ ] If TPP have inform us of a maintenance window, bring window start
+ - [ ] If TPP have informed us of a maintenance window, bring window start
    forward 10min, and extend window close by 30min, as TPP can be a bit
    optimistic about how long they need. If we are rebooting for other reasons,
    decide on reasonable window.
@@ -27,7 +27,7 @@ When window starts:
    This should kill all running tasks and pause the TPP backend to stop any new jobs.
 
 If TPP has scheduled this window out of hours, these commands can also be
-crudly scheduled using sleep. e.g. to sleep 4 hours then run things:
+crudely scheduled using sleep. e.g. to sleep 4 hours then run things:
 
 ```
 dokku4$ sleep $((4*3600)); dokku run rap-controller python manage.py prepare_for_reboot --backend tpp --skip-confirm
@@ -41,8 +41,8 @@ Perform reboot
 
 When window closes or the reboot has finished:
  - [ ] Check the VM is up and you can SSH in
-   - If TPP initatied, chase TPP via email for an update.
-   - If they have not finished maintenance yet, so you may need to extend window and communicate to users.
+   - If TPP initiated, chase TPP via email for an update.
+   - If they have not finished maintenance yet, you may need to extend window and communicate to users.
    - If we initiated, we have limited options to debug reboot failure, so we'll need to contact TPP to help diagnose.
 
 When the VM is back up:
