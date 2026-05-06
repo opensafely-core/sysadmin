@@ -11,7 +11,7 @@ updates:
       interval: "weekly"
 
   - package-ecosystem: "uv"
-    directory: "/"
+    directory: "/repoupdater"
     schedule:
       interval: "weekly"
       day: "wednesday"

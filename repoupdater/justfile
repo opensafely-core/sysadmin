@@ -108,8 +108,5 @@ fix:
     -uv run ruff format .
     -just --fmt --unstable
 
-manage-github *ARGS="--dry-run": _checkenv
-    uv run python manage-github.py {{ ARGS }}
-
 repoupdater *ARGS: _checkenv
     uv run python repoupdater.py {{ ARGS }}
