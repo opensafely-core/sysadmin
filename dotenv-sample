@@ -1,4 +1,3 @@
 # Classic PAT with org permissions
-# - manage-github requires admin:org (all)
 # - repoupdater requires repo (all)
 ORG_TOKEN=changeme
