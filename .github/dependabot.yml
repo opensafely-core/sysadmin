@@ -26,3 +26,6 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "ruff"
+        versions: [">=0.16.0"]
