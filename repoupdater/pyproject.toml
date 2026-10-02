@@ -5,8 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "PyGithub",
-    "PyYaml"
+    "PyGithub>=2.10.0",
+    "PyYaml>=6.0.3"
 ]
 
 [dependency-groups]

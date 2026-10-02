@@ -7,6 +7,13 @@ research repos at once, and then create a pull request for each repo.
 
 This script has no tests, use with caution!
 
+Note that the `uv.lock` file  is deliberately gitignored, as we don't manage
+dependencies for this script. Dependencies are included in pyproject.toml
+with versions >= their latest known working versions (with the exception
+of ruff, which is pinned to <0.16.0). If this script doesn't
+work as expected, you may need to downgrade dependencies (or fix the script
+to work with more recent versions.)
+
 ## Setup
 
 Create virtual environment, .env file and install requirements.
