@@ -7,3 +7,6 @@ __cache__
 .pytest*
 .ruff_cache
 .env
+# Deliberatly exclude the repoupdater lockfile; we don't want to manage
+# dependencies for the repoupdater script
+repoupdater/uv.lock
