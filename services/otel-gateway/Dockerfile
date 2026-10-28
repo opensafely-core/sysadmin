@@ -4,7 +4,7 @@
 #
 # https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/Dockerfile
 #
-FROM otel/opentelemetry-collector-contrib:0.163.2 AS otelcol-base
+FROM otel/opentelemetry-collector-contrib:0.163.2-386 AS otelcol-base
 
 FROM otelcol-base AS otel-gateway
 
