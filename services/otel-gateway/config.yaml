@@ -33,14 +33,12 @@ exporters:
     headers:
       x-honeycomb-team: "${HONEYCOMB_KEY}"
       # Do not set a dataset - let forwarding application set that.
-      
-  # for some reason, metrics requires an explicit dataset, so we have
-  # a separate exporter config for that
+  
   otlphttp/metrics:
     endpoint: "${HONEYCOMB_ENDPOINT}"
     headers:
       x-honeycomb-team: "${HONEYCOMB_KEY}"
-      x-honeycomb-dataset: "${METRICS_DATASET}"
+      # Do not set a dataset - metrics will all go to the timeseries Metrics dataset
 
 service:
   telemetry:
